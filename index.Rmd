@@ -1,21 +1,16 @@
 ---
-title: "Article Long Title"
+title: "Coordinated daily activity patterns of wheelchair users."
 author:
   - name: Gregory Macfarlane
     email: gregmacfarlane@byu.edu
     affiliation: Brigham Young University
     footnote: 1
-  - name: Bob Example
-    email: bob@example.com
+  - name: Nate Lant
+    email: natelant@gmail.com
     affiliation: Brigham Young University
-  - name: Cat Example
-    email: cat@example.com
-    affiliation: Another University
 address:
   - code: Brigham Young University
     address: Civil and Environmental Engineering Department, 430 Engineering Building, Provo, Utah 84602
-  - code: Another University
-    address: Some Other Place
 footnote:
   - code: 1
     text: "Corresponding Author"
@@ -27,8 +22,8 @@ bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
 abstract: |
-  This is where the abstract should go.
-description: "A short description"
+ Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the  2017 National Household Travel Survey who self-identify as using a wheelchair.  We find that wheelchair use is a significant predictor of activity patterns,  with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
+description: "Coordinated daily activity patterns of wheelchair users."
 ---
 
 # Introduction {#intro}
