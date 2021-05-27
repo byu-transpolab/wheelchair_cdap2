@@ -1,44 +1,79 @@
-library(tidyverse)
-library(nhts2017)
-
-set.seed(42)
-
-# function to code factor levels as the attribute labels
+#' Label attributed vector
+#' 
+#' @param x An attributed vector, as is common in NHTS tables.
+#' @return A factor vector with labeled attributes
 relabel <- function(x){as_factor(x, levels = "labels")}
 
-# Sample down the households ======================
-my_hh <- nhts_households %>%
-  filter(msasize %in% c("04", "05")) %>% # households that live in metro areas more than 1M
-  select(houseid, hhvehcnt, hhsize, hhfaminc) %>%
-  sample_n(5000)
-
-my_persons <- nhts_persons %>%
-  filter(houseid %in% my_hh$houseid)
-
-my_trips <- nhts_trips %>%
-  filter(houseid %in% my_hh$houseid)
-
-# Build tour data ==========
-my_activities <- build_activities(my_trips)
-my_dap <- build_tours(my_activities)
-
-my_persons <- my_persons %>% 
-  left_join(my_dap, by = c("houseid", "personid"))
-
-# Create choice data ===========
-out_data <- my_persons %>%
-  left_join(my_hh, by = "houseid") %>%
-  filter(r_age > 18) %>%
-  transmute(
-    id = str_c(houseid, personid),
-    dap = ifelse(is.na(DAP), "H",  DAP),
-    dap2 = ifelse(is.na(DAP_sub), "H", DAP_sub),
-    r_age, educ, r_hisp, r_sex, r_race, 
-    worker, 
-    disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17),
-    hhvehcnt, hhsize, hhfaminc
-  )  %>%
-  mutate( across(c(educ, r_hisp, r_sex, r_race, worker, hhfaminc), relabel) )
+#' Sample households from 2017 NHTS
+#' 
+#' @return A tibble with households
+get_households <- function(){
+  nhts_households %>%
+    filter(msasize %in% c("04", "05")) %>% # households that live in metro areas more than 1M
+    mutate( across(c(hhfaminc), relabel)) %>%
+    select(houseid, hhvehcnt, hhsize, hhfaminc) %>%
+    sample_n(5000)
+}
 
 
-write_rds(out_data, "data/person_dap.rds")
+#' Get persons from 2017 NHTS for sampled households
+#' 
+#' @param houseid A vector of household id's from the NHTS
+#' @return 
+#' 
+get_persons <- function(ids){
+  nhts_persons %>%
+    filter(houseid %in% ids) %>%
+    filter(r_age > 18) %>%
+    mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
+    transmute(
+      houseid, personid, r_age,  educ, r_hisp, r_sex, r_race, worker,
+      disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17)
+    )
+  # TODO: Build person type description here
+  
+}
+
+
+#' Get trips made by sampled persons and households
+#'
+#' @param persons A tibble of persons from the nhts
+#' @return A tibble with the persons including their 
+#' 
+get_trips <- function(persons) {
+  
+  # build 
+  tours <- nhts_trips %>%
+    filter(houseid %in% persons$houseid) %>%
+    build_activities() %>%
+    build_tours()
+  
+  persons %>% 
+    left_join(tours, by = c("houseid", "personid"))
+  
+}
+
+#' Join persons and households together
+#' 
+#' @param persons_dap persons tibble with DAP attached
+#' @param hh households tibble
+#' 
+#' @return A tibble with the persons including household attributes
+#' 
+#' @details This join is also necessary to append DAP for individuals who
+#'   do not leave their home, and therefore do not show up in the trips data.
+#'   
+#'   
+make_data <- function(person_dap, hh){
+  
+  # Create choice data ===========
+  person_dap %>%
+    left_join(hh, by = "houseid") %>%
+    mutate(
+      id = str_c(houseid, personid),
+      dap = ifelse(is.na(DAP), "H",  DAP),
+      dap2 = ifelse(is.na(DAP_sub), "H", DAP_sub),
+    )  
+}
+
+
