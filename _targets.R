@@ -11,10 +11,11 @@ library(targets)
 # This is where you write source(\"R/functions.R\")
 # if you keep your functions in external scripts.
 source("R/data_maker.R")
+source("R/models.R")
 
 
 # Set target-specific options such as packages.
-tar_option_set(packages = c("tidyverse", "nhts2017"))
+tar_option_set(packages = c("tidyverse", "nhts2017", "mlogit", "modelsummary"))
 set.seed(42)
 
 # End this file with a list of target objects.
@@ -27,5 +28,10 @@ list(
   tar_target(data, make_data(person_dap, hh)),
   
   # Estimate models
+  tar_target(pt_models, estimate_models(data)),
+  tar_target(pt_modelsummary, make_ptsummary(pt_models)),
+  
+  
+  # Dummy
   tar_target(dummy, message("Done"))
 )
