@@ -24,12 +24,43 @@ get_households <- function(){
 get_persons <- function(ids){
   nhts_persons %>%
     filter(houseid %in% ids) %>%
+    
+    # filter out people over 18
+    mutate(r_age = ifelse(r_age < 0, r_age_imp, r_age)) %>%
     filter(r_age > 18) %>%
+    
+    # create person type and wheelchair use variables
+    mutate(
+      # distance to work
+      disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17),
+      
+      # determine wheelchair status
+      wheelchair_status =  case_when(
+        # wheelchair status variables
+        w_chair == "07" | w_mtrchr == "08" | w_scootr == "06" ~ T,
+        TRUE ~ F
+      ),
+      
+      # Person Type
+      person_type = case_when(
+        wkftpt == "01" ~ "FW",
+        wkftpt == "02" ~ "PW",
+        prmact == "03" ~ "NW",
+        prmact == "06" & worker == "02" ~ "RT",
+        r_age >= 65 & worker == "02" & prmact != "03" ~ "RT",
+        r_age >= 18 & worker == "02" ~ "NW", 
+        worker == "01" ~ "FW"
+      ),
+      
+      person_type = factor(person_type, levels = c("FW", "PW", "NW", "RT")),
+      
+    )  %>%
+    filter(!is.na(person_type)) %>%
     mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
-    transmute(
-      houseid, personid, r_age,  educ, r_hisp, r_sex, r_race, worker,
-      disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17)
-    )
+    select(
+      houseid, personid, person_type, r_age,  educ, r_hisp, r_sex, r_race, worker,
+      
+    ) 
   # TODO: Build person type description here
   
 }
