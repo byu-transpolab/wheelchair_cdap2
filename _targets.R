@@ -27,4 +27,5 @@ list(
   tar_target(data, make_data(person_dap, hh)),
   
   # Estimate models
+  tar_target(dummy, message("Done"))
 )
