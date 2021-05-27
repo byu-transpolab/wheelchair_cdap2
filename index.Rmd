@@ -27,3 +27,4 @@ description: "Coordinated daily activity patterns of wheelchair users."
 ---
 
 # Introduction {#intro}
+
