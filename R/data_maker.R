@@ -10,9 +10,19 @@ relabel <- function(x){as_factor(x, levels = "labels")}
 get_households <- function(){
   nhts_households %>%
     filter(msasize %in% c("04", "05")) %>% # households that live in metro areas more than 1M
-    mutate( across(c(hhfaminc), relabel)) %>%
-    select(houseid, hhvehcnt, hhsize, hhfaminc) %>%
-    sample_n(10000)
+    mutate(
+      income = case_when(
+        hhfaminc %in% c("01", "02", "03") ~ "< $25,000",
+        hhfaminc %in% c("04", "05") ~ "$25,000 - $50,000",
+        hhfaminc %in% c("06", "07") ~ "$50,000 - $100,000",
+        hhfaminc %in% c("08", "09", "10", "11") ~ "> $100,000"
+      ),
+      income = fct_relevel(income, "< $25,000", "$25,000 - $50,000", 
+                           "$50,000 - $100,000", "> $100,000"),
+      hhfaminc = relabel(hhfaminc)
+    ) %>%
+    select(houseid, hhvehcnt, hhsize, income, hhfaminc) %>%
+    sample_n(1000)
 }
 
 
@@ -34,11 +44,20 @@ get_persons <- function(ids){
       # distance to work
       disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17),
       
+      
       # determine wheelchair status
       wheelchair =  case_when(
         # wheelchair status variables
         w_chair == "07" | w_mtrchr == "08" | w_scootr == "06" ~ T,
         TRUE ~ F
+      ),
+      
+      # age groupings
+      age_bin = case_when(
+        r_age < 40 ~ "05-39",
+        r_age < 65 ~ "40-64",
+        r_age < 80 ~ "65-79",
+        TRUE ~ "80+"
       ),
       
       # Person Type
@@ -58,11 +77,10 @@ get_persons <- function(ids){
     filter(!is.na(person_type)) %>%
     mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
     select(
-      houseid, personid, person_type, r_age,  educ, r_hisp, r_sex, r_race, 
+      houseid, personid, person_type, r_age, age_bin, educ, r_hisp, r_sex, r_race, 
       worker, wheelchair
       
     ) 
-  # TODO: Build person type description here
   
 }
 
@@ -106,7 +124,8 @@ make_data <- function(person_dap, hh){
       dap = ifelse(is.na(DAP), "H",  DAP),
       dap2 = ifelse(is.na(DAP_sub), "H", DAP_sub),
     )   %>%
-    select(-DAP, -DAP_sub)
+    select(-DAP, -DAP_sub) 
 }
+
 
 
