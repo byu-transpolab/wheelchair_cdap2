@@ -23,28 +23,28 @@ estimate_models <- function(data){
   # FW model ----------------------------------
   fw_index <- which(d$person_type == "FW")
   models[["Full-time worker"]] <- mlogit(
-    dap ~ 1 | r_age, 
+    dap ~ 1 | wheelchair + r_sex + age_bin, 
     data = d$data[[fw_index]])
   
   
   # NW model ----------------------------------
   nw_index <- which(d$person_type == "NW")
   models[["Non-worker"]] <- mlogit(
-    dap ~ 1 | r_age, 
+    dap ~ 1 | wheelchair + r_sex + hhfaminc +  r_age, 
     data = d$data[[nw_index]])
   
   
   # PW model ----------------------------------
   pw_index <- which(d$person_type == "PW")
   models[["Part-time worker"]] <- mlogit(
-    dap ~ 1 | r_age, 
+    dap ~ 1 | wheelchair + r_sex + hhfaminc +  r_age, 
     data = d$data[[pw_index]])
   
   
   # RT model ----------------------------------
   rt_index <- which(d$person_type == "RT")
   models[["Retired"]] <- mlogit(
-    dap ~ 1 | r_age, 
+    dap ~ 1 | wheelchair + r_sex + hhfaminc +  r_age, 
     data = d$data[[rt_index]])
   
   models
