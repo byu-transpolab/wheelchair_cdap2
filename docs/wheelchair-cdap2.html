@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 3 Methods | Coordinated daily activity patterns of wheelchair users.</title>
-  <meta name="description" content=" 3 Methods | Coordinated daily activity patterns of wheelchair users." />
+  <title> 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users.</title>
+  <meta name="description" content=" 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 3 Methods | Coordinated daily activity patterns of wheelchair users." />
+  <meta property="og:title" content=" 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users." />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content=" 3 Methods | Coordinated daily activity patterns of wheelchair users." />
+  <meta property="og:description" content=" 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 3 Methods | Coordinated daily activity patterns of wheelchair users." />
+  <meta name="twitter:title" content=" 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users." />
   
-  <meta name="twitter:description" content=" 3 Methods | Coordinated daily activity patterns of wheelchair users." />
+  <meta name="twitter:description" content=" 6 wheelchair_cdap2 | Coordinated daily activity patterns of wheelchair users." />
   
 
 
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="literature.html"/>
-<link rel="next" href="applications.html"/>
+<link rel="prev" href="references.html"/>
+
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -184,11 +184,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="methods" class="section level1" number="3">
-<h1><span class="header-section-number"> 3</span> Methods</h1>
-<p>We describe our methods in this chapter.</p>
-<div id="data" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Data</h2>
+<div id="wheelchair_cdap2" class="section level1" number="6">
+<h1><span class="header-section-number"> 6</span> wheelchair_cdap2</h1>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>This repository contains data analysis and manuscript files related to a study
+on how overall daily activity patterns are affected by the use of a wheelchair.</p>
+<div id="analysis" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Analysis</h2>
+<p>The analysis can be executed with the <code>targets</code> package. To do this, clone the
+repository, install <code>targets</code>, and then run the following commands:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="wheelchair-cdap2.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
+<span id="cb1-2"><a href="wheelchair-cdap2.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_make</span>()</span>
+<span id="cb1-3"><a href="wheelchair-cdap2.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip target hh</span></span>
+<span id="cb1-4"><a href="wheelchair-cdap2.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip target dummy</span></span>
+<span id="cb1-5"><a href="wheelchair-cdap2.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip target persons</span></span>
+<span id="cb1-6"><a href="wheelchair-cdap2.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip target person_dap</span></span>
+<span id="cb1-7"><a href="wheelchair-cdap2.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip target data</span></span>
+<span id="cb1-8"><a href="wheelchair-cdap2.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✓ skip pipeline</span></span></code></pre></div>
+<p>The analysis uses several R packages. Users can install the necessary
+packages by doing the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="wheelchair-cdap2.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;) # devtools: install non-CRAN pkgs on GitHub</span></span>
+<span id="cb2-2"><a href="wheelchair-cdap2.html#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;byu-transpolab/apollo&quot;</span>) <span class="co"># personal fork of apollo</span></span>
+<span id="cb2-3"><a href="wheelchair-cdap2.html#cb2-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;byu-transpolab/nhts2017&quot;</span>) <span class="co"># NHTS 2017 tables</span></span>
+<span id="cb2-4"><a href="wheelchair-cdap2.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="wheelchair-cdap2.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mlogit&quot;</span>)</span>
+<span id="cb2-6"><a href="wheelchair-cdap2.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+</div>
+<div id="document" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Document</h2>
+<p>The document is written in <code>bookdown</code> using the targets created above.</p>
 
 </div>
 </div>
@@ -197,8 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="literature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
