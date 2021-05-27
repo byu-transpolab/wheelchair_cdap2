@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# wheelchair_cdap2
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This repository contains data analysis and manuscript files related to a study
+on how overall daily activity patterns are affected by the use of a wheelchair.
+
+## Analysis
+
+The analysis can be executed with the `targets` package. To do this, clone the
+repository, install `targets`, and then run the following commands:
+
+```{r targets}
+library(targets)
+tar_make()
+```
+
+The analysis uses several R packages. Users can install the necessary 
+packages by doing the following:
+
+```{r packages, eval = FALSE}
+# install.packages("devtools") # devtools: install non-CRAN pkgs on GitHub
+devtools::install_github("byu-transpolab/apollo") # personal fork of apollo
+devtools::install_github("byu-transpolab/nhts2017") # NHTS 2017 tables
+
+install.packages("mlogit")
+install.packages("tidyverse")
+```
+
+
+## Document
+
+The document is written in `bookdown` using the targets created above.

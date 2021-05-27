@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 _targets
-
 *.aux
 *.log
 *.spl
+README.html
