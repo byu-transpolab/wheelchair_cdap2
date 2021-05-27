@@ -12,7 +12,7 @@ get_households <- function(){
     filter(msasize %in% c("04", "05")) %>% # households that live in metro areas more than 1M
     mutate( across(c(hhfaminc), relabel)) %>%
     select(houseid, hhvehcnt, hhsize, hhfaminc) %>%
-    sample_n(5000)
+    sample_n(10000)
 }
 
 
@@ -35,7 +35,7 @@ get_persons <- function(ids){
       disttowk17 = ifelse(disttowk17 < 0, NA, disttowk17),
       
       # determine wheelchair status
-      wheelchair_status =  case_when(
+      wheelchair =  case_when(
         # wheelchair status variables
         w_chair == "07" | w_mtrchr == "08" | w_scootr == "06" ~ T,
         TRUE ~ F
@@ -58,7 +58,8 @@ get_persons <- function(ids){
     filter(!is.na(person_type)) %>%
     mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
     select(
-      houseid, personid, person_type, r_age,  educ, r_hisp, r_sex, r_race, worker,
+      houseid, personid, person_type, r_age,  educ, r_hisp, r_sex, r_race, 
+      worker, wheelchair
       
     ) 
   # TODO: Build person type description here
@@ -104,7 +105,8 @@ make_data <- function(person_dap, hh){
       id = str_c(houseid, personid),
       dap = ifelse(is.na(DAP), "H",  DAP),
       dap2 = ifelse(is.na(DAP_sub), "H", DAP_sub),
-    )  
+    )   %>%
+    select(-DAP, -DAP_sub)
 }
 
 
