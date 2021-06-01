@@ -21,8 +21,7 @@ get_households <- function(){
                            "$50,000 - $100,000", "> $100,000"),
       hhfaminc = relabel(hhfaminc)
     ) %>%
-    select(houseid, hhvehcnt, hhsize, income, hhfaminc) %>%
-    sample_n(1000)
+    select(houseid, hhvehcnt, hhsize, income, hhfaminc) 
 }
 
 
