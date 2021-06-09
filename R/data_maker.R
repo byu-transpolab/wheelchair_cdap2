@@ -21,6 +21,7 @@ get_households <- function(){
                            "$50,000 - $100,000", "> $100,000"),
       hhfaminc = relabel(hhfaminc)
     ) %>%
+    filter(!hhfaminc %in% c("-7", "-8", "-9")) %>%
     select(houseid, hhvehcnt, hhsize, income, hhfaminc) 
 }
 
@@ -72,12 +73,18 @@ get_persons <- function(ids){
       
       person_type = factor(person_type, levels = c("FW", "PW", "NW", "RT")),
       
+      works_home = ifelse(wrk_home == "01", 1, 0),
+      bach_degree = ifelse(educ %in% c("04", "05"), 1, 0),
+      male = ifelse(r_sex == "01", 1, 0)
+      
     )  %>%
-    filter(!is.na(person_type)) %>%
+    filter(!is.na(person_type),
+           !educ %in% c("-7", "-8", "-1"),
+           !r_sex %in% c("-7", "-8")) %>%
     mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
     select(
       houseid, personid, person_type, r_age, age_bin, educ, r_hisp, r_sex, r_race, 
-      worker, wheelchair
+      worker, wheelchair, wrk_home, works_home, bach_degree, male
       
     ) 
   

@@ -6,6 +6,11 @@ library(targets)
 # Then, run tar_make() to run the pipeline
 # and tar_read(summary) to view the results.
 
+#--------Dictionary------------------------
+# tar_visnetwork() - 
+# tar_read(hh) - view data
+# how can I view model results?
+#------------------------------------------
 
 # Define custom functions and other global objects.
 # This is where you write source(\"R/functions.R\")
