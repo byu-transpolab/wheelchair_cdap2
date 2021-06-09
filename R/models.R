@@ -24,28 +24,32 @@ estimate_models <- function(data){
   fw_index <- which(d$person_type == "FW")
   models[["Full-time worker"]] <- mlogit(
     dap ~ 1 | wheelchair + works_home + male + bach_degree + income + age_bin, 
-    data = d$data[[fw_index]])
+    data = d$data[[fw_index]],
+    weights = wtperfin)
   
   
   # NW model ----------------------------------
   nw_index <- which(d$person_type == "NW")
   models[["Non-worker"]] <- mlogit(
     dap ~ 1 | wheelchair + male + bach_degree + income + age_bin,  
-    data = d$data[[nw_index]])
+    data = d$data[[nw_index]],
+    weights = wtperfin)
   
   
   # PW model ----------------------------------
   pw_index <- which(d$person_type == "PW")
   models[["Part-time worker"]] <- mlogit(
     dap ~ 1 | wheelchair + works_home + male + bach_degree + income + age_bin,  # add auto here
-    data = d$data[[pw_index]])
+    data = d$data[[pw_index]],
+    weights = wtperfin)
   
   
   # RT model ----------------------------------
   rt_index <- which(d$person_type == "RT")
   models[["Retired"]] <- mlogit(
     dap ~ 1 | wheelchair + male + bach_degree + income + age_bin,  
-    data = d$data[[rt_index]])
+    data = d$data[[rt_index]],
+    weights = wtperfin)
   
   models
 }

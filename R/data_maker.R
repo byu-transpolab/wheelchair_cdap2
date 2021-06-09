@@ -84,7 +84,7 @@ get_persons <- function(ids){
     mutate( across(c(educ, r_hisp, r_sex, r_race, worker), relabel) ) %>%
     select(
       houseid, personid, person_type, r_age, age_bin, educ, r_hisp, r_sex, r_race, 
-      worker, wheelchair, wrk_home, works_home, bach_degree, male
+      worker, wheelchair, wrk_home, works_home, bach_degree, male, wtperfin
       
     ) 
   
@@ -94,7 +94,7 @@ get_persons <- function(ids){
 #' Get trips made by sampled persons and households
 #'
 #' @param persons A tibble of persons from the nhts
-#' @return A tibble with the persons including their 
+#' @return A tibble with the persons including their DAP
 #' 
 get_trips <- function(persons) {
   
@@ -129,6 +129,16 @@ make_data <- function(person_dap, hh){
       id = str_c(houseid, personid),
       dap = ifelse(is.na(DAP), "H",  DAP),
       dap2 = ifelse(is.na(DAP_sub), "H", DAP_sub),
+      
+      # some NW or RT take a mandatory trip... so here we refine them. 
+      # some take a school trip... so we cast them out.
+      person_type = case_when(
+        person_type == "RT" & DAP == "M" & DAP_sub %in% c("W_1", "W_2") ~ "PW",
+        person_type == "NW" & DAP == "M" & DAP_sub %in% c("W_1", "W_2") ~ "PW",
+        person_type == "RT" & DAP == "M" & DAP_sub %in% c("S_1", "S_2") ~ "NA",
+        person_type == "NW" & DAP == "M" & DAP_sub %in% c("S_1", "S_2") ~ "NA",
+        TRUE ~ as.character(person_type)
+      ),
     )   %>%
     select(-DAP, -DAP_sub) 
 }
