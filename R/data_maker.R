@@ -9,7 +9,7 @@ relabel <- function(x){as_factor(x, levels = "labels")}
 #' @return A tibble with households
 get_households <- function(){
   nhts_households %>%
-    filter(msasize %in% c("04", "05")) %>% # households that live in metro areas more than 1M
+    filter(msasize %in% c("04")) %>% # households that live in metro areas more than 1M
     mutate(
       income = case_when(
         hhfaminc %in% c("01", "02", "03") ~ "< $25,000",
