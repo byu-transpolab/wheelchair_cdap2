@@ -1,7 +1,7 @@
 #' Get persons / households File from activitysim
 #' 
-#' @param file to data file
-#' @return Stores a file in the appropriate location
+#' @param file to data file from activitysim output.
+#' @return tibble containing dap information
 #' 
 asim_persons_base <- function(path){
   if(!file.exists(path)){
@@ -18,16 +18,7 @@ asim_persons_base <- function(path){
   )  
 }
 
-# asim_households_base <- function(path){
-#   if(!file.exists(path)){
-#     # originally from UTA: June 4 2021
-#     download.file("https://byu.box.com/shared/static/em4qhq8i0bg3yb0oor76tu0n0lb770oo.csv", # from box
-#                   destfile = path)
-#   } else {
-#     message(path, " already available")
-#   }
-#   return(read_csv(path)) # to use file target, need to return path to data. 
-# }
+
 
 asim_persons_wc <- function(path){
   if(!file.exists(path)){
@@ -86,6 +77,14 @@ asim_join <- function(persons_base, persons_wc, households_wc){
 
 
 # ActivitySim dap model estimation results -------------------------------------
+
+#' Build table from dap data to compare before and after dap choices
+#' 
+#' @param asim_dap data set
+#' @return Comparison table
+#' 
+#' 
+#' 
 build_table <- function(asim_dap) {
   
   asim_dap %>%
