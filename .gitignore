@@ -7,3 +7,5 @@ _targets
 *.log
 *.spl
 README.html
+
+data/
