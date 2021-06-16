@@ -1,7 +1,106 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r}
+library(targets)
+library(kableExtra)
+```
 # Applications
 
 Some _significant_ applications are demonstrated in this chapter.
 
-## Example one
+## Example one NHTS
 
-## Example two
+We estimated the models using mlogit for R \cite{R, mlogit}. As described above, the
+alternatives for daily activity pattern choice are a Mandatory pattern where the 
+individual's day involves a work or school tour, a Non-Mandatory pattern where 
+only discretionary trips are taken, and a Home pattern where the individual does 
+not leave home. In the models estimated for this study, the Home pattern serves
+as the reference alternative with a utility of zero. Retired and otherwise 
+non-working individuals choose only between Non-Mandatory and Home daily activity
+patterns.
+
+The model estimates are presented in 
+Table \ref{tab:model-coef}. 
+The estimated coefficients are of the expected sign, though not all are significant. 
+Some predictors that proved to be insignificant, such as automobile availability
+for full-time workers, were excluded from the estimated models. 
+The overall model fit --- as indicated by the McFadden $\rho^2$ with respect to
+a market shares (constants only) model --- is not strikingly high. Were the purpose
+of this research to identify the best fit model of activity pattern choice for 
+each person segment we would undertake an exercise to include, exclude, and identify
+potential transformations for different sets of variables. In this case, however,
+the goal of these models is simply to provide a plausible comparison point for
+the behavior of individuals using wheelchairs against the behavior of individuals
+in other person type segments. 
+
+```{r nhts_models}
+tar_load(pt_modelsummary)
+kbl(pt_modelsummary)
+```
+
+
+In this regard, the model results show strong divergence of the utility
+preferences of individuals who use wheelchairs. For instance, full-time workers 
+in the middle income groups are modestly less likely to choose non-mandatory 
+patterns, and part-time workers of higher income are less like to choose
+mandatory patterns. Income appears to have no discernible effect on  the choices
+of non-working and retired individuals. We see a negative utility score for all 
+person types with a wheelchair variable, and “mandatory” is even more negative. 
+This is expected as individuals with wheelchairs are less likely to take a work 
+or school trip compared to a shopping or a recreational trip. Non-workers and 
+retired person types do not have a coefficient for “mandatory” DAP because those 
+users by definition do not take “mandatory” DAP. Indeed, wheelchair use is among 
+the strongest predictors of daily activity pattern choice across population 
+segments. 
+
+## Example two ActivitySim
+
+As a secondary example, the research measures the impact of 
+wheelchair status on ActivitySim’s selection of daily plans for our given 
+synthetic population. Given a “Before” scenario in ActivitySim of the Salt Lake 
+Area and ignoring the newly added wheelchair status in the synthetic population, 
+ActivitySim predicted a DAP for each individual. In a second, “After” scenario, 
+ActivitySim again predicted a DAP for each person, this time considering the 
+wheelchair use status of each individual in the population. We hypothesized that 
+those with wheelchairs and those in the same households as individuals with 
+wheelchairs would change their DAP because of the negative utility scores 
+applied to the “mandatory” and “nonmandatory” DAP alternatives, and the rest of 
+the population would be unaffected. The DAP of those within the same household 
+of a wheelchair user may change because of the coordinated nature of household 
+DAP in ActivitySim. Table 4-6 shows the change in DAP among those with 
+wheelchairs, in the same household as one with a wheelchair, and with neither a 
+wheelchair nor in the same household. The table contains both total volumes and 
+percentages; the value of percent is by total volume in the group, for example, 
+16.4 percent of Wheelchair Users chose a “home” pattern in both the “Before” 
+scenario and the “After” scenario. The latter group is rightly unaffected by 
+the wheelchair implementation in the simulation (with the exception of a few
+changes attributable to randomness) and does not include a percentage breakdown. 
+Primarily, DAP remain the same for most individuals, as shown in the diagonal. 
+However, there is a large volume of wheelchair users and their household members 
+that stay home, particularly from “nonmandatory” DAP. This finding is consistent 
+with our hypothesis. 
+
+```{r dap_summary}
+tar_load(dap_table)
+kbl(dap_table)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
