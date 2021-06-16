@@ -20,8 +20,6 @@ in the U.S., of whom 20 percent (or 2.7 million) use wheelchairs \cite{Brumbaugh
 Another analysis of Census data suggests that 37 percent of individuals over 
 age 65 with disabilities use wheelchairs; both the number of wheelchair users
 and the number of total individuals with disabilities are likely to rise 
-<!--do the citations need to be in order? this one is (11, 2) for example
-I wont change any, just wondering-->
 in the coming years with the relative aging of the U.S. population \cite{Sweeney2004, Laplante2003}.
 
 With regards to travel patterns, surveys of the general population and surveys
