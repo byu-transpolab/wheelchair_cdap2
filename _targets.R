@@ -37,6 +37,8 @@ list(
   tar_target(data, make_data(person_dap, hh)),
   
   # Estimate nhts models
+  tar_target(dap_stats, build_stats(data)),
+  tar_target(descriptives, description_table(data)),
   tar_target(pt_models, estimate_models(data)),
   tar_target(pt_modelsummary, make_ptsummary(pt_models)),
   
@@ -48,7 +50,7 @@ list(
   tar_target(asim_dap, asim_join(persons_base, persons_wc, households_wc)),
   
   # Estimate dap models
-  tar_target(dap_table, build_table(asim_dap)),
+    tar_target(dap_table, build_table(asim_dap)),
   
   # Dummy
   tar_target(dummy, message("Done"))
