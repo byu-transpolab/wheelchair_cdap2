@@ -81,7 +81,10 @@ with our hypothesis.
 
 ```{r dap-summary}
 tar_load(dap_table)
-kbl(dap_table, booktabs = TRUE) %>%
+kbl(dap_table, booktabs = TRUE, caption = "Daily Activity Pattern Change",
+    col.names = c("Group", "DAP without Wheelchair Use", "H", "M", "N")) %>%
+  add_header_above(c("", "", "DAP with Wheelchair Use" = 3)) %>%
+  collapse_rows(columns = 1, latex_hline = "major") %>% 
   kable_styling()
 ```
 
