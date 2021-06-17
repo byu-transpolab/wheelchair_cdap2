@@ -1,15 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-```{r}
-library(targets)
-library(kableExtra)
-```
-# Applications
-
-Some _significant_ applications are demonstrated in this chapter.
+# Results {#results}
 
 ## Example one NHTS
 
@@ -23,7 +12,7 @@ non-working individuals choose only between Non-Mandatory and Home daily activit
 patterns.
 
 The model estimates are presented in 
-Table \ref{tab:model-coef}. 
+Table @ref(tab:model-coef). 
 The estimated coefficients are of the expected sign, though not all are significant. 
 Some predictors that proved to be insignificant, such as automobile availability
 for full-time workers, were excluded from the estimated models. 
@@ -36,9 +25,16 @@ the goal of these models is simply to provide a plausible comparison point for
 the behavior of individuals using wheelchairs against the behavior of individuals
 in other person type segments. 
 
-```{r nhts_models}
+```{r model-coef}
 tar_load(pt_modelsummary)
-kbl(pt_modelsummary)
+modelsummary(
+  pt_modelsummary, group = variable + term ~ model, 
+  estimate = "{estimate} ({statistic}){stars}",
+  statistic = NULL,
+  notes = c("t-statistics in parentheses, * p < 0.1, ** p < 0.05, *** p < 0.01",
+            "Coefficients represent utility change relative to H: stay at home pattern."),
+  title = "Daily Activity Pattern Model Estimates") %>%
+  kable_styling(latex_options = c("scale_down"))
 ```
 
 
@@ -83,9 +79,13 @@ However, there is a large volume of wheelchair users and their household members
 that stay home, particularly from “nonmandatory” DAP. This finding is consistent 
 with our hypothesis. 
 
-```{r dap_summary}
+```{r dap-summary}
 tar_load(dap_table)
-kbl(dap_table)
+kbl(dap_table, booktabs = TRUE, caption = "Daily Activity Pattern Change",
+    col.names = c("Group", "DAP without Wheelchair Use", "H", "M", "N")) %>%
+  add_header_above(c("", "", "DAP with Wheelchair Use" = 3)) %>%
+  collapse_rows(columns = 1, latex_hline = "major") %>% 
+  kable_styling()
 ```
 
 

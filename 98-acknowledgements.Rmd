@@ -1,0 +1,4 @@
+# Acknowledgements {-#acks}
+
+Figures and tables in this paper were created with a variety of R
+packages.

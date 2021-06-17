@@ -1,8 +1,0 @@
-intro
-literature
-methods
-data
-applications
-example-one-nhts
-example-two-activitysim
-final-words

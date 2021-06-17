@@ -7,3 +7,7 @@ _targets
 *.log
 *.spl
 README.html
+
+data/
+_bookdown_files/
+
