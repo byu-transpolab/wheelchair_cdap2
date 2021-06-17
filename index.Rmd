@@ -17,7 +17,7 @@ footnote:
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: article
-journal: "Submitted to Transportation Research Part C"
+journal: "Submitted to Transportation Research Part A"
 bibliography: [book.bib]
 biblio-style: apalike
 always_allow_html: true
@@ -66,4 +66,48 @@ if(knitr::is_latex_output()) {
 
 ```
 
-Introduction text
+
+
+In 1990, the United States Congress passed the Americans with Disabilities Act (ADA), 
+seeking to protect individuals with qualifying disabilities from discrimination
+in seeking employment (Title I), while using public services including
+transportation systems (Title II), and in public accommodations (Title III) among 
+other specifics.  
+
+The accommodation that has arguably caused the most challenges
+for many transportation service providers has been ensuring equal
+access for individuals who use wheelchairs. Buses and trains had to be reengineered
+with low floors and access ramps; elevators and ramps needed to be installed 
+in stations alongside escalators and stairs; and many traditional automobiles 
+remain inaccessible --- or at least without substantial modification --- to
+wheelchair users. This last challenge is a particular concern for transportation 
+network companies (TNC's), who often use private vehicles owned by individual
+operators.
+
+Though the law only requires agencies to provide reasonable accommodation on and
+does not try to establish equity in outcomes, the passage of 30 years provides a
+convenient time to consider what gaps and challenges persist for wheelchair 
+users in accessing and using the transportation system. Specifically, what gap 
+exists in the observed travel behavior outcomes of wheelchair users vis a vis 
+the non wheelchair using population, all else equal? And more importantly, how 
+should this gap be applied within travel forecasting models and related planning
+activities?
+
+In this paper, we present an analysis of individual daily activity pattern choice
+for a sample of respondents to the 2017 National Household Travel Survey (CITE), 
+incorporating the individual's wheelchair use as an explanatory variable. 
+We then apply the estimates obtained from the choice analysis in a modified
+activity-based model for the Wasatch Front (Salt Lake City and outlying areas)
+metropolitan region in Utah.
+
+The paper proceeds in a typical fashion. A [literature review](#literature)
+discusses prior attempts to evaluated and quantify the travel behavior of
+users with disabilities. A section [describing the methodology](#methodology)
+of the choice analysis and model application is followed by [a discussion of the results](#results)
+from both analyses. The paper concludes with [a discussion ](#discussion)
+of limitations in this analysis and associated avenues for future research and
+policy intervention.
+
+
+
+
