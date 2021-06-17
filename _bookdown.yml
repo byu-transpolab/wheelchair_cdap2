@@ -11,7 +11,9 @@ rmd_files:
     "02-literature.Rmd",
     "03-method.Rmd",
     "04-application.Rmd",
-    "05-summary.Rmd",
-    "06-references.Rmd"
+    "05-discussion.Rmd",
+    "06-conclusion.Rmd",
+    "98-acknowledgements.Rmd",
+    "99-references.Rmd"
 
   ]

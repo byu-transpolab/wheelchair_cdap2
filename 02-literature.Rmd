@@ -1,4 +1,4 @@
-# Literature
+# Literature {#sec-literature}
 
 The question of how the travel behavior of individuals with disabilities differs
 from the travel behavior of those without disabilities has been addressed 

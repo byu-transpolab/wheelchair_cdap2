@@ -1,4 +1,4 @@
-# Methods
+# Methods {#methodology}
 
 
 Activity-based models are a relatively mature construct in travel behavior
