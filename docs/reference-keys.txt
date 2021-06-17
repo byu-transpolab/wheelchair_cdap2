@@ -3,6 +3,6 @@ literature
 methods
 data
 applications
-example-one
-example-two
+example-one-nhts
+example-two-activitysim
 final-words
