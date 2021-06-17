@@ -67,7 +67,7 @@ make_ptsummary <- function(pt_models) {
     
   }
   
-  modelsummary(m_list, group = variable + term ~ model)
+  m_list
 
 }
 
@@ -118,10 +118,8 @@ build_stats <- function(data){
 #' 
 #' 
 #' 
-
-
 description_table <- function(data) {
-  sum_data <- data %>% 
+  data %>% 
     filter(!is.na(person_type)) %>%
     transmute(
       Type = factor(person_type, levels = c("FW", "NW", "PW", "RT"),
@@ -135,10 +133,5 @@ description_table <- function(data) {
       `Works from Home` = wrk_home
     ) 
   
-  datasummary_balance(
-    ~Type,
-    data = sum_data,
-    dinm = FALSE
-  )
 
 }
