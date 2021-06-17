@@ -1,15 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-```{r}
-library(targets)
-library(kableExtra)
-```
 # Applications
-
-Some _significant_ applications are demonstrated in this chapter.
 
 ## Example one NHTS
 
@@ -23,7 +12,7 @@ non-working individuals choose only between Non-Mandatory and Home daily activit
 patterns.
 
 The model estimates are presented in 
-Table \ref{tab:model-coef}. 
+Table @ref(tab:model-coef). 
 The estimated coefficients are of the expected sign, though not all are significant. 
 Some predictors that proved to be insignificant, such as automobile availability
 for full-time workers, were excluded from the estimated models. 

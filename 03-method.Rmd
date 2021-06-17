@@ -1,5 +1,6 @@
 # Methods
 
+
 Activity-based models are a relatively mature construct in travel behavior
 research and in practical demand forecasting \cite{rasouli2014activity}. Activity-based models attempt
 to recreate the long- and short-term decision patterns of individuals within a
@@ -43,13 +44,6 @@ A complete descriptive list of each person type is given in the data
 section below. 
 
 ## Data
-
-```{r}
-library(targets)
-library(kableExtra)
-```
-
-
 Data for this study comes from the 2017 NHTS \cite{nhts2017}. We restrict the
 data to households where the metropolitan statistical area (MSA) population size
 is between one and three million people. There are 76,367 individuals in 36,497 
@@ -70,33 +64,22 @@ individuals with a "home" daily activity pattern.
 
 ActivitySim classifies persons into seven person segments, though we only
 consider four types in this study, defined as follows:
-\begin{itemize}
- \item Full-time workers (FW) - reported working "full-time" at their primary job.
- \item Part-time worker (PW) - reported working "part-time" at their primary job,
- as well as any person who reported being a "non-worker" or "retired" who nevertheless
- reported a work or school activity.
- \item Non-working adults (NW) - reported "unemployed" as their primary activity
+
+   - Full-time workers (FW) - reported working "full-time" at their primary job.
+   - Part-time worker (PW) - reported working "part-time" at their primary job,
+   as well as any person who reported being a "non-worker" or "retired" who nevertheless
+   reported a work or school activity.
+   - Non-working adults (NW) - reported "unemployed" as their primary activity
  of the previous week, as well as individuals over 18 who were not classified
  elsewhere.
- \item Retired (RT) - reported "retired" as their primary activity of the 
- previous week, or who are over the age of 65 and reported that they were not
- workers.
- \end{itemize}
+ - Retired (RT) - reported "retired" as their primary activity of the previous
+ week, or who are over the age of 65 and reported that they were not workers.
+ 
 The other three person types are university students, schoolchildren under
 driving age, and driving-age schoolchildren. A limited number of individuals who
 could plausibly be considered university students responded to the NHTS, so we
 cannot estimate reliable choice models. Among schoolchildren of any age, too few
 report using wheelchairs to justify including these segments in this study.
-<!--- This table contains the number of each dap for each person type
-how should it get referrenced?--->
-Table \ref{tab:dap} 
-shows the observed distribution of daily activity patterns
-within each person segment.
-
-```{r}
-tar_load(dap_stats)
-kbl(dap_stats)
-```
 
 
 The NHTS has a number of questions where respondents can indicate a disability
@@ -119,13 +102,14 @@ and college degree status are treated as binary values. Automobile availability 
 included via a binary "sufficiency" variable where a household with at least as
 many vehicles as adults is considered "auto sufficient." Descriptive statistics
 of the model variable within each person segment are given in 
-<!--- This table contains the number of each dap for each person type
-how should it get referrenced?--->
-Table \ref{tab:descriptive_stats}.
+Table \@ref(tab:descriptive-stats)
 
-```{r}
+```{r descriptive-stats}
 tar_load(descriptives)
-kbl(descriptives)
+datasummary_balance(~Type, data = descriptives, dinm = FALSE, 
+                    title = "Model Estimation Data: Descriptive Statistics") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  landscape()
 ```
 
 

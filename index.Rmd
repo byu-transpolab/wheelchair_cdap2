@@ -17,14 +17,53 @@ footnote:
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: article
-journal: "Submitted to Journal"
+journal: "Submitted to Transportation Research Part C"
 bibliography: [book.bib]
 biblio-style: apalike
+always_allow_html: true
 link-citations: yes
 abstract: |
  Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the  2017 National Household Travel Survey who self-identify as using a wheelchair.  We find that wheelchair use is a significant predictor of activity patterns,  with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
 description: "Coordinated daily activity patterns of wheelchair users."
+layout: "3p, authoryear, review"
 ---
 
 # Introduction {#intro}
 
+```{r setup, include = FALSE}
+# load R libraries here; the `include` flag in the chunk options above tells
+# whether to print the results or not. Usually you don't want to print the
+# library statements, or any code on the pdf.
+# Main Packages ========
+# I use these in every doc
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(modelsummary)
+library(targets)
+options(dplyr.summarise.inform = FALSE)
+# Other packages ------
+# These sometimes get used, and sometimes don't.
+library(mlogit)
+
+# Instructions and options =========
+# prints missing data in tables as blank space
+options(knitr.kable.NA = '') 
+# tells kableExtra to not load latex table packages in the chunk output
+options(kableExtra.latex.load_packages = FALSE) 
+# round and format numbers that get printed in the text of the article.
+inline_hook <- function(x) {
+  if (is.numeric(x)) {
+    format(x, digits = 3, big.mark = ",")
+  } else x
+}
+knitr::knit_hooks$set(inline = inline_hook)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+# options for latex-only output
+if(knitr::is_latex_output()) {
+  knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+} 
+
+```
+
+Introduction text
