@@ -2,7 +2,7 @@
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
 \usepackage[hyphens]{url}
 
-  \journal{Submitted to Transportation Research Part C} % Sets Journal name
+  \journal{Submitted to Transportation Research Part A} % Sets Journal name
 
 
 \usepackage{lineno} % add
@@ -96,10 +96,48 @@
 \hypertarget{intro}{%
 \section{Introduction}\label{intro}}
 
-Introduction text
+In 1990, the United States Congress passed the Americans with Disabilities Act (ADA),
+seeking to protect individuals with qualifying disabilities from discrimination
+in seeking employment (Title I), while using public services including
+transportation systems (Title II), and in public accommodations (Title III) among
+other specifics.
 
-\hypertarget{literature}{%
-\section{Literature}\label{literature}}
+The accommodation that has arguably caused the most challenges
+for many transportation service providers has been ensuring equal
+access for individuals who use wheelchairs. Buses and trains had to be reengineered
+with low floors and access ramps; elevators and ramps needed to be installed
+in stations alongside escalators and stairs; and many traditional automobiles
+remain inaccessible --- or at least without substantial modification --- to
+wheelchair users. This last challenge is a particular concern for transportation
+network companies (TNC's), who often use private vehicles owned by individual
+operators.
+
+Though the law only requires agencies to provide reasonable accommodation on and
+does not try to establish equity in outcomes, the passage of 30 years provides a
+convenient time to consider what gaps and challenges persist for wheelchair
+users in accessing and using the transportation system. Specifically, what gap
+exists in the observed travel behavior outcomes of wheelchair users vis a vis
+the non wheelchair using population, all else equal? And more importantly, how
+should this gap be applied within travel forecasting models and related planning
+activities?
+
+In this paper, we present an analysis of individual daily activity pattern choice
+for a sample of respondents to the 2017 National Household Travel Survey (CITE),
+incorporating the individual's wheelchair use as an explanatory variable.
+We then apply the estimates obtained from the choice analysis in a modified
+activity-based model for the Wasatch Front (Salt Lake City and outlying areas)
+metropolitan region in Utah.
+
+The paper proceeds in a typical fashion. A \protect\hyperlink{literature}{literature review}
+discusses prior attempts to evaluated and quantify the travel behavior of
+users with disabilities. A section \protect\hyperlink{methodology}{describing the methodology}
+of the choice analysis and model application is followed by \protect\hyperlink{results}{a discussion of the results}
+from both analyses. The paper concludes with \protect\hyperlink{discussion}{a discussion}
+of limitations in this analysis and associated avenues for future research and
+policy intervention.
+
+\hypertarget{sec-literature}{%
+\section{Literature}\label{sec-literature}}
 
 The question of how the travel behavior of individuals with disabilities differs
 from the travel behavior of those without disabilities has been addressed
@@ -168,8 +206,8 @@ this important population within a framework that is readily understandable
 policy and planning work for this population could replace simplifying assumptions
 with plausible daily activity patterns rooted in observed behavior.
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\hypertarget{methodology}{%
+\section{Methods}\label{methodology}}
 
 Activity-based models are a relatively mature construct in travel behavior
 research and in practical demand forecasting \cite{rasouli2014activity}. Activity-based models attempt
@@ -326,8 +364,8 @@ Works from Home & -1 & 0 & 0.0 & 3721 & 99.9 & 267 & 6.6 & 10060 & 100.0\\
 \end{table}
 \end{landscape}
 
-\hypertarget{applications}{%
-\section{Applications}\label{applications}}
+\hypertarget{results}{%
+\section{Results}\label{results}}
 
 \hypertarget{example-one-nhts}{%
 \subsection{Example one NHTS}\label{example-one-nhts}}
@@ -442,29 +480,52 @@ that stay home, particularly from ``nonmandatory'' DAP. This finding is consiste
 with our hypothesis.
 
 \begin{table}
+
+\caption{\label{tab:dap-summary}Daily Activity Pattern Change}
 \centering
 \begin{tabular}[t]{llrrr}
 \toprule
-Group & DAP\_before & H & M & N\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{3}{c}{DAP with Wheelchair Use} \\
+\cmidrule(l{3pt}r{3pt}){3-5}
+Group & DAP without Wheelchair Use & H & M & N\\
 \midrule
-Wheelchair Users & H & 3369 & 20 & 459\\
-Wheelchair Users & M & 932 & 1642 & 308\\
-Wheelchair Users & N & 3584 & 23 & 10261\\
-Household Members & H & 4511 & 213 & 631\\
-Household Members & M & 759 & 15409 & 301\\
-\addlinespace
-Household Members & N & 1235 & 415 & 13119\\
-Not Affected & H & 309965 & 2 & \\
-Not Affected & M & 2 & 1460582 & \\
-Not Affected & N &  & 2 & 659258\\
+ & H & 3369 & 20 & 459\\
+
+ & M & 932 & 1642 & 308\\
+
+\multirow{-3}{*}{\raggedright\arraybackslash Wheelchair Users} & N & 3584 & 23 & 10261\\
+\cmidrule{1-5}
+ & H & 4511 & 213 & 631\\
+
+ & M & 759 & 15409 & 301\\
+
+\multirow{-3}{*}{\raggedright\arraybackslash Household Members} & N & 1235 & 415 & 13119\\
+\cmidrule{1-5}
+ & H & 309965 & 2 & \\
+
+ & M & 2 & 1460582 & \\
+
+\multirow{-3}{*}{\raggedright\arraybackslash Not Affected} & N &  & 2 & 659258\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\hypertarget{final-words}{%
-\section{Final Words}\label{final-words}}
+\hypertarget{section}{%
+\section{}\label{section}}
 
 We have finished a nice book.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+This is the end of the paper.
+
+\hypertarget{acks}{%
+\section*{Acknowledgements}\label{acks}}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+Figures and tables in this paper were created with a variety of R
+packages.
 
 \bibliography{book.bib}
 
