@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-27" />
+<meta name="date" content="2021-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,7 +42,7 @@ div.abstract{
   width: 90%;
 }
 </style>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -62,6 +62,8 @@ div.abstract{
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -154,16 +156,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
-<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one-nhts"><i class="fa fa-check"></i><b>4.1</b> Example one NHTS</a></li>
+<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two-activitysim"><i class="fa fa-check"></i><b>4.2</b> Example two ActivitySim</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="6" data-path="wheelchair-cdap2.html"><a href="wheelchair-cdap2.html"><i class="fa fa-check"></i><b>6</b> wheelchair_cdap2</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="wheelchair-cdap2.html"><a href="wheelchair-cdap2.html#analysis"><i class="fa fa-check"></i><b>6.1</b> Analysis</a></li>
-<li class="chapter" data-level="6.2" data-path="wheelchair-cdap2.html"><a href="wheelchair-cdap2.html#document"><i class="fa fa-check"></i><b>6.2</b> Document</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -186,7 +183,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="literature" class="section level1" number="2">
 <h1><span class="header-section-number"> 2</span> Literature</h1>
-<p>Here is a review of existing methods.</p>
+<p>The question of how the travel behavior of individuals with disabilities differs
+from the travel behavior of those without disabilities has been addressed
+previously in a number of studies. That said, the literature is often confusing
+due to the wide variety of specific disabilities people may have: wheelchair use,
+other ambulatory disabilities, visual impairment, and a multitude of other
+conditions are each likely to affect an individual’s need for accommodation in
+travel — and perhaps consequently their travel behavior — in a number of ways.
+A number of recent studies have also looked at the role of developmental 
+and intellectual  disabilities on travel patterns. However,
+given the motivations of this research laid out in the introduction, we will attempt to highlight
+research on the mobility and activity patterns of wheelchair users, though
+drawing specific distinctions is not always possible.</p>
+<p>Among the first considerations is research attempting to quantify the size
+of the disabled or wheelchair using population. Data from the 2017 NHTS
+suggests that there are 13.4 million individuals with travel-limiting disabilities
+in the U.S., of whom 20 percent (or 2.7 million) use wheelchairs .
+Another analysis of Census data suggests that 37 percent of individuals over
+age 65 with disabilities use wheelchairs; both the number of wheelchair users
+and the number of total individuals with disabilities are likely to rise
+in the coming years with the relative aging of the U.S. population .</p>
+<p>With regards to travel patterns, surveys of the general population and surveys
+specifically targeted at individuals with disabilities both reveal significant and
+meaningful differences compared to individuals without disabilities. Specific
+findings include that individuals with disabilities leave their homes on fewer
+days if ever , make fewer daily trips
+, make fewer work trips and more
+healthcare maintenance trips , rely more on others for their travel ,
+and have considerably restricted mode
+choices . These differences in mobility and activity patterns
+have important and observed negative implications for the individual’s access to
+opportunity for employment  and social interaction
+.</p>
+<p>The underlying reasons why wheelchair users exhibit different travel patterns
+than other individuals are varied and include both technical and attitudinal
+barriers. Technical barriers include poor access to private vehicles
+, poorly maintained sidewalk and pedestrian infrastructure
+, lack of physical access to TNC
+vehicles , bus ramp complication and malfunction ,
+and numerous other problems across many modes.
+Attitudinal barriers include feeling shame when safety alarms alert all
+passengers that a ramp is being deployed or motion sickness when they are forced
+to travel backwards in the wheelchair priority area , or
+suffering outright discrimination from TNC operators .</p>
+<p>In spite of this relatively mature literature, however, there has not to
+date been a rigorous evaluation of the travel behavior of individuals with
+disabilities within the framework of a travel activity model. As a result,
+recent attempts to simulate or model services aimed at this population have
+needed to make simplifying assumptions. In an attempt to model demand for a MaaS
+system targeted at wheelchair users in
+Berlin, Bischoff  simply assumed demand for this service
+would be similar to current demand for the regional paratransit system, augmented
+by a mode shift from taxi. In this initial study there was no link between the
+MaaS trips and the daily activities of the wheelchair users; there was not even a
+good understanding of likely trip origin, destination, or length distribution.</p>
+<p>Including wheelchair users or wheelchair use status in a regularized travel model
+framework would help to fill two important gaps in the current literature. First,
+the comparison would help to illuminate the travel behavior characteristics of
+this important population within a framework that is readily understandable
+ other population segments. Second, researchers engaged in
+policy and planning work for this population could replace simplifying assumptions
+with plausible daily activity patterns rooted in observed behavior.</p>
 
 </div>
             </section>
@@ -246,6 +303,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
