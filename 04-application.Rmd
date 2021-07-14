@@ -1,6 +1,6 @@
 # Results {#results}
 
-## Example one NHTS
+## Choice Analysis
 
 We estimated the models using mlogit for R \cite{R, mlogit}. As described above, the
 alternatives for daily activity pattern choice are a Mandatory pattern where the 
@@ -52,7 +52,7 @@ users by definition do not take “mandatory” DAP. Indeed, wheelchair use is a
 the strongest predictors of daily activity pattern choice across population 
 segments. 
 
-## Example two ActivitySim
+## Activity-based Model
 
 As a secondary example, the research measures the impact of 
 wheelchair status on ActivitySim’s selection of daily plans for our given 

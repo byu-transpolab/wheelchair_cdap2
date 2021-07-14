@@ -48,15 +48,14 @@ passengers that a ramp is being deployed or motion sickness when they are forced
 to travel backwards in the wheelchair priority area @Velho2016, or 
 suffering outright discrimination from TNC operators @Bascom2017.
 
-
-
 In spite of this relatively mature literature, however, there has not to
 date been a rigorous evaluation of the travel behavior of individuals with 
 disabilities within the framework of a travel activity model. As a result,
 recent attempts to simulate or model services aimed at this population have
-needed to make simplifying assumptions. In an attempt to model demand for a MaaS
+needed to make simplifying assumptions. In an attempt to model demand for a
+modern mobility
 system targeted at wheelchair users in
-Berlin, Bischoff @Bischoff2019 simply assumed demand for this service
+Berlin, @Bischoff2019 simply assumed demand for this service
 would be similar to current demand for the regional paratransit system, augmented
 by a mode shift from taxi. In this initial study there was no link between the
 MaaS trips and the daily activities of the wheelchair users; there was not even a

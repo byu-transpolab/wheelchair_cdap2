@@ -1,6 +1,7 @@
 # Methods {#methodology}
 
 
+
 Activity-based models are a relatively mature construct in travel behavior
 research and in practical demand forecasting \cite{rasouli2014activity}. Activity-based models attempt
 to recreate the long- and short-term decision patterns of individuals within a

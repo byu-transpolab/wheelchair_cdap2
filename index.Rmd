@@ -97,14 +97,13 @@ In this paper, we present an analysis of individual daily activity pattern choic
 for a sample of respondents to the 2017 National Household Travel Survey (CITE), 
 incorporating the individual's wheelchair use as an explanatory variable. 
 We then apply the estimates obtained from the choice analysis in a modified
-activity-based model for the Wasatch Front (Salt Lake City and outlying areas)
-metropolitan region in Utah.
+activity-based model for the Wasatch Front  metropolitan region in Utah.
 
 The paper proceeds in a typical fashion. A [literature review](#literature)
 discusses prior attempts to evaluated and quantify the travel behavior of
 users with disabilities. A section [describing the methodology](#methodology)
 of the choice analysis and model application is followed by [a discussion of the results](#results)
-from both analyses. The paper concludes with [a discussion ](#discussion)
+from both analyses. The paper concludes with [a discussion](#discussion)
 of limitations in this analysis and associated avenues for future research and
 policy intervention.
 
