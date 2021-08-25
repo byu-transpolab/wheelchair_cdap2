@@ -80,17 +80,17 @@
 \begin{frontmatter}
 
   \title{Coordinated daily activity patterns of wheelchair users.}
-    \author[Brigham Young University]{Gregory Macfarlane\corref{1}}
-   \ead{gregmacfarlane@byu.edu} 
-    \author[Brigham Young University]{Nate Lant}
+    \author[BYU]{Nate Lant}
    \ead{natelant@gmail.com} 
-      \address[Brigham Young University]{Civil and Environmental Engineering Department, 430 Engineering Building, Provo, Utah 84602}
+    \author[BYU]{Gregory S. Macfarlane\corref{1}}
+   \ead{gregmacfarlane@byu.edu} 
+      \address[BYU]{Brigham Young University, Civil and Construction Engineering Department, 430 Engineering Building, Provo, Utah 84602}
       \cortext[1]{Corresponding Author}
   
   \begin{abstract}
-  Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the 2017 National Household Travel Survey who self-identify as using a wheelchair. We find that wheelchair use is a significant predictor of activity patterns, with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
+  This is the abstract
   \end{abstract}
-  
+   \begin{keyword} Transportation equity; travel behavior\end{keyword}
  \end{frontmatter}
 
 \hypertarget{intro}{%
@@ -112,7 +112,8 @@ wheelchair users. This last challenge is a particular concern for transportation
 network companies (TNC's), who often use private vehicles owned by individual
 operators.
 
-Though the law only requires agencies to provide reasonable accommodation on and
+Though the law only requires agencies to provide reasonable accommodation on
+public conveyances and
 does not try to establish equity in outcomes, the passage of 30 years provides a
 convenient time to consider what gaps and challenges persist for wheelchair
 users in accessing and using the transportation system. Specifically, what gap
@@ -121,11 +122,14 @@ the non wheelchair using population, all else equal? And more importantly, how
 should this gap be applied within travel forecasting models and related planning
 activities?
 
-In this paper, we present an analysis of individual daily activity pattern choice
-for a sample of respondents to the 2017 National Household Travel Survey (CITE),
-incorporating the individual's wheelchair use as an explanatory variable.
-We then apply the estimates obtained from the choice analysis in a modified
-activity-based model for the Wasatch Front metropolitan region in Utah.
+In this paper, we investigate the degree to which daily activity patterns are
+influenced by an individual's use of a wheelchair. This involves two separate
+analyses: first, we model daily activity pattern choice using responses to the
+2017 National Household Travel Survey (CITE), incorporating the individual's wheelchair use as an explanatory variable.
+Second, we apply the behavioral estimates obtained from the choice analysis
+in a modified activity-based model for the Wasatch Front metropolitan region in
+Utah to estimate the population-level effects of introducing wheelchair status in
+a regional travel demand model.
 
 The paper proceeds in a typical fashion. A \protect\hyperlink{literature}{literature review}
 discusses prior attempts to evaluated and quantify the travel behavior of
@@ -210,19 +214,19 @@ with plausible daily activity patterns rooted in observed behavior.
 \section{Methods}\label{methodology}}
 
 Activity-based models are a relatively mature construct in travel behavior
-research and in practical demand forecasting \cite{rasouli2014activity}. Activity-based models attempt
+research and in practical demand forecasting \citep{rasouli2014activity}. Activity-based models attempt
 to recreate the long- and short-term decision patterns of individuals within a
 chain of econometric and statistical choice models. The specific sub-models included
 in this chain can vary between specific implementations, but a recent
-open-source project --- ActivitySim \cite{activitysim} --- implements a popular
-set of models \cite{davidson2010ct}. Specifically, the ActivitySim demonstration
-model is a part of the ``Travel Model One'' model for the Metropolitan
-Transportation Commission (MTC, San Francisco Bay) \cite{erhardt2012mtc}.
+open-source project --- ActivitySim \citep{activitysim} --- implements a popular
+set of models \citep{davidson2010ct}. Specifically, the ActivitySim demonstration
+model is a implementation of the ``Travel Model One'' model for the Metropolitan
+Transportation Commission (MTC, San Francisco Bay) \citep{erhardt2012mtc}.
 For simplicity and comparison with other models, we apply the ActivitySim model
 in this research.
 
-The first model in the ActivitySim model chain is a \emph{daily activity pattern}
-of the type described by Bradley and Vovsha \cite{Bradley2005}. This model
+The first step in the ActivitySim model chain is a \emph{daily activity pattern}
+model of the type described by \citet{Bradley2005}. This model
 allows individuals to choose one of three daily activity patterns:
 
 \begin{itemize}
@@ -240,27 +244,21 @@ allows individuals to choose one of three daily activity patterns:
 \end{itemize}
 
 The choice between the daily patterns is described with a multinomial logit
-model \cite{Domencich1975}, where the utility functions for each option are
+model \citep{Domencich1975}, where the utility functions for each option are
 determined by an individual's socioeconomic characteristics and person type
-segment. The specific innovation of the Bradley and Vovsha model
-\cite{Bradley2005} is that the daily activity patterns are coordinated, or that
-the choice of one individual in a household influences the choice probability of
-other household members. We leave household-level coordination to future
-research and instead examine individual uncoordinated choice utilities.
+segment. The specific innovation of the \citet{Bradley2005} model is that the daily
+activity patterns are coordinated, or that the choice of one individual in a
+household influences the choice probability of other household members.
 
-We do, however, adopt the person type segmentation strategy employed by
-ActivitySim; segmentation allows for heterogeneity in available
-alternatives and utility coefficients between individuals with highly divergent
-expected behaviors. For example, full time workers and pre-driving age school children
-will have strongly different responses to income, automobile availability, and
-and other variables in determining their most likely daily pattern.
-A complete descriptive list of each person type is given in the data
-section below.
+In this research, we first estimate a daily activity pattern model for
+respondents to the National Household Travel Survey. We then apply the estimated
+coefficients within an ActivitySim implementation calibrated to the Wasatch Front
+Region in Utah.
 
-\hypertarget{data}{%
-\subsection{Data}\label{data}}
+\hypertarget{choice-model}{%
+\subsection{Choice Model}\label{choice-model}}
 
-Data for this study comes from the 2017 NHTS \cite{nhts2017}. We restrict the
+Data for this study comes from the 2017 NHTS \citep{fhwa2017}. We restrict the
 data to households where the metropolitan statistical area (MSA) population size
 is between one and three million people. There are 76,367 individuals in 36,497
 households that responded to the NHTS from these areas, though not all of these
@@ -278,6 +276,14 @@ if not, the daily activity pattern was ``non-mandatory.'' By identifying respond
 in the persons table without records in the trips table, we can determine
 individuals with a ``home'' daily activity pattern.
 
+We do, however, adopt the person type segmentation strategy employed by
+ActivitySim; segmentation allows for heterogeneity in available
+alternatives and utility coefficients between individuals with highly divergent
+expected behaviors. For example, full time workers and pre-driving age school children
+will have strongly different responses to income, automobile availability, and
+and other variables in determining their most likely daily pattern.
+A complete descriptive list of each person type is given in the data
+section below.
 ActivitySim classifies persons into seven person segments, though we only
 consider four types in this study, defined as follows:
 
@@ -364,13 +370,16 @@ Works from Home & -1 & 0 & 0.0 & 3721 & 99.9 & 267 & 6.6 & 10060 & 100.0\\
 \end{table}
 \end{landscape}
 
+\hypertarget{activitysim-implementation}{%
+\subsection{ActivitySim Implementation}\label{activitysim-implementation}}
+
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
 \hypertarget{choice-analysis}{%
 \subsection{Choice Analysis}\label{choice-analysis}}
 
-We estimated the models using mlogit for R \cite{R, mlogit}. As described above, the
+We estimated the models using mlogit for R \citet{R}, \citet{mlogit}. As described above, the
 alternatives for daily activity pattern choice are a Mandatory pattern where the
 individual's day involves a work or school tour, a Non-Mandatory pattern where
 only discretionary trips are taken, and a Home pattern where the individual does

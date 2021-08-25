@@ -1,16 +1,16 @@
 ---
 title: "Coordinated daily activity patterns of wheelchair users."
 author:
-  - name: Gregory Macfarlane
-    email: gregmacfarlane@byu.edu
-    affiliation: Brigham Young University
-    footnote: 1
   - name: Nate Lant
     email: natelant@gmail.com
-    affiliation: Brigham Young University
+    affiliation: BYU
+  - name: Gregory S. Macfarlane
+    email: gregmacfarlane@byu.edu
+    affiliation: BYU
+    footnote: 1
 address:
-  - code: Brigham Young University
-    address: Civil and Environmental Engineering Department, 430 Engineering Building, Provo, Utah 84602
+  - code: BYU
+    address: Brigham Young University, Civil and Construction Engineering Department, 430 Engineering Building, Provo, Utah 84602
 footnote:
   - code: 1
     text: "Corresponding Author"
@@ -23,7 +23,8 @@ biblio-style: apalike
 always_allow_html: true
 link-citations: yes
 abstract: |
- Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the  2017 National Household Travel Survey who self-identify as using a wheelchair.  We find that wheelchair use is a significant predictor of activity patterns,  with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
+  This is the abstract
+keywords: Transportation equity; travel behavior
 description: "Coordinated daily activity patterns of wheelchair users."
 layout: "3p, authoryear, review"
 ---
@@ -84,7 +85,8 @@ wheelchair users. This last challenge is a particular concern for transportation
 network companies (TNC's), who often use private vehicles owned by individual
 operators.
 
-Though the law only requires agencies to provide reasonable accommodation on and
+Though the law only requires agencies to provide reasonable accommodation on 
+public conveyances and
 does not try to establish equity in outcomes, the passage of 30 years provides a
 convenient time to consider what gaps and challenges persist for wheelchair 
 users in accessing and using the transportation system. Specifically, what gap 
@@ -93,11 +95,14 @@ the non wheelchair using population, all else equal? And more importantly, how
 should this gap be applied within travel forecasting models and related planning
 activities?
 
-In this paper, we present an analysis of individual daily activity pattern choice
-for a sample of respondents to the 2017 National Household Travel Survey (CITE), 
-incorporating the individual's wheelchair use as an explanatory variable. 
-We then apply the estimates obtained from the choice analysis in a modified
-activity-based model for the Wasatch Front  metropolitan region in Utah.
+In this paper, we investigate the degree to which daily activity patterns are 
+influenced by an individual's use of a wheelchair. This involves two separate
+analyses: first, we model daily activity pattern choice using responses to the
+2017 National Household Travel Survey (CITE), incorporating the individual's wheelchair use as an explanatory variable. 
+Second, we apply the behavioral estimates obtained from the choice analysis
+in a modified activity-based model for the Wasatch Front metropolitan region in
+Utah to estimate the population-level effects of introducing wheelchair status in
+a regional travel demand model.
 
 The paper proceeds in a typical fashion. A [literature review](#literature)
 discusses prior attempts to evaluated and quantify the travel behavior of
