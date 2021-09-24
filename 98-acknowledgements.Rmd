@@ -1,4 +1,14 @@
 # Acknowledgements {-#acks}
 
 Figures and tables in this paper were created with a variety of R
-packages [@ggplot22016; @R-modelsummary]
+packages [@ggplot22016; @R-modelsummary]. The authors would like to thank 
+Chris Day and Christian Hunter for their help in preparing this analysis. 
+
+This work was supported by the Utah Department of Transportation and the 
+Federal Transit Administration. The authors alone are responsible for the
+preparation and conclusions presented herein. The contents do not necessarily
+reflect the views, opinions, endorsements, or policies of the Utah Department of
+Transportation of the US Department of Transportation. The Utah Department of
+Transportation makes no representation or warranty of any kind, and assumes no
+liability therefore.
+
