@@ -58,12 +58,24 @@ estimate_models <- function(data){
 
 make_ptsummary <- function(pt_models) {
   
-  m_list <- modelsummary(pt_models, output = "modelsummary_list")
+  mycoefmap <- c(
+    "wheelchairTRUE" = "Uses wheelchair",
+    "bach_degree" = "College graduate",
+    "works_home" = "Works from home",
+    "male" = "Male",
+    "income" = "Income ",
+    "age_bin" = "Age "
+  )
+  m_list <- modelsummary(pt_models, output = "modelsummary_list", coef_map = mycoefmap)
   
   
   for(m in names(m_list)){
     m_list[[m]]$tidy <- m_list[[m]]$tidy %>%
       separate(term, c("variable", "term"), sep = ":", fill = "right")
+    
+    for (i in 1:length(mycoefmap)){
+      m_list[[m]]$tidy$variable <- gsub(names(mycoefmap)[i], mycoefmap[i], m_list[[m]]$tidy$variable)
+    }
     
   }
   
