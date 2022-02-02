@@ -90,7 +90,7 @@ build_table <- function(asim_dap) {
   asim_dap %>%
     group_by(Group, DAP_after, DAP_before) %>%
     tally() %>%
-    spread(DAP_after, -Group)
+    pivot_wider(values_from = n, names_from = DAP_after)
   
 }
 
