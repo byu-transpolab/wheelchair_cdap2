@@ -27,7 +27,7 @@ in other person type segments.
 
 ```{r model-coef}
 tar_load(pt_modelsummary)
-f <- function(x) format(round(x, 3), big.mark=",")
+f <- function(x) format(round(x, 3))
 gm <- list(
   list("raw" = "nobs", "clean" = "N", "fmt" = f),
   list("raw" = "AIC", "clean" = "AIC", "fmt" = f),

@@ -2,7 +2,7 @@
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
 \usepackage[hyphens]{url}
 
-  \journal{Submitted to Transportation Research Part A} % Sets Journal name
+  \journal{the 12\(^{th}\) International Scientific Conference on Mobility and Transport} % Sets Journal name
 
 
 \usepackage{lineno} % add
@@ -31,8 +31,7 @@
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\bibliographystyle{elsarticle-harv}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -53,7 +52,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Coordinated daily activity patterns of wheelchair users.},
+            pdftitle={How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns.},
             colorlinks=false,
             urlcolor=blue,
             linkcolor=magenta,
@@ -64,9 +63,50 @@
 % Pandoc toggle for numbering sections (defaults to be off)
 
 % Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 % Pandoc header
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -89,7 +129,7 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{Coordinated daily activity patterns of wheelchair users.}
+  \title{How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns.}
     \author[BYU]{Nate Lant}
    \ead{natelant@gmail.com} 
     \author[BYU]{Gregory S. Macfarlane\corref{1}}
@@ -108,42 +148,36 @@
 
 In 1990, the United States Congress passed the Americans with Disabilities Act (ADA),
 seeking to protect individuals with qualifying disabilities from discrimination
-in seeking employment (Title I), while using public services including
-transportation systems (Title II), and in public accommodations (Title III) among
-other specifics.
+while using public services including transportation systems (Title II), and in
+public accommodations (Title III) among other specifics. For transportation
+service providers, ensuring equal access for wheelchair users is a critical
+design constraint for vehicles as well as stations and the surrounding areas
+(\protect\hyperlink{ref-fhwaada}{Federal Transit Administration, 2015}).
+Buses and trains had to be redesigned with low floors and access ramps;
+elevators and ramps needed to be installed in stations alongside escalators and
+stairs. Even today, most traditional automobiles remain inaccessible --- at least
+without substantial modification --- to wheelchair users. This last challenge is
+a particular concern for transportation network companies (TNC's), who often use
+private vehicles owned by individual operators.
 
-The accommodation that has arguably caused the most challenges
-for many transportation service providers has been ensuring equal
-access for individuals who use wheelchairs. Buses and trains had to be reengineered
-with low floors and access ramps; elevators and ramps needed to be installed
-in stations alongside escalators and stairs; and many traditional automobiles
-remain inaccessible --- or at least without substantial modification --- to
-wheelchair users. This last challenge is a particular concern for transportation
-network companies (TNC's), who often use private vehicles owned by individual
-operators.
-
-Though the law only requires agencies to provide reasonable accommodation on
-public conveyances and
-<<<<<<< HEAD
-does not try to establish equality in outcomes, the passage of 30 years provides a
-=======
-does not try to establish equity in outcomes, the passage of 30 years provides a
->>>>>>> master
-convenient time to consider what gaps and challenges persist for wheelchair
-users in accessing and using the transportation system. Specifically, what gap
-exists in the observed travel behavior outcomes of wheelchair users vis a vis
-the non wheelchair using population, all else equal? And more importantly, how
-should this gap be applied within travel forecasting models and related planning
-activities?
+Though the ADA only requires agencies to provide reasonable accommodation on
+public conveyances and does not try to establish equity in outcomes, the passage
+of 30 years provides a convenient time to consider what gaps and challenges
+persist for wheelchair users in accessing and using the transportation system.
+Specifically, what gap exists in the observed travel behavior outcomes of
+wheelchair users vis a vis the non wheelchair using population, all else equal?
+And more importantly, how should this gap be applied within travel forecasting
+models and related planning activities?
 
 In this paper, we investigate the degree to which daily activity patterns are
 influenced by an individual's use of a wheelchair. This involves two separate
 analyses: first, we model daily activity pattern choice using responses to the
-2017 National Household Travel Survey (CITE), incorporating the individual's wheelchair use as an explanatory variable.
-Second, we apply the behavioral estimates obtained from the choice analysis
-in a modified activity-based model for the Wasatch Front metropolitan region in
-Utah to estimate the population-level effects of introducing wheelchair status in
-a regional travel demand model.
+2017 National Household Travel Survey (\protect\hyperlink{ref-fhwa2017}{U.S. Department of Transportation and Federal Highway Administration, 2017}), incorporating the individual's
+wheelchair use as an explanatory variable. Second, we apply the behavioral
+estimates obtained from the choice analysis in a modified activity-based model
+for the Wasatch Front metropolitan region in Utah to estimate the
+population-level effects of introducing wheelchair status in a regional travel
+demand model.
 
 The paper proceeds in a typical fashion. A \protect\hyperlink{literature}{literature review}
 discusses prior attempts to evaluated and quantify the travel behavior of
@@ -156,71 +190,67 @@ policy intervention.
 \hypertarget{sec-literature}{%
 \section{Literature}\label{sec-literature}}
 
-The question of how the travel behavior of individuals with disabilities differs
-from the travel behavior of those without disabilities has been addressed
-previously in a number of studies. That said, the literature is often confusing
-due to the wide variety of specific disabilities people may have: wheelchair use,
-other ambulatory disabilities, visual impairment, and a multitude of other
-conditions are each likely to affect an individual's need for accommodation in
-travel --- and perhaps consequently their travel behavior --- in a number of ways.
-A number of recent studies have also looked at the role of developmental \citet{Wasfi2007}
-and intellectual \citet{Feeley2019} disabilities on travel patterns. However,
-given the motivations of this research laid out in the introduction, we will attempt to highlight
-research on the mobility and activity patterns of wheelchair users, though
-drawing specific distinctions is not always possible.
+Recent analysis (\protect\hyperlink{ref-Brumbaugh2018}{Brumbaugh, 2018}) of the 2017 NHTS suggests there are 13.4
+million individuals individuals in the US with travel-limiting disabilities --- as defined by a
+specific question in the NHTS and encompassing sight, ambulatory, hearing, and
+other disabilities. Of these individuals, 20 percent (or 2.7
+million) use wheelchairs. With the relative aging of the U.S. population, the
+share of Americans with all disabilities as well as those using wheelchairs is
+likely to rise substantially {[}\protect\hyperlink{ref-Sweeney2004}{Sweeney} (\protect\hyperlink{ref-Sweeney2004}{2004}); Laplante2003{]}.
 
-Among the first considerations is research attempting to quantify the size
-of the disabled or wheelchair using population. Data from the 2017 NHTS
-suggests that there are 13.4 million individuals with travel-limiting disabilities
-in the U.S., of whom 20 percent (or 2.7 million) use wheelchairs \citet{Brumbaugh2018}.
-Another analysis of Census data suggests that 37 percent of individuals over
-age 65 with disabilities use wheelchairs; both the number of wheelchair users
-and the number of total individuals with disabilities are likely to rise
-in the coming years with the relative aging of the U.S. population \citet{Sweeney2004}, Laplante2003.
+The question of how the travel behavior of individuals with travel-limiting
+disabilities varies from the travel behavior of individuals without these
+disabilities has been addressed previously in a number of studies. That said,
+the literature on this topic is relatively fragmented due to the wide variety of
+specific disabilities people. The literature also has suffered from a relatively
+fragmented approach; rather than considering how disability manifests at each
+hierarchical level of the transportation decision-making process, the literature
+consists largely of ad-hoc studies conducted on a specific, specially collected
+dataset.
 
 With regards to travel patterns, surveys of the general population and surveys
 specifically targeted at individuals with disabilities both reveal significant and
 meaningful differences compared to individuals without disabilities. Specific
 findings include that individuals with disabilities leave their homes on fewer
-days if ever \citet{Sweeney2004}, make fewer daily trips
-\citet{Schmocker2005}, Brumbaugh2018, make fewer work trips and more
-healthcare maintenance trips \citet{Ermagun2016}, rely more on others for their travel \citet{Sweeney2004},
-and have considerably restricted mode
-choices \citet{Rosenbloom2007}, Ruvolo2020. These differences in mobility and activity patterns
-have important and observed negative implications for the individual's access to
-opportunity for employment \citet{Rosenbloom2007}, Lubin2012 and social interaction
-\citet{Bascom2017}, Velho2016.
+days if ever (\protect\hyperlink{ref-Sweeney2004}{Sweeney, 2004}), make fewer daily trips (\protect\hyperlink{ref-Brumbaugh2018}{Brumbaugh, 2018}; \protect\hyperlink{ref-Schmocker2005}{Schmöcker et al., 2005}) make fewer work trips and more healthcare maintenance trips
+(\protect\hyperlink{ref-Ermagun2016}{Ermagun et al., 2016}), rely more on others for their travel (\protect\hyperlink{ref-Sweeney2004}{Sweeney, 2004})
+and have considerably restricted mode choices \protect\hyperlink{ref-Ruvolo2020}{Ruvolo} (\protect\hyperlink{ref-Ruvolo2020}{2020}).
+These differences in mobility and activity patterns have important and observed
+negative implications for the individual's access to opportunity for employment
+(\protect\hyperlink{ref-Lubin2012}{Lubin and Deka, 2012}; \protect\hyperlink{ref-Rosenbloom2007}{Rosenbloom, 2007}) and social interaction (\protect\hyperlink{ref-Bascom2017}{Bascom and Christensen, 2017}; \protect\hyperlink{ref-Velho2016}{Velho et al., 2016}).
+Some recent studies have also looked at the meaningful role of developmental (\protect\hyperlink{ref-Wasfi2007}{Wasfi and El-geneidy, 2007})
+and intellectual (\protect\hyperlink{ref-Feeley2019}{Feeley, 2019}) disabilities on travel patterns.
 
-The underlying reasons why wheelchair users exhibit different travel patterns
-than other individuals are varied and include both technical and attitudinal
-barriers. Technical barriers include poor access to private vehicles
-\citet{VanRoosmalen2010}, poorly maintained sidewalk and pedestrian infrastructure
-\citet{frackelton2013measuring}, lack of physical access to TNC
-vehicles \citet{Ruvolo2020}, bus ramp complication and malfunction \citet{Velho2016},
+The underlying reasons why wheelchair users and others with disabilities exhibit
+different travel patterns than other individuals are varied, but are
+likely to include both technical and attitudinal barriers. Technical barriers
+include poor access to private vehicles
+(\protect\hyperlink{ref-VanRoosmalen2010}{Van Roosmalen et al., 2010}), poorly maintained sidewalk and pedestrian infrastructure
+(\protect\hyperlink{ref-frackelton2013measuring}{Frackelton et al., 2013}), lack of physical access to TNC
+vehicles (\protect\hyperlink{ref-Ruvolo2020}{Ruvolo, 2020}), bus ramp complication and malfunction (\protect\hyperlink{ref-Velho2016}{Velho et al., 2016}),
 and numerous other problems across many modes.
 Attitudinal barriers include feeling shame when safety alarms alert all
-passengers that a ramp is being deployed or motion sickness when they are forced
-to travel backwards in the wheelchair priority area \citet{Velho2016}, or
-suffering outright discrimination from TNC operators \citet{Bascom2017}.
+passengers that a ramp is being deployed or motion sickness when the users
+are forced to travel backwards in the wheelchair priority area (\protect\hyperlink{ref-Velho2016}{Velho et al., 2016}), or
+suffering outright discrimination from TNC operators (\protect\hyperlink{ref-Bascom2017}{Bascom and Christensen, 2017}).
 
 In spite of this relatively mature literature, however, there has not to
 date been a rigorous evaluation of the travel behavior of individuals with
 disabilities within the framework of a travel activity model. As a result,
 recent attempts to simulate or model services aimed at this population have
 needed to make simplifying assumptions. In an attempt to model demand for a
-modern mobility
-system targeted at wheelchair users in
-Berlin, \citet{Bischoff2019} simply assumed demand for this service
-would be similar to current demand for the regional paratransit system, augmented
-by a mode shift from taxi. In this initial study there was no link between the
-MaaS trips and the daily activities of the wheelchair users; there was not even a
-good understanding of likely trip origin, destination, or length distribution.
+modern mobility system targeted at wheelchair users in Berlin, \protect\hyperlink{ref-Bischoff2019}{Bischoff} (\protect\hyperlink{ref-Bischoff2019}{2019})
+simply assumed demand for this service would be similar to current demand for
+the regional paratransit system, augmented by a mode shift from taxi. In this
+initial study there was no link between the MaaS trips and the daily activities
+of the wheelchair users; there was not even a good understanding of likely trip
+origin, destination, or length distribution.
 
 Including wheelchair users or wheelchair use status in a regularized travel model
 framework would help to fill two important gaps in the current literature. First,
 the comparison would help to illuminate the travel behavior characteristics of
 this important population within a framework that is readily understandable
-\textbackslash emph\{vis a vis other population segments. Second, researchers engaged in
+\emph{vis a vis} other population segments. Second, researchers engaged in
 policy and planning work for this population could replace simplifying assumptions
 with plausible daily activity patterns rooted in observed behavior.
 
@@ -228,35 +258,19 @@ with plausible daily activity patterns rooted in observed behavior.
 \section{Methods}\label{methodology}}
 
 Activity-based models are a relatively mature construct in travel behavior
-<<<<<<< HEAD
-research and in practical demand forecasting \citet{rasouli2014activity}. Activity-based models attempt
+research and in practical demand forecasting (\protect\hyperlink{ref-rasouli2014activity}{Rasouli and Timmermans, 2014}). Activity-based models attempt
 to recreate the long- and short-term decision patterns of individuals within a
 chain of econometric and statistical choice models. The specific sub-models included
 in this chain can vary between specific implementations, but a recent
-open-source project --- ActivitySim \citet{activitysim} --- implements a popular
-set of models \citet{davidson2010ct}. Specifically, the ActivitySim demonstration
-model is a part of the ``Travel Model One'' model for the Metropolitan
-Transportation Commission (MTC, San Francisco Bay) \citet{erhardt2012mtc}.
-For simplicity and comparison with other models, we apply the ActivitySim model
-in this research.
-
-The first model in the ActivitySim model chain is a \emph{daily activity pattern}
-of the type described by Bradley and Vovsha \citet{Bradley2005}. This model
-=======
-research and in practical demand forecasting \citep{rasouli2014activity}. Activity-based models attempt
-to recreate the long- and short-term decision patterns of individuals within a
-chain of econometric and statistical choice models. The specific sub-models included
-in this chain can vary between specific implementations, but a recent
-open-source project --- ActivitySim \citep{activitysim} --- implements a popular
-set of models \citep{davidson2010ct}. Specifically, the ActivitySim demonstration
+open-source project --- ActivitySim (\protect\hyperlink{ref-activitysim}{AMPO, 2020}) --- implements a popular
+set of models (\protect\hyperlink{ref-davidson2010ct}{Davidson et al., 2010}). Specifically, the ActivitySim demonstration
 model is a implementation of the ``Travel Model One'' model for the Metropolitan
-Transportation Commission (MTC, San Francisco Bay) \citep{erhardt2012mtc}.
+Transportation Commission (MTC, San Francisco Bay) (\protect\hyperlink{ref-erhardt2012mtc}{Erhardt et al., 2012}).
 For simplicity and comparison with other models, we apply the ActivitySim model
 in this research.
 
 The first step in the ActivitySim model chain is a \emph{daily activity pattern}
-model of the type described by \citet{Bradley2005}. This model
->>>>>>> master
+model of the type described by \protect\hyperlink{ref-Bradley2005}{Bradley and Vovsha} (\protect\hyperlink{ref-Bradley2005}{2005}). This model
 allows individuals to choose one of three daily activity patterns:
 
 \begin{itemize}
@@ -274,21 +288,11 @@ allows individuals to choose one of three daily activity patterns:
 \end{itemize}
 
 The choice between the daily patterns is described with a multinomial logit
-<<<<<<< HEAD
-model \citet{Domencich1975}, where the utility functions for each option are
+model (\protect\hyperlink{ref-Domencich1975}{Domencich and McFadden, 1975}), where the utility functions for each option are
 determined by an individual's socioeconomic characteristics and person type
-segment. The specific innovation of the Bradley and Vovsha model
-\citet{Bradley2005} is that the daily activity patterns are coordinated, or that
-the choice of one individual in a household influences the choice probability of
-other household members. We leave household-level coordination to future
-research and instead examine individual uncoordinated choice utilities.
-=======
-model \citep{Domencich1975}, where the utility functions for each option are
-determined by an individual's socioeconomic characteristics and person type
-segment. The specific innovation of the \citet{Bradley2005} model is that the daily
+segment. The specific innovation of the \protect\hyperlink{ref-Bradley2005}{Bradley and Vovsha} (\protect\hyperlink{ref-Bradley2005}{2005}) model is that the daily
 activity patterns are coordinated, or that the choice of one individual in a
 household influences the choice probability of other household members.
->>>>>>> master
 
 In this research, we first estimate a daily activity pattern model for
 respondents to the National Household Travel Survey. We then apply the estimated
@@ -298,11 +302,7 @@ Region in Utah.
 \hypertarget{choice-model}{%
 \subsection{Choice Model}\label{choice-model}}
 
-<<<<<<< HEAD
-Data for this study comes from the 2017 NHTS \citet{nhts2017}. We restrict the
-=======
-Data for this study comes from the 2017 NHTS \citep{fhwa2017}. We restrict the
->>>>>>> master
+Data for this study comes from the 2017 NHTS (\protect\hyperlink{ref-fhwa2017}{U.S. Department of Transportation and Federal Highway Administration, 2017}). We restrict the
 data to households where the metropolitan statistical area (MSA) population size
 is between one and three million people. There are 76,367 individuals in 36,497
 households that responded to the NHTS from these areas, though not all of these
@@ -423,7 +423,7 @@ Works from Home & -1 & 0 & 0.0 & 3721 & 99.9 & 267 & 6.6 & 10060 & 100.0\\
 \hypertarget{choice-analysis}{%
 \subsection{Choice Analysis}\label{choice-analysis}}
 
-We estimated the models using mlogit for R \citet{R}, \citet{mlogit}. As described above, the
+We estimated the models using mlogit for R \protect\hyperlink{ref-mlogit2020}{Croissant} (\protect\hyperlink{ref-mlogit2020}{2020}). As described above, the
 alternatives for daily activity pattern choice are a Mandatory pattern where the
 individual's day involves a work or school tour, a Non-Mandatory pattern where
 only discretionary trips are taken, and a Home pattern where the individual does
@@ -433,7 +433,7 @@ non-working individuals choose only between Non-Mandatory and Home daily activit
 patterns.
 
 The model estimates are presented in
-Table \citet{ref}(tab:model-coef).
+Table \ref{tab:model-coef}.
 The estimated coefficients are of the expected sign, though not all are significant.
 Some predictors that proved to be insignificant, such as automobile availability
 for full-time workers, were excluded from the estimated models.
@@ -455,38 +455,36 @@ in other person type segments.
 \toprule
   &    & Full-time worker & Non-worker & Part-time worker & Retired\\
 \midrule
-(Intercept) & M & \num{2.083} (\num{15.207})*** &  & \num{1.545} (\num{10.300})*** & \\
- & NM & \num{1.137} (\num{7.854})*** & \num{0.591} (\num{6.359})*** & \num{0.338} (\num{2.088})* & \num{-1.169} (\num{-1.506})\\
-wheelchairTRUE & M & \num{-1.851} (\num{-3.328})*** &  & \num{-3.315} (\num{-3.906})*** & \\
- & NM & \num{-0.625} (\num{-1.315}) & \num{-0.721} (\num{-3.647})*** & \num{-1.866} (\num{-3.560})*** & \num{-1.258} (\num{-11.924})***\\
+(Intercept) & M & \num{2.083} (\num{15.207})** &  & \num{1.545} (\num{10.300})** & \\
+ & NM & \num{1.137} (\num{7.854})** & \num{0.591} (\num{6.359})** & \num{0.338} (\num{2.088}) & \num{-1.169} (\num{-1.506})\\
+wheelchairTRUE & M & \num{-1.851} (\num{-3.328})** &  & \num{-3.315} (\num{-3.906})** & \\
+ & NM & \num{-0.625} (\num{-1.315}) & \num{-0.721} (\num{-3.647})** & \num{-1.866} (\num{-3.560})** & \num{-1.258} (\num{-11.924})**\\
 male & M & \num{0.008} (\num{0.140}) &  & \num{-0.040} (\num{-0.347}) & \\
- & NM & \num{-0.148} (\num{-2.378})* & \num{-0.271} (\num{-3.477})*** & \num{-0.219} (\num{-1.828})+ & \num{0.235} (\num{4.798})***\\
-bach\_degree & M & \num{0.353} (\num{5.716})*** &  & \num{0.360} (\num{3.033})** & \\
- & NM & \num{0.648} (\num{9.834})*** & \num{0.501} (\num{6.028})*** & \num{0.584} (\num{4.815})*** & \num{0.349} (\num{6.521})***\\
+ & NM & \num{-0.148} (\num{-2.378}) & \num{-0.271} (\num{-3.477})** & \num{-0.219} (\num{-1.828}) & \num{0.235} (\num{4.798})**\\
+bach\_degree & M & \num{0.353} (\num{5.716})** &  & \num{0.360} (\num{3.033})** & \\
+ & NM & \num{0.648} (\num{9.834})** & \num{0.501} (\num{6.028})** & \num{0.584} (\num{4.815})** & \num{0.349} (\num{6.521})**\\
 income\$25,000 - \$50,000 & M & \num{-0.055} (\num{-0.373}) &  & \num{0.169} (\num{0.876}) & \\
- & NM & \num{-0.371} (\num{-2.344})* & \num{-0.167} (\num{-1.506}) & \num{0.444} (\num{2.196})* & \num{-0.095} (\num{-1.358})\\
+ & NM & \num{-0.371} (\num{-2.344}) & \num{-0.167} (\num{-1.506}) & \num{0.444} (\num{2.196}) & \num{-0.095} (\num{-1.358})\\
 income\$50,000 - \$100,000 & M & \num{-0.175} (\num{-1.272}) &  & \num{-0.160} (\num{-0.971}) & \\
- & NM & \num{-0.312} (\num{-2.146})* & \num{-0.052} (\num{-0.506}) & \num{0.190} (\num{1.096}) & \num{0.115} (\num{1.643})\\
-income> \$100,000 & M & \num{-0.206} (\num{-1.495}) &  & \num{-0.326} (\num{-1.994})* & \\
+ & NM & \num{-0.312} (\num{-2.146}) & \num{-0.052} (\num{-0.506}) & \num{0.190} (\num{1.096}) & \num{0.115} (\num{1.643})\\
+income> \$100,000 & M & \num{-0.206} (\num{-1.495}) &  & \num{-0.326} (\num{-1.994}) & \\
  & NM & \num{-0.233} (\num{-1.610}) & \num{-0.088} (\num{-0.844}) & \num{0.127} (\num{0.737}) & \num{0.036} (\num{0.444})\\
-age\_bin40-64 & M & \num{-0.006} (\num{-0.104}) &  & \num{0.669} (\num{5.094})*** & \\
- & NM & \num{0.026} (\num{0.386}) & \num{0.433} (\num{5.788})*** & \num{1.055} (\num{7.805})*** & \num{2.241} (\num{2.886})**\\
+age\_bin40-64 & M & \num{-0.006} (\num{-0.104}) &  & \num{0.669} (\num{5.094})** & \\
+ & NM & \num{0.026} (\num{0.386}) & \num{0.433} (\num{5.788})** & \num{1.055} (\num{7.805})** & \num{2.241} (\num{2.886})**\\
 age\_bin65-79 & M & \num{0.179} (\num{1.147}) &  & \num{0.395} (\num{2.614})** & \\
- & NM & \num{0.801} (\num{5.081})*** & \num{1.690} (\num{2.998})** & \num{0.721} (\num{4.647})*** & \num{2.132} (\num{2.752})**\\
-age\_bin80+ & M & \num{17.592} (\num{0.004}) &  & \num{2.067} (\num{2.293})* & \\
- & NM & \num{17.247} (\num{0.004}) & \num{14.648} (\num{0.008}) & \num{2.154} (\num{2.391})* & \num{1.536} (\num{1.980})*\\
-works\_home & M & \num{-1.542} (\num{-18.502})*** &  & \num{-1.340} (\num{-9.830})*** & \\
+ & NM & \num{0.801} (\num{5.081})** & \num{1.690} (\num{2.998})** & \num{0.721} (\num{4.647})** & \num{2.132} (\num{2.752})**\\
+age\_bin80+ & M & \num{17.592} (\num{0.004}) &  & \num{2.067} (\num{2.293}) & \\
+ & NM & \num{17.247} (\num{0.004}) & \num{14.648} (\num{0.008}) & \num{2.154} (\num{2.391}) & \num{1.536} (\num{1.980})\\
+works\_home & M & \num{-1.542} (\num{-18.502})** &  & \num{-1.340} (\num{-9.830})** & \\
  & NM & \num{-0.044} (\num{-0.558}) &  & \num{0.112} (\num{0.869}) & \\
 \midrule
- & Num.Obs. & \num{15895} & \num{3648} & \num{3912} & \num{9482}\\
- & AIC & \num{26550.2} & \num{4470.9} & \num{6965.2} & \num{10689.7}\\
- & BIC &  &  &  & \\
- & Log.Lik. & \num{-13253.089} & \num{-2225.474} & \num{-3460.598} & \num{-5334.858}\\
- & rho2 & \num{0.031} & \num{0.019} & \num{0.055} & \num{0.026}\\
- & rho20 & \num{0.241} & \num{0.120} & \num{0.195} & \num{0.188}\\
+ & N & \num{15895} & \num{3648} & \num{3912} & \num{9482}\\
+ & AIC & \num{26550.18} & \num{4470.948} & \num{6965.196} & \num{10689.72}\\
+ & Log likelihood & \num{-13253.09} & \num{-2225.474} & \num{-3460.598} & \num{-5334.858}\\
+ & $\rho^2$ & \num{0.031} & \num{0.019} & \num{0.055} & \num{0.026}\\
 \bottomrule
 \multicolumn{6}{l}{\rule{0pt}{1em}Coefficients represent utility change relative to H: stay at home pattern.}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}t-statistics in parentheses, * p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}t-statistics in parentheses, * p $<$ 0.5, ** p $<$ 0.01}\\
 \end{tabular}}
 \end{table}
 
@@ -519,7 +517,7 @@ wheelchairs would change their DAP because of the negative utility scores
 applied to the ``mandatory'' and ``nonmandatory'' DAP alternatives, and the rest of
 the population would be unaffected. The DAP of those within the same household
 of a wheelchair user may change because of the coordinated nature of household
-DAP in ActivitySim. Table 4-6 shows the change in DAP among those with
+DAP in ActivitySim. Table \ref{tab:dap-summary} shows the change in DAP among those with
 wheelchairs, in the same household as one with a wheelchair, and with neither a
 wheelchair nor in the same household. The table contains both total volumes and
 percentages; the value of percent is by total volume in the group, for example,
@@ -578,9 +576,102 @@ This is the end of the paper.
 \addcontentsline{toc}{section}{Acknowledgements}
 
 Figures and tables in this paper were created with a variety of R
-packages.
+packages (\protect\hyperlink{ref-R-modelsummary}{Arel-Bundock, 2021}; \protect\hyperlink{ref-ggplot22016}{Wickham, 2016}). The authors would like to thank
+Chris Day and Christian Hunter for their help in preparing this analysis.
 
-\bibliography{book.bib}
+This work was supported by the Utah Department of Transportation and the
+Federal Transit Administration. The authors alone are responsible for the
+preparation and conclusions presented herein. The contents do not necessarily
+reflect the views, opinions, endorsements, or policies of the Utah Department of
+Transportation of the US Department of Transportation. The Utah Department of
+Transportation makes no representation or warranty of any kind, and assumes no
+liability therefore.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-activitysim}{}}%
+AMPO, 2020. ActivitySim: An open platform for activity-based travel modeling.
+
+\leavevmode\vadjust pre{\hypertarget{ref-R-modelsummary}{}}%
+Arel-Bundock, V., 2021. Modelsummary: Summary tables and plots for statistical models and data: Beautiful, customizable, and publication-ready.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Bascom2017}{}}%
+Bascom, G.W., Christensen, K.M., 2017. {The impacts of limited transportation access on persons with disabilities' social participation}. \emph{Journal of Transport {\&} Health} 7, 227--234. \url{https://doi.org/10.1016/J.JTH.2017.10.002}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Bischoff2019}{}}%
+Bischoff, J.F., 2019. {Mobility as a Service and the transition to driverless systems} 148.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Bradley2005}{}}%
+Bradley, M., Vovsha, P., 2005. {A model for joint choice of daily activity pattern types of household members}. \emph{Transportation} 32, 545--571. \url{https://doi.org/10.1007/s11116-005-5761-0}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Brumbaugh2018}{}}%
+Brumbaugh, S., 2018. {Issue BrIef Travel Patterns of American Adults with Disabilities}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mlogit2020}{}}%
+Croissant, Y., 2020. Estimation of random utility models in {R}: The {mlogit} package. \emph{Journal of Statistical Software} 95, 1--41. \url{https://doi.org/10.18637/jss.v095.i11}
+
+\leavevmode\vadjust pre{\hypertarget{ref-davidson2010ct}{}}%
+Davidson, W., Vovsha, P., Freedman, J., Donnelly, R., 2010. CT-RAMP family of activity-based models, in: Proceedings of the 33rd Australasian Transport Research Forum (ATRF). Citeseer, p. 29.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Domencich1975}{}}%
+Domencich, T.A., McFadden, D., 1975. {Urban travel demand: a behavioral analysis}. North-Holland Pub. Co.
+
+\leavevmode\vadjust pre{\hypertarget{ref-erhardt2012mtc}{}}%
+Erhardt, G., Ory, D., Sarvepalli, A., Freedman, J., Hood, J., Stabler, B., 2012. MTC's travel model one: Applications of an activity-based model in its first year, in: 5th Transportation Research Board Innovations in Travel Modeling Conference.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Ermagun2016}{}}%
+Ermagun, A., Hajivosough, S., Samimi, A., Rashidi, T.H., 2016. {A joint model for trip purpose and escorting patterns of the disabled}. \emph{Travel Behaviour and Society} 3, 51--58. \url{https://doi.org/10.1016/j.tbs.2015.08.002}
+
+\leavevmode\vadjust pre{\hypertarget{ref-fhwaada}{}}%
+Federal Transit Administration, 2015. {Americans with Disabilities Act: Guidance}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Feeley2019}{}}%
+Feeley, C., 2019. {Evaluating the Transportation Needs and Accessibility Issues for Adults on the Autism Spectrum in New Jersey}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-frackelton2013measuring}{}}%
+Frackelton, A., Grossman, A., Palinginis, E., Castrillon, F., Elango, V., Guensler, R., 2013. Measuring walkability: Development of an automated sidewalk quality assessment tool. \emph{Suburban Sustainability} 1, 4.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Lubin2012}{}}%
+Lubin, A., Deka, D., 2012. {Role of public transportation as job access mode}. \emph{Transportation Research Record} 90--97. \url{https://doi.org/10.3141/2277-11}
+
+\leavevmode\vadjust pre{\hypertarget{ref-R-base}{}}%
+R Core Team, 2021. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+
+\leavevmode\vadjust pre{\hypertarget{ref-rasouli2014activity}{}}%
+Rasouli, S., Timmermans, H., 2014. Activity-based models of travel demand: Promises, progress and prospects. \emph{International Journal of Urban Sciences} 18, 31--60.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Rosenbloom2007}{}}%
+Rosenbloom, S., 2007. {Transportation Patterns and Problems of People with Disabilities}, in: Field, M.J., Jette, A.M. (Eds.), The Future of Disability in America. National Academies Press, pp. 1--592. \url{https://doi.org/10.17226/11898}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Ruvolo2020}{}}%
+Ruvolo, M., 2020. {Access Denied? Perceptions of New Mobility Services Among Disabled People in San Francisco}. \emph{The SAGE Encyclopedia of Higher Education} 52. \url{https://doi.org/10.4135/9781529714395.n81}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Schmocker2005}{}}%
+Schmöcker, J.D., Quddus, M.A., Noland, R.B., Bell, M.G.H., 2005. {Estimating trip generation of elderly and disabled people: Analysis of London data}. \emph{Transportation Research Record} 9--18. \url{https://doi.org/10.3141/1924-02}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Sweeney2004}{}}%
+Sweeney, M., 2004. {Travel Patterns of Older Americans with Disabilities}. \emph{Working Paper 2004-001-OAS, Bureau of Transportation Statistics} 1--36.
+
+\leavevmode\vadjust pre{\hypertarget{ref-fhwa2017}{}}%
+U.S. Department of Transportation and Federal Highway Administration, 2017. 2017 national household travel survey.
+
+\leavevmode\vadjust pre{\hypertarget{ref-VanRoosmalen2010}{}}%
+Van Roosmalen, L., Paquin, G.J., Steinfeld, A.M., 2010. {Quality of Life Technology: The State of Personal Transportation}. \emph{Physical Medicine and Rehabilitation Clinics of North America} 21, 111--125. \url{https://doi.org/10.1016/j.pmr.2009.07.009}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Velho2016}{}}%
+Velho, R., Holloway, C., Symonds, A., Balmer, B., 2016. {The effect of transport accessibility on the social inclusion of wheelchair users: A mixed method analysis}. \emph{Social Inclusion} 4, 24--35. \url{https://doi.org/10.17645/si.v4i3.484}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Wasfi2007}{}}%
+Wasfi, R., El-geneidy, A., 2007. {Measuring the Transportation Needs of People with Developmental Disabilities}. \emph{Lancet} 369, 457. \url{https://doi.org/10.1016/S0140-6736(07)60218-9}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ggplot22016}{}}%
+Wickham, H., 2016. ggplot2: Elegant graphics for data analysis. Springer-Verlag New York.
+
+\end{CSLReferences}
 
 
 \end{document}

@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 5 Discussion | Coordinated daily activity patterns of wheelchair users.</title>
-  <meta name="description" content=" 5 Discussion | Coordinated daily activity patterns of wheelchair users." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <title> 5 Discussion | How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns.</title>
+  <meta name="description" content="Coordinated daily activity patterns of wheelchair users." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 5 Discussion | Coordinated daily activity patterns of wheelchair users." />
+  <meta property="og:title" content=" 5 Discussion | How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns." />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content=" 5 Discussion | Coordinated daily activity patterns of wheelchair users." />
+  <meta property="og:description" content="Coordinated daily activity patterns of wheelchair users." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 5 Discussion | Coordinated daily activity patterns of wheelchair users." />
+  <meta name="twitter:title" content=" 5 Discussion | How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns." />
   
-  <meta name="twitter:description" content=" 5 Discussion | Coordinated daily activity patterns of wheelchair users." />
+  <meta name="twitter:description" content="Coordinated daily activity patterns of wheelchair users." />
   
 
 
 
-<meta name="date" content="2021-07-14" />
+<meta name="date" content="2022-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,8 +42,9 @@ div.abstract{
   width: 90%;
 }
 </style>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,7 +52,6 @@ div.abstract{
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -174,7 +174,8 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="sec-literature.html"><a href="sec-literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="methodology.html"><a href="methodology.html#data"><i class="fa fa-check"></i><b>3.1</b> Data</a></li>
+<li class="chapter" data-level="3.1" data-path="methodology.html"><a href="methodology.html#choice-model"><i class="fa fa-check"></i><b>3.1</b> Choice Model</a></li>
+<li class="chapter" data-level="3.2" data-path="methodology.html"><a href="methodology.html#activitysim-implementation"><i class="fa fa-check"></i><b>3.2</b> ActivitySim Implementation</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
@@ -197,7 +198,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coordinated daily activity patterns of wheelchair users.</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns.</a>
           </h1>
         </div>
 
@@ -220,7 +221,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -260,6 +260,10 @@ gitbook.start({
 "text": null
 },
 "download": ["wheelchair_cdap.pdf", "wheelchair_cdap.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
