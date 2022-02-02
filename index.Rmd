@@ -19,13 +19,30 @@ site: bookdown::bookdown_site
 documentclass: article
 journal: "Submitted to Transportation Research Part A"
 bibliography: [book.bib]
-biblio-style: apalike
+csl: elsevier-harvard-italics.csl
 always_allow_html: true
 link-citations: yes
 abstract: |
  Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the  2017 National Household Travel Survey who self-identify as using a wheelchair.  We find that wheelchair use is a significant predictor of activity patterns,  with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
 description: "Coordinated daily activity patterns of wheelchair users."
 layout: "3p, authoryear, review"
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{siunitx}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage[utf8]{inputenc}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
 ---
 
 # Introduction {#intro}
