@@ -1,8 +1,8 @@
 # Results {#results}
 
-## Example one NHTS
+## Choice Analysis
 
-We estimated the models using mlogit for R @R, @mlogit. As described above, the
+We estimated the models using mlogit for R [@R-base, @mlogit2020]. As described above, the
 alternatives for daily activity pattern choice are a Mandatory pattern where the 
 individual's day involves a work or school tour, a Non-Mandatory pattern where 
 only discretionary trips are taken, and a Home pattern where the individual does 
@@ -12,7 +12,7 @@ non-working individuals choose only between Non-Mandatory and Home daily activit
 patterns.
 
 The model estimates are presented in 
-Table @ref(tab:model-coef). 
+Table \@ref(tab:model-coef). 
 The estimated coefficients are of the expected sign, though not all are significant. 
 Some predictors that proved to be insignificant, such as automobile availability
 for full-time workers, were excluded from the estimated models. 
@@ -27,11 +27,19 @@ in other person type segments.
 
 ```{r model-coef}
 tar_load(pt_modelsummary)
+f <- function(x) format(round(x, 3), big.mark=",")
+gm <- list(
+  list("raw" = "nobs", "clean" = "N", "fmt" = f),
+  list("raw" = "AIC", "clean" = "AIC", "fmt" = f),
+  list("raw" = "logLik", "clean" = "Log likelihood", "fmt" = f),
+  list("raw" = "rho2", "clean" = "$\\rho^2$", "fmt" = f))
 modelsummary(
   pt_modelsummary, group = variable + term ~ model, 
+  gof_map = gm,
   estimate = "{estimate} ({statistic}){stars}",
   statistic = NULL,
-  notes = c("t-statistics in parentheses, * p < 0.1, ** p < 0.05, *** p < 0.01",
+  stars = c('*' = .01, '**' = .01),
+  notes = c("t-statistics in parentheses, * p < 0.5, ** p < 0.01",
             "Coefficients represent utility change relative to H: stay at home pattern."),
   title = "Daily Activity Pattern Model Estimates") %>%
   kable_styling(latex_options = c("scale_down"))
@@ -52,7 +60,7 @@ users by definition do not take “mandatory” DAP. Indeed, wheelchair use is a
 the strongest predictors of daily activity pattern choice across population 
 segments. 
 
-## Example two ActivitySim
+## Activity-based Model
 
 As a secondary example, the research measures the impact of 
 wheelchair status on ActivitySim’s selection of daily plans for our given 
@@ -66,7 +74,7 @@ wheelchairs would change their DAP because of the negative utility scores
 applied to the “mandatory” and “nonmandatory” DAP alternatives, and the rest of 
 the population would be unaffected. The DAP of those within the same household 
 of a wheelchair user may change because of the coordinated nature of household 
-DAP in ActivitySim. Table 4-6 shows the change in DAP among those with 
+DAP in ActivitySim. Table \@ref(tab:dap-summary) shows the change in DAP among those with 
 wheelchairs, in the same household as one with a wheelchair, and with neither a 
 wheelchair nor in the same household. The table contains both total volumes and 
 percentages; the value of percent is by total volume in the group, for example, 

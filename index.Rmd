@@ -1,16 +1,16 @@
 ---
-title: "Coordinated daily activity patterns of wheelchair users."
+title: "How far are we from transportation equity? Measuring the effect of wheelchair use on daily activity patterns."
 author:
-  - name: Gregory Macfarlane
-    email: gregmacfarlane@byu.edu
-    affiliation: Brigham Young University
-    footnote: 1
   - name: Nate Lant
     email: natelant@gmail.com
-    affiliation: Brigham Young University
+    affiliation: BYU
+  - name: Gregory S. Macfarlane
+    email: gregmacfarlane@byu.edu
+    affiliation: BYU
+    footnote: 1
 address:
-  - code: Brigham Young University
-    address: Civil and Environmental Engineering Department, 430 Engineering Building, Provo, Utah 84602
+  - code: BYU
+    address: Brigham Young University, Civil and Construction Engineering Department, 430 Engineering Building, Provo, Utah 84602
 footnote:
   - code: 1
     text: "Corresponding Author"
@@ -23,7 +23,8 @@ csl: elsevier-harvard-italics.csl
 always_allow_html: true
 link-citations: yes
 abstract: |
- Individuals who use wheelchairs or who have other mobility challenges are sometimes unable to effectively access modern mobility as a service (MaaS) systems including application-based ridehailing and on-demand microtransit, etc. Even designing a MaaS targeted at these users is challenging, given the limited prior analysis of their travel and activity patterns. In this research, we present an initial attempt to model the daily activity pattern choice of respondents to the  2017 National Household Travel Survey who self-identify as using a wheelchair.  We find that wheelchair use is a significant predictor of activity patterns,  with individuals who use wheelchairs considerably less likely to choose out-of-home daily patterns. We additionally find that including wheelchair use as a variable in a model with a common person-type segmentation is statistically preferable to specifying wheelchair users as an independent segment. Further analysis of household-level coordination of daily activity patterns using more detailed surveys is warranted.
+  This is the abstract
+keywords: Transportation equity; travel behavior
 description: "Coordinated daily activity patterns of wheelchair users."
 layout: "3p, authoryear, review"
 header-includes:
@@ -81,47 +82,49 @@ if(knitr::is_latex_output()) {
   knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 } 
 
+knitr::write_bib(c(.packages(), "bookdown"), "packages.bib")
 ```
 
 
 
 In 1990, the United States Congress passed the Americans with Disabilities Act (ADA), 
 seeking to protect individuals with qualifying disabilities from discrimination
-in seeking employment (Title I), while using public services including
-transportation systems (Title II), and in public accommodations (Title III) among 
-other specifics.  
+while using public services including transportation systems (Title II), and in
+public accommodations (Title III) among other specifics. For transportation 
+service providers, ensuring equal access for wheelchair users is a critical
+design constraint for vehicles as well as stations and the surrounding areas 
+[@fhwaada].
+Buses and trains had to be redesigned with low floors and access ramps;
+elevators and ramps needed to be installed in stations alongside escalators and
+stairs. Even today, most traditional automobiles remain inaccessible --- at least
+without substantial modification --- to wheelchair users. This last challenge is
+a particular concern for transportation network companies (TNC's), who often use
+private vehicles owned by individual operators.
 
-The accommodation that has arguably caused the most challenges
-for many transportation service providers has been ensuring equal
-access for individuals who use wheelchairs. Buses and trains had to be reengineered
-with low floors and access ramps; elevators and ramps needed to be installed 
-in stations alongside escalators and stairs; and many traditional automobiles 
-remain inaccessible --- or at least without substantial modification --- to
-wheelchair users. This last challenge is a particular concern for transportation 
-network companies (TNC's), who often use private vehicles owned by individual
-operators.
+Though the ADA only requires agencies to provide reasonable accommodation on 
+public conveyances and does not try to establish equity in outcomes, the passage
+of 30 years provides a convenient time to consider what gaps and challenges
+persist for wheelchair users in accessing and using the transportation system.
+Specifically, what gap exists in the observed travel behavior outcomes of
+wheelchair users vis a vis the non wheelchair using population, all else equal?
+And more importantly, how should this gap be applied within travel forecasting
+models and related planning activities?
 
-Though the law only requires agencies to provide reasonable accommodation on and
-does not try to establish equity in outcomes, the passage of 30 years provides a
-convenient time to consider what gaps and challenges persist for wheelchair 
-users in accessing and using the transportation system. Specifically, what gap 
-exists in the observed travel behavior outcomes of wheelchair users vis a vis 
-the non wheelchair using population, all else equal? And more importantly, how 
-should this gap be applied within travel forecasting models and related planning
-activities?
-
-In this paper, we present an analysis of individual daily activity pattern choice
-for a sample of respondents to the 2017 National Household Travel Survey (CITE), 
-incorporating the individual's wheelchair use as an explanatory variable. 
-We then apply the estimates obtained from the choice analysis in a modified
-activity-based model for the Wasatch Front (Salt Lake City and outlying areas)
-metropolitan region in Utah.
+In this paper, we investigate the degree to which daily activity patterns are
+influenced by an individual's use of a wheelchair. This involves two separate
+analyses: first, we model daily activity pattern choice using responses to the
+2017 National Household Travel Survey [@fhwa2017], incorporating the individual's
+wheelchair use as an explanatory variable. Second, we apply the behavioral
+estimates obtained from the choice analysis in a modified activity-based model
+for the Wasatch Front metropolitan region in Utah to estimate the
+population-level effects of introducing wheelchair status in a regional travel
+demand model.
 
 The paper proceeds in a typical fashion. A [literature review](#literature)
 discusses prior attempts to evaluated and quantify the travel behavior of
 users with disabilities. A section [describing the methodology](#methodology)
 of the choice analysis and model application is followed by [a discussion of the results](#results)
-from both analyses. The paper concludes with [a discussion ](#discussion)
+from both analyses. The paper concludes with [a discussion](#discussion)
 of limitations in this analysis and associated avenues for future research and
 policy intervention.
 

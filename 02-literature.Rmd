@@ -1,71 +1,66 @@
 # Literature {#sec-literature}
 
-The question of how the travel behavior of individuals with disabilities differs
-from the travel behavior of those without disabilities has been addressed 
-previously in a number of studies. That said, the literature is often confusing
-due to the wide variety of specific disabilities people may have: wheelchair use,
-other ambulatory disabilities, visual impairment, and a multitude of other 
-conditions are each likely to affect an individual's need for accommodation in 
-travel --- and perhaps consequently their travel behavior --- in a number of ways.
-A number of recent studies have also looked at the role of developmental @Wasfi2007
-and intellectual @Feeley2019 disabilities on travel patterns. However,
-given the motivations of this research laid out in the introduction, we will attempt to highlight
-research on the mobility and activity patterns of wheelchair users, though 
-drawing specific distinctions is not always possible.
+Recent analysis [@Brumbaugh2018] of the 2017 NHTS suggests there are 13.4
+million individuals individuals in the US with travel-limiting disabilities --- as defined by a
+specific question in the NHTS and encompassing sight, ambulatory, hearing, and
+other disabilities. Of these individuals, 20 percent (or 2.7
+million) use wheelchairs. With the relative aging of the U.S. population, the
+share of Americans with all disabilities as well as those using wheelchairs is
+likely to rise substantially [@Sweeney2004; Laplante2003].
 
-Among the first considerations is research attempting to quantify the size
-of the disabled or wheelchair using population. Data from the 2017 NHTS
-suggests that there are 13.4 million individuals with travel-limiting disabilities
-in the U.S., of whom 20 percent (or 2.7 million) use wheelchairs @Brumbaugh2018.
-Another analysis of Census data suggests that 37 percent of individuals over 
-age 65 with disabilities use wheelchairs; both the number of wheelchair users
-and the number of total individuals with disabilities are likely to rise 
-in the coming years with the relative aging of the U.S. population @Sweeney2004, Laplante2003.
+The question of how the travel behavior of individuals with travel-limiting
+disabilities varies from the travel behavior of individuals without these
+disabilities has been addressed previously in a number of studies. That said,
+the literature on this topic is relatively fragmented due to the wide variety of
+specific disabilities people. The literature also has suffered from a relatively
+fragmented approach; rather than considering how disability manifests at each
+hierarchical level of the transportation decision-making process, the literature
+consists largely of ad-hoc studies conducted on a specific, specially collected
+dataset.
 
 With regards to travel patterns, surveys of the general population and surveys
 specifically targeted at individuals with disabilities both reveal significant and
 meaningful differences compared to individuals without disabilities. Specific
-findings include that individuals with disabilities leave their homes on fewer 
-days if ever @Sweeney2004, make fewer daily trips 
-@Schmocker2005, Brumbaugh2018, make fewer work trips and more
-healthcare maintenance trips @Ermagun2016, rely more on others for their travel @Sweeney2004,
-and have considerably restricted mode
-choices @Rosenbloom2007, Ruvolo2020. These differences in mobility and activity patterns
-have important and observed negative implications for the individual's access to
-opportunity for employment @Rosenbloom2007, Lubin2012 and social interaction
-@Bascom2017, Velho2016.
+findings include that individuals with disabilities leave their homes on fewer
+days if ever [@Sweeney2004], make fewer daily trips [@Schmocker2005;
+@Brumbaugh2018] make fewer work trips and more healthcare maintenance trips
+[@Ermagun2016], rely more on others for their travel [@Sweeney2004]
+and have considerably restricted mode choices [@Rosenbloom2007, @Ruvolo2020].
+These differences in mobility and activity patterns have important and observed
+negative implications for the individual's access to opportunity for employment
+[@Rosenbloom2007; @Lubin2012] and social interaction [@Bascom2017; @Velho2016].
+Some recent studies have also looked at the meaningful role of developmental [@Wasfi2007]
+and intellectual [@Feeley2019] disabilities on travel patterns. 
 
-
-The underlying reasons why wheelchair users exhibit different travel patterns
-than other individuals are varied and include both technical and attitudinal 
-barriers. Technical barriers include poor access to private vehicles
-@VanRoosmalen2010, poorly maintained sidewalk and pedestrian infrastructure
-@frackelton2013measuring,  lack of physical access to TNC
-vehicles @Ruvolo2020, bus ramp complication and malfunction @Velho2016,
+The underlying reasons why wheelchair users and others with disabilities exhibit
+different travel patterns than other individuals are varied, but are 
+likely to include both technical and attitudinal barriers. Technical barriers
+include poor access to private vehicles
+[@VanRoosmalen2010], poorly maintained sidewalk and pedestrian infrastructure
+[@frackelton2013measuring], lack of physical access to TNC
+vehicles [@Ruvolo2020], bus ramp complication and malfunction [@Velho2016],
 and numerous other problems across many modes.
 Attitudinal barriers include feeling shame when safety alarms alert all
-passengers that a ramp is being deployed or motion sickness when they are forced
-to travel backwards in the wheelchair priority area @Velho2016, or 
-suffering outright discrimination from TNC operators @Bascom2017.
-
-
+passengers that a ramp is being deployed or motion sickness when the users 
+are forced to travel backwards in the wheelchair priority area [@Velho2016], or
+suffering outright discrimination from TNC operators [@Bascom2017].
 
 In spite of this relatively mature literature, however, there has not to
 date been a rigorous evaluation of the travel behavior of individuals with 
 disabilities within the framework of a travel activity model. As a result,
 recent attempts to simulate or model services aimed at this population have
-needed to make simplifying assumptions. In an attempt to model demand for a MaaS
-system targeted at wheelchair users in
-Berlin, Bischoff @Bischoff2019 simply assumed demand for this service
-would be similar to current demand for the regional paratransit system, augmented
-by a mode shift from taxi. In this initial study there was no link between the
-MaaS trips and the daily activities of the wheelchair users; there was not even a
-good understanding of likely trip origin, destination, or length distribution.
+needed to make simplifying assumptions. In an attempt to model demand for a
+modern mobility system targeted at wheelchair users in Berlin, @Bischoff2019
+simply assumed demand for this service would be similar to current demand for
+the regional paratransit system, augmented by a mode shift from taxi. In this
+initial study there was no link between the MaaS trips and the daily activities
+of the wheelchair users; there was not even a good understanding of likely trip
+origin, destination, or length distribution.
 
 Including wheelchair users or wheelchair use status in a regularized travel model
 framework would help to fill two important gaps in the current literature. First, 
 the comparison would help to illuminate the travel behavior characteristics of
 this important population within a framework that is readily understandable 
-\emph{vis a vis other population segments. Second, researchers engaged in
+\emph{vis a vis} other population segments. Second, researchers engaged in
 policy and planning work for this population could replace simplifying assumptions
 with plausible daily activity patterns rooted in observed behavior.
