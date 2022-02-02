@@ -17,7 +17,7 @@ footnote:
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: article
-journal: "Submitted to Transportation Research Part A"
+journal: "the 12$^{th}$ International Scientific Conference on Mobility and Transport"
 bibliography: [book.bib]
 csl: elsevier-harvard-italics.csl
 always_allow_html: true
