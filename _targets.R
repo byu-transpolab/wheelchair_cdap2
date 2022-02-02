@@ -1,4 +1,5 @@
 library(targets)
+library(tarchetypes)
 # This is an example _targets.R file. Every
 # {targets} pipeline needs one.
 # Use tar_script() to create _targets.R and tar_edit()
@@ -29,30 +30,28 @@ set.seed(42)
 # Set path to activitysim zip files
 dir.create("data", showWarnings = FALSE)
 
-# End this file with a list of target objects.
-list(
+# targets to conduct analysis
+tar_plan(
   
   # Build dataset
-  tar_target(hh,  get_households()),
-  tar_target(persons, get_persons(hh$houseid)),
-  tar_target(person_dap, get_trips(persons)),
-  tar_target(data, make_data(person_dap, hh)),
+  hh =  get_households(),
+  persons = get_persons(hh$houseid),
+  person_dap = get_trips(persons),
+  data = make_data(person_dap, hh),
   
   # Estimate nhts models
-  tar_target(dap_stats, build_stats(data)),
-  tar_target(descriptives, description_table(data)),
-  tar_target(pt_models, estimate_models(data)),
-  tar_target(pt_modelsummary, make_ptsummary(pt_models)),
+  dap_stats = build_stats(data),
+  descriptives = description_table(data),
+  pt_models = estimate_models(data),
+  pt_modelsummary = make_ptsummary(pt_models),
   
-  # Get data from activitysim
-  tar_target(persons_base, asim_persons_base("data/persons_base.csv")),
-  tar_target(persons_wc, asim_persons_wc("data/persons_wc.csv")),
-  tar_target(households_wc, asim_households_wc("data/households_wc.csv")),
-  tar_target(asim_dap, asim_join(persons_base, persons_wc, households_wc)),
+  # Get data from activitysim scenarios
+  persons_base = asim_persons_base("data/persons_base.csv"),
+  persons_wc = asim_persons_wc("data/persons_wc.csv"),
+  households_wc = asim_households_wc("data/households_wc.csv"),
+  asim_dap = asim_join(persons_base, persons_wc, households_wc),
   
   # Estimate dap models
-  tar_target(dap_table, build_table(asim_dap)),
-  
-  # Dummy
-  tar_target(dummy, message("Done"))
+  dap_table = build_table(asim_dap)
 )
+
