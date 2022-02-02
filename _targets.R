@@ -46,7 +46,6 @@ list(
   
   # Get data from activitysim
   tar_target(persons_base, asim_persons_base("data/persons_base.csv")),
-  #tar_target(households_base, asim_households_base(file.path(asim_path, "households_base.csv"))),
   tar_target(persons_wc, asim_persons_wc("data/persons_wc.csv")),
   tar_target(households_wc, asim_households_wc("data/households_wc.csv")),
   tar_target(asim_dap, asim_join(persons_base, persons_wc, households_wc)),
