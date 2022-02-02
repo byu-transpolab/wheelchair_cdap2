@@ -10,7 +10,6 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \usepackage{graphicx}
-\usepackage{booktabs} % book-quality tables
 %%%%%%%%%%%%%%%% end my additions to header
 
 \usepackage[T1]{fontenc}
@@ -34,7 +33,16 @@
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 \usepackage{natbib}
 \bibliographystyle{apalike}
-\usepackage{longtable}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
@@ -73,6 +81,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{siunitx}
+\newcolumntype{d}{S[input-symbols = ()]}
 
 
 
@@ -112,8 +122,9 @@ wheelchair users. This last challenge is a particular concern for transportation
 network companies (TNC's), who often use private vehicles owned by individual
 operators.
 
-Though the law only requires agencies to provide reasonable accommodation on and
-does not try to establish equity in outcomes, the passage of 30 years provides a
+Though the law only requires agencies to provide reasonable accommodation on
+public conveyances and
+does not try to establish equality in outcomes, the passage of 30 years provides a
 convenient time to consider what gaps and challenges persist for wheelchair
 users in accessing and using the transportation system. Specifically, what gap
 exists in the observed travel behavior outcomes of wheelchair users vis a vis
@@ -210,19 +221,19 @@ with plausible daily activity patterns rooted in observed behavior.
 \section{Methods}\label{methodology}}
 
 Activity-based models are a relatively mature construct in travel behavior
-research and in practical demand forecasting \cite{rasouli2014activity}. Activity-based models attempt
+research and in practical demand forecasting \citet{rasouli2014activity}. Activity-based models attempt
 to recreate the long- and short-term decision patterns of individuals within a
 chain of econometric and statistical choice models. The specific sub-models included
 in this chain can vary between specific implementations, but a recent
-open-source project --- ActivitySim \cite{activitysim} --- implements a popular
-set of models \cite{davidson2010ct}. Specifically, the ActivitySim demonstration
+open-source project --- ActivitySim \citet{activitysim} --- implements a popular
+set of models \citet{davidson2010ct}. Specifically, the ActivitySim demonstration
 model is a part of the ``Travel Model One'' model for the Metropolitan
-Transportation Commission (MTC, San Francisco Bay) \cite{erhardt2012mtc}.
+Transportation Commission (MTC, San Francisco Bay) \citet{erhardt2012mtc}.
 For simplicity and comparison with other models, we apply the ActivitySim model
 in this research.
 
 The first model in the ActivitySim model chain is a \emph{daily activity pattern}
-of the type described by Bradley and Vovsha \cite{Bradley2005}. This model
+of the type described by Bradley and Vovsha \citet{Bradley2005}. This model
 allows individuals to choose one of three daily activity patterns:
 
 \begin{itemize}
@@ -240,10 +251,10 @@ allows individuals to choose one of three daily activity patterns:
 \end{itemize}
 
 The choice between the daily patterns is described with a multinomial logit
-model \cite{Domencich1975}, where the utility functions for each option are
+model \citet{Domencich1975}, where the utility functions for each option are
 determined by an individual's socioeconomic characteristics and person type
 segment. The specific innovation of the Bradley and Vovsha model
-\cite{Bradley2005} is that the daily activity patterns are coordinated, or that
+\citet{Bradley2005} is that the daily activity patterns are coordinated, or that
 the choice of one individual in a household influences the choice probability of
 other household members. We leave household-level coordination to future
 research and instead examine individual uncoordinated choice utilities.
@@ -260,7 +271,7 @@ section below.
 \hypertarget{data}{%
 \subsection{Data}\label{data}}
 
-Data for this study comes from the 2017 NHTS \cite{nhts2017}. We restrict the
+Data for this study comes from the 2017 NHTS \citet{nhts2017}. We restrict the
 data to households where the metropolitan statistical area (MSA) population size
 is between one and three million people. There are 76,367 individuals in 36,497
 households that responded to the NHTS from these areas, though not all of these
@@ -330,7 +341,7 @@ Table \ref{tab:descriptive-stats}
 \caption{\label{tab:descriptive-stats}Model Estimation Data: Descriptive Statistics}
 \centering
 \resizebox{\linewidth}{!}{
-\begin{tabular}[t]{llllllllll}
+\begin{tabular}[t]{llrrrrrrrr}
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Full-time worker (N=16188)} & \multicolumn{2}{c}{Non-worker (N=3723)} & \multicolumn{2}{c}{Part-time worker (N=4028)} & \multicolumn{2}{c}{Retired (N=10060)} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-10}
@@ -338,7 +349,7 @@ Table \ref{tab:descriptive-stats}
 \midrule
 Bachelors or more &  & 0.6 & 0.5 & 0.4 & 0.5 & 0.5 & 0.5 & 0.4 & 0.5\\
 \midrule
- &  & N & \% & N & \% & N & \% & N & \%\\
+ &  & N & Pct. & N & Pct. & N & Pct. & N & Pct.\\
 Age & 05-39 & 5762 & 35.6 & 1450 & 38.9 & 1356 & 33.7 & 8 & 0.1\\
  & 40-64 & 9570 & 59.1 & 2239 & 60.1 & 1705 & 42.3 & 1833 & 18.2\\
  & 65-79 & 836 & 5.2 & 33 & 0.9 & 903 & 22.4 & 6321 & 62.8\\
@@ -370,7 +381,7 @@ Works from Home & -1 & 0 & 0.0 & 3721 & 99.9 & 267 & 6.6 & 10060 & 100.0\\
 \hypertarget{example-one-nhts}{%
 \subsection{Example one NHTS}\label{example-one-nhts}}
 
-We estimated the models using mlogit for R \cite{R, mlogit}. As described above, the
+We estimated the models using mlogit for R \citet{R}, \citet{mlogit}. As described above, the
 alternatives for daily activity pattern choice are a Mandatory pattern where the
 individual's day involves a work or school tour, a Non-Mandatory pattern where
 only discretionary trips are taken, and a Home pattern where the individual does
@@ -402,38 +413,38 @@ in other person type segments.
 \toprule
   &    & Full-time worker & Non-worker & Part-time worker & Retired\\
 \midrule
-(Intercept) & M & 2.083 (15.207)*** &  & 1.545 (10.300)*** & \\
- & NM & 1.137 (7.854)*** & 0.591 (6.359)*** & 0.338 (2.088)* & -1.169 (-1.506)\\
-wheelchairTRUE & M & -1.851 (-3.328)*** &  & -3.315 (-3.906)*** & \\
- & NM & -0.625 (-1.315) & -0.721 (-3.647)*** & -1.866 (-3.560)*** & -1.258 (-11.924)***\\
-male & M & 0.008 (0.140) &  & -0.040 (-0.347) & \\
- & NM & -0.148 (-2.378)* & -0.271 (-3.477)*** & -0.219 (-1.828)+ & 0.235 (4.798)***\\
-bach\_degree & M & 0.353 (5.716)*** &  & 0.360 (3.033)** & \\
- & NM & 0.648 (9.834)*** & 0.501 (6.028)*** & 0.584 (4.815)*** & 0.349 (6.521)***\\
-income\$25,000 - \$50,000 & M & -0.055 (-0.373) &  & 0.169 (0.876) & \\
- & NM & -0.371 (-2.344)* & -0.167 (-1.506) & 0.444 (2.196)* & -0.095 (-1.358)\\
-income\$50,000 - \$100,000 & M & -0.175 (-1.272) &  & -0.160 (-0.971) & \\
- & NM & -0.312 (-2.146)* & -0.052 (-0.506) & 0.190 (1.096) & 0.115 (1.643)\\
-income> \$100,000 & M & -0.206 (-1.495) &  & -0.326 (-1.994)* & \\
- & NM & -0.233 (-1.610) & -0.088 (-0.844) & 0.127 (0.737) & 0.036 (0.444)\\
-age\_bin40-64 & M & -0.006 (-0.104) &  & 0.669 (5.094)*** & \\
- & NM & 0.026 (0.386) & 0.433 (5.788)*** & 1.055 (7.805)*** & 2.241 (2.886)**\\
-age\_bin65-79 & M & 0.179 (1.147) &  & 0.395 (2.614)** & \\
- & NM & 0.801 (5.081)*** & 1.690 (2.998)** & 0.721 (4.647)*** & 2.132 (2.752)**\\
-age\_bin80+ & M & 17.592 (0.004) &  & 2.067 (2.293)* & \\
- & NM & 17.247 (0.004) & 14.648 (0.008) & 2.154 (2.391)* & 1.536 (1.980)*\\
-works\_home & M & -1.542 (-18.502)*** &  & -1.340 (-9.830)*** & \\
- & NM & -0.044 (-0.558) &  & 0.112 (0.869) & \\
+(Intercept) & M & \num{2.083} (\num{15.207})*** &  & \num{1.545} (\num{10.300})*** & \\
+ & NM & \num{1.137} (\num{7.854})*** & \num{0.591} (\num{6.359})*** & \num{0.338} (\num{2.088})* & \num{-1.169} (\num{-1.506})\\
+wheelchairTRUE & M & \num{-1.851} (\num{-3.328})*** &  & \num{-3.315} (\num{-3.906})*** & \\
+ & NM & \num{-0.625} (\num{-1.315}) & \num{-0.721} (\num{-3.647})*** & \num{-1.866} (\num{-3.560})*** & \num{-1.258} (\num{-11.924})***\\
+male & M & \num{0.008} (\num{0.140}) &  & \num{-0.040} (\num{-0.347}) & \\
+ & NM & \num{-0.148} (\num{-2.378})* & \num{-0.271} (\num{-3.477})*** & \num{-0.219} (\num{-1.828})+ & \num{0.235} (\num{4.798})***\\
+bach\_degree & M & \num{0.353} (\num{5.716})*** &  & \num{0.360} (\num{3.033})** & \\
+ & NM & \num{0.648} (\num{9.834})*** & \num{0.501} (\num{6.028})*** & \num{0.584} (\num{4.815})*** & \num{0.349} (\num{6.521})***\\
+income\$25,000 - \$50,000 & M & \num{-0.055} (\num{-0.373}) &  & \num{0.169} (\num{0.876}) & \\
+ & NM & \num{-0.371} (\num{-2.344})* & \num{-0.167} (\num{-1.506}) & \num{0.444} (\num{2.196})* & \num{-0.095} (\num{-1.358})\\
+income\$50,000 - \$100,000 & M & \num{-0.175} (\num{-1.272}) &  & \num{-0.160} (\num{-0.971}) & \\
+ & NM & \num{-0.312} (\num{-2.146})* & \num{-0.052} (\num{-0.506}) & \num{0.190} (\num{1.096}) & \num{0.115} (\num{1.643})\\
+income> \$100,000 & M & \num{-0.206} (\num{-1.495}) &  & \num{-0.326} (\num{-1.994})* & \\
+ & NM & \num{-0.233} (\num{-1.610}) & \num{-0.088} (\num{-0.844}) & \num{0.127} (\num{0.737}) & \num{0.036} (\num{0.444})\\
+age\_bin40-64 & M & \num{-0.006} (\num{-0.104}) &  & \num{0.669} (\num{5.094})*** & \\
+ & NM & \num{0.026} (\num{0.386}) & \num{0.433} (\num{5.788})*** & \num{1.055} (\num{7.805})*** & \num{2.241} (\num{2.886})**\\
+age\_bin65-79 & M & \num{0.179} (\num{1.147}) &  & \num{0.395} (\num{2.614})** & \\
+ & NM & \num{0.801} (\num{5.081})*** & \num{1.690} (\num{2.998})** & \num{0.721} (\num{4.647})*** & \num{2.132} (\num{2.752})**\\
+age\_bin80+ & M & \num{17.592} (\num{0.004}) &  & \num{2.067} (\num{2.293})* & \\
+ & NM & \num{17.247} (\num{0.004}) & \num{14.648} (\num{0.008}) & \num{2.154} (\num{2.391})* & \num{1.536} (\num{1.980})*\\
+works\_home & M & \num{-1.542} (\num{-18.502})*** &  & \num{-1.340} (\num{-9.830})*** & \\
+ & NM & \num{-0.044} (\num{-0.558}) &  & \num{0.112} (\num{0.869}) & \\
 \midrule
- & Num.Obs. & 15895 & 3648 & 3912 & 9482\\
- & AIC & 26550.2 & 4470.9 & 6965.2 & 10689.7\\
+ & Num.Obs. & \num{15895} & \num{3648} & \num{3912} & \num{9482}\\
+ & AIC & \num{26550.2} & \num{4470.9} & \num{6965.2} & \num{10689.7}\\
  & BIC &  &  &  & \\
- & Log.Lik. & -13253.089 & -2225.474 & -3460.598 & -5334.858\\
- & rho2 & 0.031 & 0.019 & 0.055 & 0.026\\
- & rho20 & 0.241 & 0.120 & 0.195 & 0.188\\
+ & Log.Lik. & \num{-13253.089} & \num{-2225.474} & \num{-3460.598} & \num{-5334.858}\\
+ & rho2 & \num{0.031} & \num{0.019} & \num{0.055} & \num{0.026}\\
+ & rho20 & \num{0.241} & \num{0.120} & \num{0.195} & \num{0.188}\\
 \bottomrule
-\multicolumn{6}{l}{\textsuperscript{} t-statistics in parentheses, * p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
-\multicolumn{6}{l}{\textsuperscript{} Coefficients represent utility change relative to H: stay at home pattern.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Coefficients represent utility change relative to H: stay at home pattern.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}t-statistics in parentheses, * p $<$ 0.1, ** p $<$ 0.05, *** p $<$ 0.01}\\
 \end{tabular}}
 \end{table}
 
