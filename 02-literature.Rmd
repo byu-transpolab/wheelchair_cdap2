@@ -1,31 +1,24 @@
 # Literature {#sec-literature}
 
-Recent analysis [@Brumbaugh2018] of the 2017 NHTS suggests there are 13.4
+Recent analysis [@Brumbaugh2018] of the 2017 NHTS [@fhwa2017] suggests there are 13.4
 million individuals individuals in the US with travel-limiting disabilities --- as defined by a
 specific question in the NHTS and encompassing sight, ambulatory, hearing, and
 other disabilities. Of these individuals, 20 percent (or 2.7
-million) use wheelchairs. With the relative aging of the U.S. population, the
-share of Americans with all disabilities as well as those using wheelchairs is
-likely to rise substantially [@Sweeney2004; Laplante2003].
-
+million) self-report as using wheelchairs. With the relative aging of the U.S.
+population, the share of Americans with all disabilities as well as those using
+wheelchairs is likely to rise substantially [@Sweeney2004; @Laplante2003].
 The question of how the travel behavior of individuals with travel-limiting
 disabilities varies from the travel behavior of individuals without these
-disabilities has been addressed previously in a number of studies. That said,
-the literature on this topic is relatively fragmented due to the wide variety of
-specific disabilities people. The literature also has suffered from a relatively
-fragmented approach; rather than considering how disability manifests at each
-hierarchical level of the transportation decision-making process, the literature
-consists largely of ad-hoc studies conducted on a specific, specially collected
-dataset.
+disabilities has been addressed previously in a number of studies. 
 
 With regards to travel patterns, surveys of the general population and surveys
 specifically targeted at individuals with disabilities both reveal significant and
 meaningful differences compared to individuals without disabilities. Specific
 findings include that individuals with disabilities leave their homes on fewer
-days if ever [@Sweeney2004], make fewer daily trips [@Schmocker2005;
+days if if they leave at all [@Sweeney2004], make fewer daily trips [@Schmocker2005;
 @Brumbaugh2018] make fewer work trips and more healthcare maintenance trips
 [@Ermagun2016], rely more on others for their travel [@Sweeney2004]
-and have considerably restricted mode choices [@Rosenbloom2007, @Ruvolo2020].
+and have considerably restricted mode choices [@Rosenbloom2007; @Ruvolo2020].
 These differences in mobility and activity patterns have important and observed
 negative implications for the individual's access to opportunity for employment
 [@Rosenbloom2007; @Lubin2012] and social interaction [@Bascom2017; @Velho2016].
@@ -40,22 +33,37 @@ include poor access to private vehicles
 [@frackelton2013measuring], lack of physical access to TNC
 vehicles [@Ruvolo2020], bus ramp complication and malfunction [@Velho2016],
 and numerous other problems across many modes.
-Attitudinal barriers include feeling shame when safety alarms alert all
-passengers that a ramp is being deployed or motion sickness when the users 
-are forced to travel backwards in the wheelchair priority area [@Velho2016], or
-suffering outright discrimination from TNC operators [@Bascom2017].
+Attitudinal barriers include feeling embarrassment, for instance when a safety 
+tone alerts all passengers that the wheelchair ramp is being deployed drawing 
+attention not only to the user and his or her disability, but also to the fact that the
+transit vehicle is being delayed [@Velho2016]. Additionally, some wheelchair users
+and others with disabilities have faced outright discrimination from private
+transportation service operators [@Bascom2017].
 
-In spite of this relatively mature literature, however, there has not to
-date been a rigorous evaluation of the travel behavior of individuals with 
-disabilities within the framework of a travel activity model. As a result,
-recent attempts to simulate or model services aimed at this population have
-needed to make simplifying assumptions. In an attempt to model demand for a
-modern mobility system targeted at wheelchair users in Berlin, @Bischoff2019
-simply assumed demand for this service would be similar to current demand for
-the regional paratransit system, augmented by a mode shift from taxi. In this
-initial study there was no link between the MaaS trips and the daily activities
-of the wheelchair users; there was not even a good understanding of likely trip
-origin, destination, or length distribution.
+
+In spite of this relatively mature literature and the variety of findings on the 
+topic, the research to date might be described as fragmented in both scope and 
+application. That is, the literature reviewed here typically considers a single 
+specific disability within the wide variety of relevant disabilities manifested
+in the NHTS results. But more importantly in the context of this research, the
+literature consists largely of ad-hoc studies conducted on specially
+collected datasets rather than holistically considering how disability manifests
+at within an established transportation decision-making process. Specifically,
+there has not to our knowledge been a rigorous evaluation of the travel behavior
+of individuals with disabilities within the framework of a travel activity
+model.
+
+As a result, recent attempts to simulate or model services aimed at this
+population have needed to make simplifying assumptions. In an attempt to model
+demand for a modern mobility system targeted at wheelchair users in Berlin,
+@Bischoff2019 simply assumed demand for this service would be similar to current
+demand for the regional paratransit system, augmented by a mode shift from taxi.
+Though paratransit patrons in the United States, Germany, and other similar
+contexts may use wheelchairs, the use of a wheelchair alone does not usually 
+qualify a user for paratransit service.
+Further, in the initial modeling by @Bischoff2019 there was no link between the
+trips and the daily activities of the wheelchair users; there was not even a
+good understanding of likely trip origin, destination, or length distribution.
 
 Including wheelchair users or wheelchair use status in a regularized travel model
 framework would help to fill two important gaps in the current literature. First, 
