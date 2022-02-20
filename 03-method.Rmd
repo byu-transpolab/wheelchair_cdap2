@@ -1,17 +1,24 @@
 # Methods {#methodology}
 
+To begin the process of evaluating the effect of wheelchair use on travel
+behavior, we have developed a two-stage methodology. First, we
+estimate a daily activity pattern choice model using data from the 2017 NHTS. We
+then apply the coefficients obtained from that model in an activity-based model
+representing the Wasatch Front Region in Utah.
+
 Activity-based models are a relatively mature construct in travel behavior
 research and in practical demand forecasting [@rasouli2014activity]. Activity-based models attempt
-to recreate the long- and short-term decision patterns of individuals within a
+to recreate the long- and short-term decision patterns of synthetic individuals using a
 chain of econometric and statistical choice models. The specific sub-models included
 in this chain can vary between specific implementations, but a recent 
 open-source project --- ActivitySim [@activitysim] --- implements a popular 
-set of models [@davidson2010ct]. Specifically, the ActivitySim demonstration
+set of models developed by @davidson2010ct. Specifically, the ActivitySim demonstration
 model is a implementation of the "Travel Model One" model for the Metropolitan
 Transportation Commission (MTC, San Francisco Bay) [@erhardt2012mtc].
-For simplicity and comparison with other models, we apply the ActivitySim model
-in this research.
+For simplicity and potential future comparison with other models, we apply the
+ActivitySim model in this research.
 
+## Choice Model
 The first step in the ActivitySim model chain is a \emph{daily activity pattern}
 model of the type described by @Bradley2005. This model 
 allows individuals to choose one of three daily activity patterns:
@@ -31,17 +38,13 @@ segment. The specific innovation of the @Bradley2005 model is that the daily
 activity patterns are coordinated, or that the choice of one individual in a
 household influences the choice probability of other household members. 
 
-In this research, we first estimate a daily activity pattern model for
-respondents to the National Household Travel Survey. We then apply the estimated
-coefficients within an ActivitySim implementation calibrated to the Wasatch Front
-Region in Utah.
-
-## Choice Model
-Data for this study comes from the 2017 NHTS [@fhwa2017]. We restrict the
-data to households where the metropolitan statistical area (MSA) population size
-is between one and three million people. There are 76,367 individuals in 36,497 
-households that responded to the NHTS from these areas, though not all of these
-records are useful due to missing or incomplete data in key variables.
+Data for this study comes from the 2017 NHTS [@fhwa2017], which includes
+responses from across the United States involving rural, urban, and suburban
+areas. We restrict the data to households residing in an metropolitan statistical
+area (MSA) between one and three million in population. There are
+76,367 individuals in 36,497 households that responded to the NHTS from these
+areas, though not all of these records are useful due to missing or incomplete
+data in key variables.
 
 The NHTS releases public data in separate tables for persons, households,
 trips and vehicles; to determine the daily activity pattern for a given
@@ -55,14 +58,43 @@ if not, the daily activity pattern was "non-mandatory." By identifying responden
 in the persons table without records in the trips table, we can determine
 individuals with a "home" daily activity pattern.
 
-We do, however, adopt the person type segmentation strategy employed by
-ActivitySim; segmentation allows for heterogeneity in available
-alternatives and utility coefficients between individuals with highly divergent
-expected behaviors. For example, full time workers and pre-driving age school children
-will have strongly different responses to income, automobile availability, and 
-and other variables in determining their most likely daily pattern.
-A complete descriptive list of each person type is given in the data
-section below. 
+The NHTS has a number of questions where respondents can indicate a disability
+for themselves or other household members. Each respondent is asked "Do you
+have a condition or handicap that makes it difficult to travel outside of the
+home?" If the answer is yes, several follow-up questions are asked, including
+"Do you use any of the following medical devices? Select all that apply." The
+list of medical devices respondents can indicated includes canes, walkers,
+seeing-eye dogs, crutches, motorized scooters, manual wheelchairs, 
+motorized wheelchairs, or something else (other). 
+For this study, we identify wheelchair users as respondents who report using a
+manual wheelchair, mechanical wheelchair, or motorized scooter.
+
+
+The specific variables included in the daily activity pattern choice models
+are based initially on the variables used in MTC Travel Model One [@erhardt2012mtc].
+The variables available in the NHTS include the age of
+the person and the household income treated as categorical ranges; gender, work,
+and college degree status are treated as binary values. Automobile availability is
+included via a binary "sufficiency" variable where a household with at least as
+many vehicles as adults is considered "auto sufficient." Descriptive statistics
+of the model variables are given in  Table \@ref(tab:descriptive-stats).
+
+```{r descriptive-stats}
+tar_load(descriptives)
+datasummary_balance(~Type, data = descriptives, dinm = FALSE, 
+                    title = "Model Estimation Data: Descriptive Statistics") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  landscape()
+```
+
+We adopt the person type segmentation strategy employed by ActivitySim;
+segmentation allows for heterogeneity in available alternatives and utility
+coefficients between individuals with highly divergent expected behaviors. For
+example, full time workers and pre-driving age school children will have
+strongly different responses to income, automobile availability, and other
+variables in determining their most likely daily pattern. A complete descriptive
+list of each person type is given in the data section below.
+
 ActivitySim classifies persons into seven person segments, though we only
 consider four types in this study, defined as follows:
 
@@ -81,37 +113,6 @@ driving age, and driving-age schoolchildren. A limited number of individuals who
 could plausibly be considered university students responded to the NHTS, so we
 cannot estimate reliable choice models. Among schoolchildren of any age, too few
 report using wheelchairs to justify including these segments in this study.
-
-
-The NHTS has a number of questions where respondents can indicate a disability
-for themselves or other household members. Each respondent is asked "Do you
-have a condition or handicap that makes it difficult to travel outside of the
-home?" If the answer is yes, several follow-up questions are asked, including
-"Do you use any of the following medical devices? Select all that apply." The
-list of medical devices respondents can indicated includes canes, walkers,
-seeing-eye dogs, crutches, motorized scooters, manual wheelchairs, 
-motorized wheelchairs, or something else (other). 
-For this study, we identify wheelchair users as respondents who report using a
-manual wheelchair, mechanical wheelchair, or motorized scooter.
-
-
-The specific variables included in the daily activity pattern choice models
-are based initially on the variables used in the ActivitySim example model (which are
-those used in MTC Travel Model One. The variables available include the age of
-the person and the household income treated as categorical ranges; gender, work,
-and college degree status are treated as binary values. Automobile availability is
-included via a binary "sufficiency" variable where a household with at least as
-many vehicles as adults is considered "auto sufficient." Descriptive statistics
-of the model variable within each person segment are given in 
-Table \@ref(tab:descriptive-stats)
-
-```{r descriptive-stats}
-tar_load(descriptives)
-datasummary_balance(~Type, data = descriptives, dinm = FALSE, 
-                    title = "Model Estimation Data: Descriptive Statistics") %>%
-  kable_styling(latex_options = "scale_down") %>%
-  landscape()
-```
 
 
 ## ActivitySim Implementation
