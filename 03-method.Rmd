@@ -92,9 +92,7 @@ segmentation allows for heterogeneity in available alternatives and utility
 coefficients between individuals with highly divergent expected behaviors. For
 example, full time workers and pre-driving age school children will have
 strongly different responses to income, automobile availability, and other
-variables in determining their most likely daily pattern. A complete descriptive
-list of each person type is given in the data section below.
-
+variables in determining their most likely daily pattern. 
 ActivitySim classifies persons into seven person segments, though we only
 consider four types in this study, defined as follows:
 
@@ -117,17 +115,42 @@ report using wheelchairs to justify including these segments in this study.
 
 ## ActivitySim Implementation
 
+After obtaining an estimate for the relationship between wheelchair use and
+daily activity patterns, we wish to understand the impact of this variable on
+overall transportation demand forecasting. To do this, we can place the
+enhanced daily activity pattern model including this relationship within an  
+Activitysim implementation. In this case, we use an implementation of ActivitySim
+in the Wasatch Front region of Utah; this implementation includes the Salt Lake
+City, Provo, and Ogden metropolitan areas.^[This implementation is not the 
+official regional travel demand model; the calibration and development of this
+model is described in [@udotwheelchairs].]
 
+The synthetic population for this implementation is generated with PopulationSim
+[@paul2018], which uses American Community Survey Public Use Microdata Sample
+(ACS PUMS)[@acspums] as seed table. Any variables from ACS PUMS can in principle 
+be included in synthetic population and therefore in the model. The ACS PUMS
+includes a “disability” variable but not specific information on wheelchair use.
+The NHTS, however, does explicitly contain a wheelchair use variable as
+described earlier.
 
+Using the NHTS data, we estimated a binary logit regression model where the
+probability for wheelchair use was determined to be a function of age,
+\begin{equation}
+  P_{\mathrm{wheelchair | disability}}=-2.59 + 0.014*age
+  (\#eq:wheelchair)
+\end{equation}
+Other specifications of this regression equation did not result in substantively
+different model forms. For each person in the synthetic population with a disability
+as sampled from the ACS PUMS seed table, we determined the probability they
+would use a wheelchair based on the model in Equation \@ref(eq:wheelchair). A random
+draw allocated these individuals into using or not using a wheelchair.
+Of the total synthetic population, those using a wheelchair consisted of 0.8
+percent of all individuals.
 
-
-
-
-
-
-
-
-
+With the synthetic population described above, we modified the ActivitySim 
+daily activity pattern model to consider wheelchair use. We then compared two 
+complete runs of ActivitySim on the same synthetic population of 2.47 million
+individuals, with and without the wheelchair use variable activated.
 
 
 
