@@ -2,14 +2,14 @@
 
 ## Choice Analysis
 
-We estimated the models using mlogit for R [@R-base, @mlogit2020]. As described above, the
-alternatives for daily activity pattern choice are a Mandatory pattern where the 
-individual's day involves a work or school tour, a Non-Mandatory pattern where 
-only discretionary trips are taken, and a Home pattern where the individual does 
-not leave home. In the models estimated for this study, the Home pattern serves
-as the reference alternative with a utility of zero. Retired and otherwise 
-non-working individuals choose only between Non-Mandatory and Home daily activity
-patterns.
+We estimated the daily activity pattern choice models using mlogit for R
+[@R-base, @mlogit2020]. As described above, the alternatives for daily activity
+pattern choice are a Mandatory pattern where the individual's day involves a
+work or school tour, a Non-Mandatory pattern where only discretionary trips are
+taken, and a Home pattern where the individual does not leave home during the
+day. In the models estimated for this study, the Home pattern serves as the
+reference alternative with a utility of zero. Retired and otherwise non-working
+individuals choose only between Non-Mandatory and Home daily activity patterns.
 
 The model estimates are presented in 
 Table \@ref(tab:model-coef). 
@@ -27,6 +27,7 @@ in other person type segments.
 
 ```{r model-coef}
 tar_load(pt_modelsummary)
+
 f <- function(x) format(round(x, 3))
 gm <- list(
   list("raw" = "nobs", "clean" = "N", "fmt" = f),
@@ -36,71 +37,115 @@ gm <- list(
 modelsummary(
   pt_modelsummary, group = variable + term ~ model, 
   gof_map = gm,
+  coef_map = c(
+    "M" = "Mandatory",
+    "NM" = "Non-mandatory"
+  ),
   estimate = "{estimate} ({statistic}){stars}",
   statistic = NULL,
+  escape = FALSE,
   stars = c('*' = .01, '**' = .01),
   notes = c("t-statistics in parentheses, * p < 0.5, ** p < 0.01",
-            "Coefficients represent utility change relative to H: stay at home pattern."),
+            "Coefficients represent utility change relative to stay at home pattern."),
   title = "Daily Activity Pattern Model Estimates") %>%
   kable_styling(latex_options = c("scale_down"))
 ```
 
+The model coefficients indicate expected behavior for most included variables. 
+All else equal, the model intercepts imply that full- and part-time workers 
+are more likely to choose a mandatory daily pattern than either a non-mandatory 
+home pattern. Men of all person types are less likely to choose non-mandatory 
+patterns, and college graduates are more likely to choose any kind of out-of-home
+pattern. The effect of age group and income are less impactful for most trip
+purposes, with the exception of non-mandatory patterns being more likely to be
+chosen by individuals between the ages of 65 and 79. The strong coefficient 
+seen on the choices of full-time workers over 79 years old is not significant, 
+and is rather a relic of very few full-time workers of that age in the data set.
 
-In this regard, the model results show strong divergence of the utility
-preferences of individuals who use wheelchairs. For instance, full-time workers 
-in the middle income groups are modestly less likely to choose non-mandatory 
-patterns, and part-time workers of higher income are less like to choose
-mandatory patterns. Income appears to have no discernible effect on  the choices
-of non-working and retired individuals. We see a negative utility score for all 
-person types with a wheelchair variable, and “mandatory” is even more negative. 
-This is expected as individuals with wheelchairs are less likely to take a work 
-or school trip compared to a shopping or a recreational trip. Non-workers and 
-retired person types do not have a coefficient for “mandatory” DAP because those 
-users by definition do not take “mandatory” DAP. Indeed, wheelchair use is among 
-the strongest predictors of daily activity pattern choice across population 
-segments. 
+The use of a wheelchair is strongly significant for all person segments, and
+indicates wheelchair users are substantially less likely to make mandatory tours
+even if employed. For non-workers and retirees who use wheelchairs, their propensity
+to make non-mandatory tours is also substantially diminished. More notable than
+the significance of this variable alone, however, is the fact that its magnitude
+is so strong. Indeed, wheelchair use appears to be more influential on the choice
+of daily pattern than any other variable included in these models.
+
 
 ## Activity-based Model
 
-As a secondary example, the research measures the impact of 
-wheelchair status on ActivitySim’s selection of daily plans for our given 
-synthetic population. Given a “Before” scenario in ActivitySim of the Salt Lake 
-Area and ignoring the newly added wheelchair status in the synthetic population, 
-ActivitySim predicted a DAP for each individual. In a second, “After” scenario, 
-ActivitySim again predicted a DAP for each person, this time considering the 
-wheelchair use status of each individual in the population. We hypothesized that 
-those with wheelchairs and those in the same households as individuals with 
-wheelchairs would change their DAP because of the negative utility scores 
-applied to the “mandatory” and “nonmandatory” DAP alternatives, and the rest of 
-the population would be unaffected. The DAP of those within the same household 
-of a wheelchair user may change because of the coordinated nature of household 
-DAP in ActivitySim. Table \@ref(tab:dap-summary) shows the change in DAP among those with 
-wheelchairs, in the same household as one with a wheelchair, and with neither a 
-wheelchair nor in the same household. The table contains both total volumes and 
-percentages; the value of percent is by total volume in the group, for example, 
-16.4 percent of Wheelchair Users chose a “home” pattern in both the “Before” 
-scenario and the “After” scenario. The latter group is rightly unaffected by 
-the wheelchair implementation in the simulation (with the exception of a few
-changes attributable to randomness) and does not include a percentage breakdown. 
-Primarily, DAP remain the same for most individuals, as shown in the diagonal. 
-However, there is a large volume of wheelchair users and their household members 
-that stay home, particularly from “nonmandatory” DAP. This finding is consistent 
-with our hypothesis. 
+At the individual level, wheelchair use appears highly predictive. It still remains
+to be seen, however, what the effect of including this variable in a forecasting
+model will do to aggregate trip making. To examine this question, we placed the 
+wheelchair use variable coefficients shown in Table \@ref(tab:model-coef) into 
+the ActivitySim daily activity pattern model. We allowed the other coefficients
+to retain their values as originally specified, assuming that wheelchair use 
+is orthogonal to the other variables.
+
 
 ```{r dap-summary}
 tar_load(dap_table)
 kbl(dap_table, booktabs = TRUE, caption = "Daily Activity Pattern Change",
-    col.names = c("Group", "DAP without Wheelchair Use", "H", "M", "N")) %>%
-  add_header_above(c("", "", "DAP with Wheelchair Use" = 3)) %>%
+    col.names = c("Group", "Base", "H", "M", "N")) %>%
+  add_header_above(c("", "", "Considering Wheelchair Use" = 3)) %>%
   collapse_rows(columns = 1, latex_hline = "major") %>% 
   kable_styling()
 ```
 
+```{r dap-calcs}
+tar_load(asim_dap)
+n_changed <- nrow(asim_dap %>% filter(DAP_after != DAP_before))
+n_total <- nrow(asim_dap)
+change1 <- (932 + 308) / (932 + 1642 + 308)
+change2 <- (1235 + 759) / (1235 + 759 + 4511)
+```
+
+Overall, `r n_changed` individuals of the `r n_total` 
+in the region changed their daily activity patterns changed from the base
+scenario after including wheelchair use as a utility variable.
+Though this is only `r n_changed / n_total * 100`% of individuals, it is worth
+considering the distribution of this change in more detail. Table
+\@ref(tab:dap-summary) presents an aggregate summary of individuals who kept and 
+changed their plans. Individuals with no wheelchair users in their household are 
+not affected, other than through some random simulation error. For wheelchair users
+themselves however, the changes are relatively large. 
+For example, `r change1*100`% of the wheelchair users who were modeled as 
+making mandatory tour patterns in the base scenario are now expected to make 
+non-mandatory or stay-at-home patterns. Similarly, wheelchair users who previously
+chose non-mandatory patttens are considerably more likely to stay at home.
+
+The coordinated nature of the ActivitySim daily activity pattern model also allows
+household members of wheelchair users to be affected. For these people, 
+the changes are smaller in proportion but potentiall meaningful in aggregate: 
+`r change2 * 100` of the household members who stay at home in the new scenario
+incorporating wheelchair use previously made out-of-home tours in the base scenario.
 
 
+```{r dap-map, fig.cap="Percent of households with changed daily activity pattern between two scenarios.", fig.height = 8}
+tar_load(dap_map)
+
+ggplot(dap_map %>% filter(pct > 0), aes(fill = pct)) +
+  annotation_map_tile("cartolight", zoom = 10) +
+  geom_sf(alpha = 0.5, color = NA) +
+  scale_fill_viridis_c("Percent changed DAP", option = "inferno", direction = -1,
+                       labels = scales::percent_format(accuracy = 5L, suffix = "" )) +
+  theme(
+    axis.text.x=element_blank(),
+    axis.text.y=element_blank(),axis.ticks=element_blank(),
+    axis.title.x=element_blank(),
+    axis.title.y=element_blank(),
+    legend.text=element_text(size=8), #change font size of legend text
+    legend.title=element_text(size=8)
+  )
+```
 
 
-
+In addition to these aggregate numbers, it is also worth considering where the
+affected households are concentrated. Wheelchair use and disability in general
+is not distributed evenly through the region. Figure \@ref(fig:dap-map) shows the
+concentration of households where at least one member changed its chosen 
+daily activity pattern between the scenarios by traffic analysis zone. Though
+most areas of the region experience little if any alteration, some zones see as 
+many as 20% or 30% of their households change activity patterns. 
 
 
 

@@ -60,6 +60,9 @@ library(knitr)
 library(kableExtra)
 library(modelsummary)
 library(targets)
+library(sf)
+library(ggspatial)
+library(leaflet)
 options(dplyr.summarise.inform = FALSE)
 # Other packages ------
 # These sometimes get used, and sometimes don't.

@@ -10,4 +10,5 @@ README.html
 
 data/
 _bookdown_files/
-
+rosm.cache/
+wheelchair_cdap-tikzDictionary
