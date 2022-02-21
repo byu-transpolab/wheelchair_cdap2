@@ -136,11 +136,11 @@ described earlier.
 Using the NHTS data, we estimated a binary logit regression model where the
 probability for wheelchair use was determined to be a function of age,
 \begin{equation}
-  P_{\mathrm{wheelchair | disability}}=-2.59 + 0.014*age
+  P_{\mathrm{wheelchair | disability}}=-2.59 + 0.014*\mathrm{age}
   (\#eq:wheelchair)
 \end{equation}
 Other specifications of this regression equation did not result in substantively
-different model forms. For each person in the synthetic population with a disability
+different model fit. For each person in the synthetic population with a disability
 as sampled from the ACS PUMS seed table, we determined the probability they
 would use a wheelchair based on the model in Equation \@ref(eq:wheelchair). A random
 draw allocated these individuals into using or not using a wheelchair.
@@ -150,7 +150,12 @@ percent of all individuals.
 With the synthetic population described above, we modified the ActivitySim 
 daily activity pattern model to consider wheelchair use. We then compared two 
 complete runs of ActivitySim on the same synthetic population of 2.47 million
-individuals, with and without the wheelchair use variable activated.
+individuals, with and without the wheelchair use variable activated. As described
+earlier, the daily activity pattern model in ActivitySim is coordinated, meaining
+that when an individual has an increased likelihood of choosing an at-home tour,
+other members of the household will have an increased likelihood as well [@Bradley2005].
+Thus it is important to evaluate not only the daily activity patterns of 
+individuals who use wheelchairs, but also their household members.
 
 
 
