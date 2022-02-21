@@ -24,7 +24,7 @@ source("R/asim.R")
 options(timeout=200)
 
 # Set target-specific options such as packages.
-tar_option_set(packages = c("tidyverse", "nhts2017", "mlogit", "modelsummary"))
+tar_option_set(packages = c("tidyverse", "nhts2017", "mlogit", "modelsummary", "sf"))
 set.seed(42)
 
 # Set path to activitysim zip files
@@ -51,7 +51,10 @@ tar_plan(
   households_wc = asim_households_wc("data/households_wc.csv"),
   asim_dap = asim_join(persons_base, persons_wc, households_wc),
   
-  # Estimate dap models
-  dap_table = build_table(asim_dap)
+  
+  # construct DAP tables
+  taz = st_read("data/taz.geojson"),
+  dap_table = build_table(asim_dap),
+  dap_map = map_affected(asim_dap, households_wc, taz)
 )
 

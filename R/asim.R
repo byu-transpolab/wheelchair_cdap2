@@ -95,3 +95,37 @@ build_table <- function(asim_dap) {
 }
 
 
+#' Make a map of affected households
+#' 
+#' @param asim_dap data set
+#' @param asim_persons_wc
+#' 
+map_affected <- function(asim_dap, households_wc, taz){
+  
+  changed_dap <- asim_dap %>%
+    filter(DAP_after != DAP_before)
+  
+  n_hh <- households_wc %>%
+    group_by(TAZ) %>%
+    summarise(n_households = n())
+  
+  where_changed <- households_wc %>%
+    filter(household_id %in% changed_dap$hh) %>%
+    group_by(TAZ) %>%
+    summarise(n = n())
+  
+  taz %>%
+    select(TAZ = TAZID) %>%
+    left_join(n_hh, by = "TAZ") %>%
+    left_join(where_changed, by = "TAZ")  %>%
+    mutate(
+      n_households = ifelse(is.na(n_households), 0, n_households),
+      n = ifelse(is.na(n), 0, n),
+      pct = ifelse(n_households == 0, 0, n / n_households)
+    )
+  
+}
+
+
+
+

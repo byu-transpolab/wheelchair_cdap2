@@ -64,9 +64,10 @@ make_ptsummary <- function(pt_models) {
     "works_home" = "Works from home",
     "male" = "Male",
     "income" = "Income ",
+    "\\$" = "\\\\$",
     "age_bin" = "Age "
   )
-  m_list <- modelsummary(pt_models, output = "modelsummary_list", coef_map = mycoefmap)
+  m_list <- modelsummary(pt_models, output = "modelsummary_list")
   
   
   for(m in names(m_list)){
@@ -82,6 +83,8 @@ make_ptsummary <- function(pt_models) {
   m_list
 
 }
+
+
 
 
 
