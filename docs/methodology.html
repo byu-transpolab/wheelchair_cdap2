@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-02-01" />
+<meta name="date" content="2022-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,17 +208,24 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="methodology" class="section level1" number="3">
 <h1><span class="header-section-number"> 3</span> Methods</h1>
+<p>To begin the process of evaluating the effect of wheelchair use on travel
+behavior, we have developed a two-stage methodology. First, we
+estimate a daily activity pattern choice model using data from the 2017 NHTS. We
+then apply the coefficients obtained from that model in an activity-based model
+representing the Wasatch Front Region in Utah.</p>
 <p>Activity-based models are a relatively mature construct in travel behavior
 research and in practical demand forecasting <span class="citation">(<a href="#ref-rasouli2014activity" role="doc-biblioref">Rasouli and Timmermans, 2014</a>)</span>. Activity-based models attempt
-to recreate the long- and short-term decision patterns of individuals within a
+to recreate the long- and short-term decision patterns of synthetic individuals using a
 chain of econometric and statistical choice models. The specific sub-models included
 in this chain can vary between specific implementations, but a recent
 open-source project — ActivitySim <span class="citation">(<a href="#ref-activitysim" role="doc-biblioref">AMPO, 2020</a>)</span> — implements a popular
-set of models <span class="citation">(<a href="#ref-davidson2010ct" role="doc-biblioref">Davidson et al., 2010</a>)</span>. Specifically, the ActivitySim demonstration
+set of models developed by <span class="citation"><a href="#ref-davidson2010ct" role="doc-biblioref">Davidson et al.</a> (<a href="#ref-davidson2010ct" role="doc-biblioref">2010</a>)</span>. Specifically, the ActivitySim demonstration
 model is a implementation of the “Travel Model One” model for the Metropolitan
 Transportation Commission (MTC, San Francisco Bay) <span class="citation">(<a href="#ref-erhardt2012mtc" role="doc-biblioref">Erhardt et al., 2012</a>)</span>.
-For simplicity and comparison with other models, we apply the ActivitySim model
-in this research.</p>
+For simplicity and potential future comparison with other models, we apply the
+ActivitySim model in this research.</p>
+<div id="choice-model" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Choice Model</h2>
 <p>The first step in the ActivitySim model chain is a 
 model of the type described by <span class="citation"><a href="#ref-Bradley2005" role="doc-biblioref">Bradley and Vovsha</a> (<a href="#ref-Bradley2005" role="doc-biblioref">2005</a>)</span>. This model
 allows individuals to choose one of three daily activity patterns:</p>
@@ -237,17 +244,13 @@ determined by an individual’s socioeconomic characteristics and person type
 segment. The specific innovation of the <span class="citation"><a href="#ref-Bradley2005" role="doc-biblioref">Bradley and Vovsha</a> (<a href="#ref-Bradley2005" role="doc-biblioref">2005</a>)</span> model is that the daily
 activity patterns are coordinated, or that the choice of one individual in a
 household influences the choice probability of other household members.</p>
-<p>In this research, we first estimate a daily activity pattern model for
-respondents to the National Household Travel Survey. We then apply the estimated
-coefficients within an ActivitySim implementation calibrated to the Wasatch Front
-Region in Utah.</p>
-<div id="choice-model" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Choice Model</h2>
-<p>Data for this study comes from the 2017 NHTS <span class="citation">(<a href="#ref-fhwa2017" role="doc-biblioref">U.S. Department of Transportation and Federal Highway Administration, 2017</a>)</span>. We restrict the
-data to households where the metropolitan statistical area (MSA) population size
-is between one and three million people. There are 76,367 individuals in 36,497
-households that responded to the NHTS from these areas, though not all of these
-records are useful due to missing or incomplete data in key variables.</p>
+<p>Data for this study comes from the 2017 NHTS <span class="citation">(<a href="#ref-fhwa2017" role="doc-biblioref">U.S. Department of Transportation and Federal Highway Administration, 2017</a>)</span>, which includes
+responses from across the United States involving rural, urban, and suburban
+areas. We restrict the data to households residing in an metropolitan statistical
+area (MSA) between one and three million in population. There are
+76,367 individuals in 36,497 households that responded to the NHTS from these
+areas, though not all of these records are useful due to missing or incomplete
+data in key variables.</p>
 <p>The NHTS releases public data in separate tables for persons, households,
 trips and vehicles; to determine the daily activity pattern for a given
 individual it was necessary to transform the trips table into a table of
@@ -259,32 +262,6 @@ activity, the person’s entire daily activity pattern was classified as “mand
 if not, the daily activity pattern was “non-mandatory.” By identifying respondents
 in the persons table without records in the trips table, we can determine
 individuals with a “home” daily activity pattern.</p>
-<p>We do, however, adopt the person type segmentation strategy employed by
-ActivitySim; segmentation allows for heterogeneity in available
-alternatives and utility coefficients between individuals with highly divergent
-expected behaviors. For example, full time workers and pre-driving age school children
-will have strongly different responses to income, automobile availability, and
-and other variables in determining their most likely daily pattern.
-A complete descriptive list of each person type is given in the data
-section below.
-ActivitySim classifies persons into seven person segments, though we only
-consider four types in this study, defined as follows:</p>
-<ul>
-<li>Full-time workers (FW) - reported working “full-time” at their primary job.</li>
-<li>Part-time worker (PW) - reported working “part-time” at their primary job,
-as well as any person who reported being a “non-worker” or “retired” who nevertheless
-reported a work or school activity.</li>
-<li>Non-working adults (NW) - reported “unemployed” as their primary activity
-of the previous week, as well as individuals over 18 who were not classified
-elsewhere.</li>
-<li>Retired (RT) - reported “retired” as their primary activity of the previous
-week, or who are over the age of 65 and reported that they were not workers.</li>
-</ul>
-<p>The other three person types are university students, schoolchildren under
-driving age, and driving-age schoolchildren. A limited number of individuals who
-could plausibly be considered university students responded to the NHTS, so we
-cannot estimate reliable choice models. Among schoolchildren of any age, too few
-report using wheelchairs to justify including these segments in this study.</p>
 <p>The NHTS has a number of questions where respondents can indicate a disability
 for themselves or other household members. Each respondent is asked “Do you
 have a condition or handicap that makes it difficult to travel outside of the
@@ -296,14 +273,13 @@ motorized wheelchairs, or something else (other).
 For this study, we identify wheelchair users as respondents who report using a
 manual wheelchair, mechanical wheelchair, or motorized scooter.</p>
 <p>The specific variables included in the daily activity pattern choice models
-are based initially on the variables used in the ActivitySim example model (which are
-those used in MTC Travel Model One. The variables available include the age of
+are based initially on the variables used in MTC Travel Model One <span class="citation">(<a href="#ref-erhardt2012mtc" role="doc-biblioref">Erhardt et al., 2012</a>)</span>.
+The variables available in the NHTS include the age of
 the person and the household income treated as categorical ranges; gender, work,
 and college degree status are treated as binary values. Automobile availability is
 included via a binary “sufficiency” variable where a household with at least as
 many vehicles as adults is considered “auto sufficient.” Descriptive statistics
-of the model variable within each person segment are given in
-Table <a href="methodology.html#tab:descriptive-stats">3.1</a></p>
+of the model variables are given in Table <a href="methodology.html#tab:descriptive-stats">3.1</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="methodology.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(descriptives)</span>
 <span id="cb1-2"><a href="methodology.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span>Type, <span class="at">data =</span> descriptives, <span class="at">dinm =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb1-3"><a href="methodology.html#cb1-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">title =</span> <span class="st">&quot;Model Estimation Data: Descriptive Statistics&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -1058,9 +1034,69 @@ Works from Home
 </tr>
 </tbody>
 </table>
+<p>We adopt the person type segmentation strategy employed by ActivitySim;
+segmentation allows for heterogeneity in available alternatives and utility
+coefficients between individuals with highly divergent expected behaviors. For
+example, full time workers and pre-driving age school children will have
+strongly different responses to income, automobile availability, and other
+variables in determining their most likely daily pattern.
+ActivitySim classifies persons into seven person segments, though we only
+consider four types in this study, defined as follows:</p>
+<ul>
+<li>Full-time workers (FW) - reported working “full-time” at their primary job.</li>
+<li>Part-time worker (PW) - reported working “part-time” at their primary job,
+as well as any person who reported being a “non-worker” or “retired” who nevertheless
+reported a work or school activity.</li>
+<li>Non-working adults (NW) - reported “unemployed” as their primary activity
+of the previous week, as well as individuals over 18 who were not classified
+elsewhere.</li>
+<li>Retired (RT) - reported “retired” as their primary activity of the previous
+week, or who are over the age of 65 and reported that they were not workers.</li>
+</ul>
+<p>The other three person types are university students, schoolchildren under
+driving age, and driving-age schoolchildren. A limited number of individuals who
+could plausibly be considered university students responded to the NHTS, so we
+cannot estimate reliable choice models. Among schoolchildren of any age, too few
+report using wheelchairs to justify including these segments in this study.</p>
 </div>
 <div id="activitysim-implementation" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> ActivitySim Implementation</h2>
+<p>After obtaining an estimate for the relationship between wheelchair use and
+daily activity patterns, we wish to understand the impact of this variable on
+overall transportation demand forecasting. To do this, we can place the
+enhanced daily activity pattern model including this relationship within an<br />
+Activitysim implementation. In this case, we use an implementation of ActivitySim
+in the Wasatch Front region of Utah; this implementation includes the Salt Lake
+City, Provo, and Ogden metropolitan areas.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>The synthetic population for this implementation is generated with PopulationSim
+<span class="citation">(<a href="#ref-paul2018" role="doc-biblioref">Paul et al., 2018</a>)</span>, which uses American Community Survey Public Use Microdata Sample
+(ACS PUMS)<span class="citation">(<a href="#ref-acspums" role="doc-biblioref">US Census Bureau, 2022</a>)</span> as seed table. Any variables from ACS PUMS can in principle
+be included in synthetic population and therefore in the model. The ACS PUMS
+includes a “disability” variable but not specific information on wheelchair use.
+The NHTS, however, does explicitly contain a wheelchair use variable as
+described earlier.</p>
+<p>Using the NHTS data, we estimated a binary logit regression model where the
+probability for wheelchair use was determined to be a function of age,
+<span class="math display" id="eq:wheelchair">\[\begin{equation}
+  P_{\mathrm{wheelchair | disability}}=-2.59 + 0.014*\mathrm{age}
+  \tag{3.1}
+\end{equation}\]</span>
+Other specifications of this regression equation did not result in substantively
+different model fit. For each person in the synthetic population with a disability
+as sampled from the ACS PUMS seed table, we determined the probability they
+would use a wheelchair based on the model in Equation <a href="methodology.html#eq:wheelchair">(3.1)</a>. A random
+draw allocated these individuals into using or not using a wheelchair.
+Of the total synthetic population, those using a wheelchair consisted of 0.8
+percent of all individuals.</p>
+<p>With the synthetic population described above, we modified the ActivitySim
+daily activity pattern model to consider wheelchair use. We then compared two
+complete runs of ActivitySim on the same synthetic population of 2.47 million
+individuals, with and without the wheelchair use variable activated. As described
+earlier, the daily activity pattern model in ActivitySim is coordinated, meaining
+that when an individual has an increased likelihood of choosing an at-home tour,
+other members of the household will have an increased likelihood as well <span class="citation">(<a href="#ref-Bradley2005" role="doc-biblioref">Bradley and Vovsha, 2005</a>)</span>.
+Thus it is important to evaluate not only the daily activity patterns of
+individuals who use wheelchairs, but also their household members.</p>
 
 </div>
 </div>
@@ -1081,12 +1117,29 @@ Domencich, T.A., McFadden, D., 1975. <span class="nocase">Urban travel demand: a
 <div id="ref-erhardt2012mtc" class="csl-entry">
 Erhardt, G., Ory, D., Sarvepalli, A., Freedman, J., Hood, J., Stabler, B., 2012. MTC’s travel model one: Applications of an activity-based model in its first year, in: 5th Transportation Research Board Innovations in Travel Modeling Conference.
 </div>
+<div id="ref-udotwheelchairs" class="csl-entry">
+Macfarlane, G.S., Lant, N.J., 2021. Estimation and simulation of daily activity patterns for individuals using wheelchairs.
+</div>
+<div id="ref-paul2018" class="csl-entry">
+Paul, B.M., Doyle, J., Stabler, B., Freedman, J., Bettinardi, A., 2018. Multi-level population synthesis using entropy maximization-based simultaneous list balancing, in: Transportation Research Board Annual Meeting.
+</div>
 <div id="ref-rasouli2014activity" class="csl-entry">
 Rasouli, S., Timmermans, H., 2014. Activity-based models of travel demand: Promises, progress and prospects. <em>International Journal of Urban Sciences</em> 18, 31–60.
 </div>
 <div id="ref-fhwa2017" class="csl-entry">
 U.S. Department of Transportation and Federal Highway Administration, 2017. 2017 national household travel survey.
 </div>
+<div id="ref-acspums" class="csl-entry">
+US Census Bureau, 2022. ACS PUMS: American community survey public use microdata sample.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This implementation is not the
+official regional travel demand model; the calibration and development of this
+model is described in <span class="citation">(<a href="#ref-udotwheelchairs" role="doc-biblioref">Macfarlane and Lant, 2021</a>)</span>.<a href="methodology.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

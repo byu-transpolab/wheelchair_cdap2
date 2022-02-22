@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-02-01" />
+<meta name="date" content="2022-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,14 +210,14 @@ div.csl-indent {
 <h1><span class="header-section-number"> 4</span> Results</h1>
 <div id="choice-analysis" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Choice Analysis</h2>
-<p>We estimated the models using mlogit for R <span class="citation"><a href="#ref-mlogit2020" role="doc-biblioref">Croissant</a> (<a href="#ref-mlogit2020" role="doc-biblioref">2020</a>)</span>. As described above, the
-alternatives for daily activity pattern choice are a Mandatory pattern where the
-individual’s day involves a work or school tour, a Non-Mandatory pattern where
-only discretionary trips are taken, and a Home pattern where the individual does
-not leave home. In the models estimated for this study, the Home pattern serves
-as the reference alternative with a utility of zero. Retired and otherwise
-non-working individuals choose only between Non-Mandatory and Home daily activity
-patterns.</p>
+<p>We estimated the daily activity pattern choice models using mlogit for R
+<span class="citation"><a href="#ref-mlogit2020" role="doc-biblioref">Croissant</a> (<a href="#ref-mlogit2020" role="doc-biblioref">2020</a>)</span>. As described above, the alternatives for daily activity
+pattern choice are a Mandatory pattern where the individual’s day involves a
+work or school tour, a Non-Mandatory pattern where only discretionary trips are
+taken, and a Home pattern where the individual does not leave home during the
+day. In the models estimated for this study, the Home pattern serves as the
+reference alternative with a utility of zero. Retired and otherwise non-working
+individuals choose only between Non-Mandatory and Home daily activity patterns.</p>
 <p>The model estimates are presented in
 Table <a href="results.html#tab:model-coef">4.1</a>.
 The estimated coefficients are of the expected sign, though not all are significant.
@@ -232,22 +232,28 @@ the goal of these models is simply to provide a plausible comparison point for
 the behavior of individuals using wheelchairs against the behavior of individuals
 in other person type segments.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="results.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(pt_modelsummary)</span>
-<span id="cb2-2"><a href="results.html#cb2-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(<span class="fu">round</span>(x, <span class="dv">3</span>))</span>
-<span id="cb2-3"><a href="results.html#cb2-3" aria-hidden="true" tabindex="-1"></a>gm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb2-4"><a href="results.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;nobs&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;N&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
-<span id="cb2-5"><a href="results.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
-<span id="cb2-6"><a href="results.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;logLik&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;Log likelihood&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
-<span id="cb2-7"><a href="results.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;rho2&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">rho^2$&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f))</span>
-<span id="cb2-8"><a href="results.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(</span>
-<span id="cb2-9"><a href="results.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  pt_modelsummary, <span class="at">group =</span> variable <span class="sc">+</span> term <span class="sc">~</span> model, </span>
-<span id="cb2-10"><a href="results.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">gof_map =</span> gm,</span>
-<span id="cb2-11"><a href="results.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimate =</span> <span class="st">&quot;{estimate} ({statistic}){stars}&quot;</span>,</span>
-<span id="cb2-12"><a href="results.html#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb2-13"><a href="results.html#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>),</span>
-<span id="cb2-14"><a href="results.html#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">notes =</span> <span class="fu">c</span>(<span class="st">&quot;t-statistics in parentheses, * p &lt; 0.5, ** p &lt; 0.01&quot;</span>,</span>
-<span id="cb2-15"><a href="results.html#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Coefficients represent utility change relative to H: stay at home pattern.&quot;</span>),</span>
-<span id="cb2-16"><a href="results.html#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Daily Activity Pattern Model Estimates&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="results.html#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">&quot;scale_down&quot;</span>))</span></code></pre></div>
+<span id="cb2-2"><a href="results.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="results.html#cb2-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(<span class="fu">round</span>(x, <span class="dv">3</span>))</span>
+<span id="cb2-4"><a href="results.html#cb2-4" aria-hidden="true" tabindex="-1"></a>gm <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-5"><a href="results.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;nobs&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;N&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
+<span id="cb2-6"><a href="results.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
+<span id="cb2-7"><a href="results.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;logLik&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;Log likelihood&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f),</span>
+<span id="cb2-8"><a href="results.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="st">&quot;raw&quot;</span> <span class="ot">=</span> <span class="st">&quot;rho2&quot;</span>, <span class="st">&quot;clean&quot;</span> <span class="ot">=</span> <span class="st">&quot;$</span><span class="sc">\\</span><span class="st">rho^2$&quot;</span>, <span class="st">&quot;fmt&quot;</span> <span class="ot">=</span> f))</span>
+<span id="cb2-9"><a href="results.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(</span>
+<span id="cb2-10"><a href="results.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  pt_modelsummary, <span class="at">group =</span> variable <span class="sc">+</span> term <span class="sc">~</span> model, </span>
+<span id="cb2-11"><a href="results.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">gof_map =</span> gm,</span>
+<span id="cb2-12"><a href="results.html#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">coef_map =</span> <span class="fu">c</span>(</span>
+<span id="cb2-13"><a href="results.html#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;M&quot;</span> <span class="ot">=</span> <span class="st">&quot;Mandatory&quot;</span>,</span>
+<span id="cb2-14"><a href="results.html#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NM&quot;</span> <span class="ot">=</span> <span class="st">&quot;Non-mandatory&quot;</span></span>
+<span id="cb2-15"><a href="results.html#cb2-15" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb2-16"><a href="results.html#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimate =</span> <span class="st">&quot;{estimate} ({statistic}){stars}&quot;</span>,</span>
+<span id="cb2-17"><a href="results.html#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-18"><a href="results.html#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-19"><a href="results.html#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>),</span>
+<span id="cb2-20"><a href="results.html#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">notes =</span> <span class="fu">c</span>(<span class="st">&quot;t-statistics in parentheses, * p &lt; 0.5, ** p &lt; 0.01&quot;</span>,</span>
+<span id="cb2-21"><a href="results.html#cb2-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Coefficients represent utility change relative to stay at home pattern.&quot;</span>),</span>
+<span id="cb2-22"><a href="results.html#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Daily Activity Pattern Model Estimates&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-23"><a href="results.html#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">&quot;scale_down&quot;</span>))</span></code></pre></div>
 <table style="NAborder-bottom: 0;border-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;" class="table table">
 <caption>
 <span id="tab:model-coef">Table 4.1: </span>Daily Activity Pattern Model Estimates
@@ -278,7 +284,7 @@ Retired
 (Intercept)
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 2.083 (15.207)**
@@ -295,7 +301,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 1.137 (7.854)**
@@ -312,10 +318,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-wheelchairTRUE
+Uses wheelchair
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −1.851 (−3.328)**
@@ -332,7 +338,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 −0.625 (−1.315)
@@ -349,10 +355,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-male
+Male
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 0.008 (0.140)
@@ -369,7 +375,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 −0.148 (−2.378)
@@ -386,10 +392,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-bach_degree
+College graduate
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 0.353 (5.716)**
@@ -406,7 +412,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 0.648 (9.834)**
@@ -423,10 +429,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-income$25,000 - $50,000
+Income $25,000 - $50,000
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −0.055 (−0.373)
@@ -443,7 +449,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 −0.371 (−2.344)
@@ -460,10 +466,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-income$50,000 - $100,000
+Income $50,000 - $100,000
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −0.175 (−1.272)
@@ -480,7 +486,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 −0.312 (−2.146)
@@ -497,10 +503,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-income&gt; $100,000
+Income &gt; $100,000
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −0.206 (−1.495)
@@ -517,7 +523,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 −0.233 (−1.610)
@@ -534,10 +540,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-age_bin40-64
+Age 40-64
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −0.006 (−0.104)
@@ -554,7 +560,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 0.026 (0.386)
@@ -571,10 +577,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-age_bin65-79
+Age 65-79
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 0.179 (1.147)
@@ -591,7 +597,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 0.801 (5.081)**
@@ -608,10 +614,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-age_bin80+
+Age 80+
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 17.592 (0.004)
@@ -628,7 +634,7 @@ M
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;">
 17.247 (0.004)
@@ -645,10 +651,10 @@ NM
 </tr>
 <tr>
 <td style="text-align:left;">
-works_home
+Works from home
 </td>
 <td style="text-align:left;">
-M
+Mandatory
 </td>
 <td style="text-align:center;">
 −1.542 (−18.502)**
@@ -665,7 +671,7 @@ M
 <td style="text-align:left;box-shadow: 0px 1px">
 </td>
 <td style="text-align:left;box-shadow: 0px 1px">
-NM
+Non-mandatory
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
 −0.044 (−0.558)
@@ -765,55 +771,46 @@ Log likelihood
 <tfoot>
 <tr>
 <td style="padding: 0; " colspan="100%">
-<sup></sup> Coefficients represent utility change relative to H: stay at home pattern.
+<sup></sup> Coefficients represent utility change relative to stay at home pattern.
 </td>
 </tr>
 </tfoot>
 </table>
-<p>In this regard, the model results show strong divergence of the utility
-preferences of individuals who use wheelchairs. For instance, full-time workers
-in the middle income groups are modestly less likely to choose non-mandatory
-patterns, and part-time workers of higher income are less like to choose
-mandatory patterns. Income appears to have no discernible effect on the choices
-of non-working and retired individuals. We see a negative utility score for all
-person types with a wheelchair variable, and “mandatory” is even more negative.
-This is expected as individuals with wheelchairs are less likely to take a work
-or school trip compared to a shopping or a recreational trip. Non-workers and
-retired person types do not have a coefficient for “mandatory” DAP because those
-users by definition do not take “mandatory” DAP. Indeed, wheelchair use is among
-the strongest predictors of daily activity pattern choice across population
-segments.</p>
+<p>The model coefficients indicate expected behavior for most included variables.
+All else equal, the model intercepts imply that full- and part-time workers
+are more likely to choose a mandatory daily pattern than either a non-mandatory
+home pattern. Men of all person types are less likely to choose non-mandatory
+patterns, and college graduates are more likely to choose any kind of out-of-home
+pattern. The effect of age group and income are less impactful for most trip
+purposes, with the exception of non-mandatory patterns being more likely to be
+chosen by individuals between the ages of 65 and 79. The strong coefficient
+seen on the choices of full-time workers over 79 years old is not significant,
+and is rather a relic of very few full-time workers of that age in the data set.</p>
+<p>The use of a wheelchair is strongly significant for all person segments, and
+indicates wheelchair users are substantially less likely to make mandatory tours
+even if employed. For non-workers and retirees who use wheelchairs, their propensity
+to make non-mandatory tours is also substantially diminished. As a note, we considered
+making wheelchair use an independent person type segment; the results suggest that
+full-time workers who use wheelchairs are more similar to other full-time workers
+than they are to non-workers who also use wheelchairs. This justifies including
+wheelchair use as a variable within each person type segment. More notable than
+the significance of this variable alone, however, is the fact that its magnitude
+is so strong. Indeed, wheelchair use appears to be more influential on the choice
+of daily pattern than any other variable included in these models.</p>
 </div>
 <div id="activity-based-model" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Activity-based Model</h2>
-<p>As a secondary example, the research measures the impact of
-wheelchair status on ActivitySim’s selection of daily plans for our given
-synthetic population. Given a “Before” scenario in ActivitySim of the Salt Lake
-Area and ignoring the newly added wheelchair status in the synthetic population,
-ActivitySim predicted a DAP for each individual. In a second, “After” scenario,
-ActivitySim again predicted a DAP for each person, this time considering the
-wheelchair use status of each individual in the population. We hypothesized that
-those with wheelchairs and those in the same households as individuals with
-wheelchairs would change their DAP because of the negative utility scores
-applied to the “mandatory” and “nonmandatory” DAP alternatives, and the rest of
-the population would be unaffected. The DAP of those within the same household
-of a wheelchair user may change because of the coordinated nature of household
-DAP in ActivitySim. Table <a href="results.html#tab:dap-summary">4.2</a> shows the change in DAP among those with
-wheelchairs, in the same household as one with a wheelchair, and with neither a
-wheelchair nor in the same household. The table contains both total volumes and
-percentages; the value of percent is by total volume in the group, for example,
-16.4 percent of Wheelchair Users chose a “home” pattern in both the “Before”
-scenario and the “After” scenario. The latter group is rightly unaffected by
-the wheelchair implementation in the simulation (with the exception of a few
-changes attributable to randomness) and does not include a percentage breakdown.
-Primarily, DAP remain the same for most individuals, as shown in the diagonal.
-However, there is a large volume of wheelchair users and their household members
-that stay home, particularly from “nonmandatory” DAP. This finding is consistent
-with our hypothesis.</p>
+<p>At the individual level, wheelchair use appears highly predictive. It still remains
+to be seen, however, what the effect of including this variable in a forecasting
+model will do to aggregate trip making. To examine this question, we placed the
+wheelchair use variable coefficients shown in Table <a href="results.html#tab:model-coef">4.1</a> into
+the ActivitySim daily activity pattern model. We allowed the other coefficients
+to retain their values as originally specified, assuming that wheelchair use
+is orthogonal to the other variables.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="results.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dap_table)</span>
 <span id="cb3-2"><a href="results.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(dap_table, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">caption =</span> <span class="st">&quot;Daily Activity Pattern Change&quot;</span>,</span>
-<span id="cb3-3"><a href="results.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Group&quot;</span>, <span class="st">&quot;DAP without Wheelchair Use&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="results.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;DAP with Wheelchair Use&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="results.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Group&quot;</span>, <span class="st">&quot;Base&quot;</span>, <span class="st">&quot;H&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="results.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;Considering Wheelchair Use&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-5"><a href="results.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collapse_rows</span>(<span class="at">columns =</span> <span class="dv">1</span>, <span class="at">latex_hline =</span> <span class="st">&quot;major&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-6"><a href="results.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -828,7 +825,7 @@ with our hypothesis.</p>
 </th>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-DAP with Wheelchair Use
+Considering Wheelchair Use
 </div>
 </th>
 </tr>
@@ -837,7 +834,7 @@ DAP with Wheelchair Use
 Group
 </th>
 <th style="text-align:left;">
-DAP without Wheelchair Use
+Base
 </th>
 <th style="text-align:right;">
 H
@@ -1003,6 +1000,59 @@ N
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="results.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(asim_dap)</span>
+<span id="cb4-2"><a href="results.html#cb4-2" aria-hidden="true" tabindex="-1"></a>n_changed <span class="ot">&lt;-</span> <span class="fu">nrow</span>(asim_dap <span class="sc">%&gt;%</span> <span class="fu">filter</span>(DAP_after <span class="sc">!=</span> DAP_before))</span>
+<span id="cb4-3"><a href="results.html#cb4-3" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="fu">nrow</span>(asim_dap)</span>
+<span id="cb4-4"><a href="results.html#cb4-4" aria-hidden="true" tabindex="-1"></a>change1 <span class="ot">&lt;-</span> (<span class="dv">932</span> <span class="sc">+</span> <span class="dv">308</span>) <span class="sc">/</span> (<span class="dv">932</span> <span class="sc">+</span> <span class="dv">1642</span> <span class="sc">+</span> <span class="dv">308</span>)</span>
+<span id="cb4-5"><a href="results.html#cb4-5" aria-hidden="true" tabindex="-1"></a>change2 <span class="ot">&lt;-</span> (<span class="dv">1235</span> <span class="sc">+</span> <span class="dv">759</span>) <span class="sc">/</span> (<span class="dv">1235</span> <span class="sc">+</span> <span class="dv">759</span> <span class="sc">+</span> <span class="dv">4511</span>)</span></code></pre></div>
+<p>Overall, 8,886 individuals of the 2,487,002
+in the region changed their daily activity patterns changed from the base
+scenario after including wheelchair use as a utility variable.
+Though this is only 0.357% of individuals, it is worth
+considering the distribution of this change in more detail. Table
+<a href="results.html#tab:dap-summary">4.2</a> presents an aggregate summary of individuals who kept and
+changed their plans. Individuals with no wheelchair users in their household are
+not affected, other than through some random simulation error. For wheelchair users
+themselves however, the changes are relatively large.
+For example, 43 percent of the wheelchair users who were modeled as
+making mandatory tour patterns in the base scenario are now expected to make
+non-mandatory or stay-at-home patterns. Similarly, wheelchair users who previously
+chose non-mandatory patttens are considerably more likely to stay at home.</p>
+<p>The coordinated nature of the ActivitySim daily activity pattern model also allows
+household members of wheelchair users to be affected. For these people,
+the changes are smaller in proportion but potentiall meaningful in aggregate:
+30.7 percent of the household members who stay at home in the new scenario
+incorporating wheelchair use previously made out-of-home tours in the base scenario.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="results.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dap_map)</span>
+<span id="cb5-2"><a href="results.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="results.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dap_map <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pct <span class="sc">&gt;</span> <span class="dv">0</span>), <span class="fu">aes</span>(<span class="at">fill =</span> pct)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="results.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_map_tile</span>(<span class="st">&quot;cartolight&quot;</span>, <span class="at">zoom =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="results.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="results.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="st">&quot;Percent changed DAP&quot;</span>, <span class="at">option =</span> <span class="st">&quot;inferno&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb5-7"><a href="results.html#cb5-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> 5L, <span class="at">suffix =</span> <span class="st">&quot;&quot;</span> )) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="results.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-9"><a href="results.html#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb5-10"><a href="results.html#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),<span class="at">axis.ticks=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb5-11"><a href="results.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb5-12"><a href="results.html#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb5-13"><a href="results.html#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>), <span class="co">#change font size of legend text</span></span>
+<span id="cb5-14"><a href="results.html#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">8</span>)</span>
+<span id="cb5-15"><a href="results.html#cb5-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## Loading required namespace: raster</code></pre>
+<pre><code>## Zoom: 10</code></pre>
+<div class="figure"><span style="display:block;" id="fig:dap-map"></span>
+<img src="wheelchair_cdap_files/figure-html/dap-map-1.png" alt="Percent of households with changed daily activity pattern between two scenarios." width="672" />
+<p class="caption">
+Figure 4.1: Percent of households with changed daily activity pattern between two scenarios.
+</p>
+</div>
+<p>In addition to these aggregate numbers, it is also worth considering where the
+affected households are concentrated. Wheelchair use and disability in general
+is not distributed evenly through the region. Figure <a href="results.html#fig:dap-map">4.1</a> shows the
+concentration of households where at least one member changed its chosen
+daily activity pattern between the scenarios by traffic analysis zone. Though
+most areas of the region experience little if any alteration, some zones see as
+many as 20% or 30% of their households change activity patterns.</p>
 
 </div>
 </div>
