@@ -48,6 +48,12 @@ wheelchairs to estimate robust effects without targeted oversampling techniques.
 The results of this study raise a question as to whether planning agencies 
 ought to consider conducting this oversampling to enable future research. 
 
+The model specifications  presented in Table \@ref(tab:model-coef) each consider 
+wheelchair use independently from other variables. It is likely however, that there
+could be some interaction effects among the various individual attributes. 
+To wit: do wheelchair users who hold bachelor's degrees behave differently
+with respect to activity pattern than wheelchair users with less education?
+
 This study used information from all United States metro areas between one and
 three million in population. It is possible that the obstacles wheelchair users
 face in some of these metro areas  are larger or smaller than others. It is also

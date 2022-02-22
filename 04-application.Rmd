@@ -65,7 +65,11 @@ and is rather a relic of very few full-time workers of that age in the data set.
 The use of a wheelchair is strongly significant for all person segments, and
 indicates wheelchair users are substantially less likely to make mandatory tours
 even if employed. For non-workers and retirees who use wheelchairs, their propensity
-to make non-mandatory tours is also substantially diminished. More notable than
+to make non-mandatory tours is also substantially diminished. As a note, we considered
+making wheelchair use an independent person type segment; the results suggest that 
+full-time workers who use wheelchairs are more similar to other full-time workers
+than they are to non-workers who also use wheelchairs. This justifies including
+wheelchair use as a variable within each person type segment. More notable than
 the significance of this variable alone, however, is the fact that its magnitude
 is so strong. Indeed, wheelchair use appears to be more influential on the choice
 of daily pattern than any other variable included in these models.

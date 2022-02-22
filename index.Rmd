@@ -23,7 +23,7 @@ csl: elsevier-harvard-italics.csl
 always_allow_html: true
 link-citations: yes
 abstract: |
-  The mobility needs of individuals with travel-limiting disabilities has been a transportation policy priority in the United States for more than thirty years, but efforts to model the behavioral implications of disability on travel have been limited. In this research, we present a daily activity pattern choice model for multiple trip purposes including an individual’s wheelchair use as an explanatory variable. The model results show a strong negative impact of wheelchair use on tour making, exceeding the impact of other variables commonly considered in such models. We then apply the estimated model within an activity-based model for the Wasatch Front region in Utah; the results suggest a shift in tour making of sufficient scale — among both wheelchair users and those in their households — to warrant further scrutiny and analysis.
+  The mobility needs of individuals with travel-limiting disabilities has been a transportation policy priority in the United States for more than thirty years, but efforts to model the behavioral implications of disability on travel have been limited. In this research, we present a daily activity pattern choice model for multiple person type segments including an individual’s wheelchair use as an explanatory variable. The model results show a strong negative impact of wheelchair use on out-of-home travel, exceeding the impact of other variables commonly considered in such models. We then apply the estimated model within an activity-based model for the Wasatch Front region in Utah; the results suggest a shift in tour making of sufficient scale — among both wheelchair users and those in their households — to warrant further scrutiny and analysis.
 
 keywords: Transportation equity; travel behavior
 description: "Coordinated daily activity patterns of wheelchair users."
@@ -94,7 +94,7 @@ knitr::write_bib(c(.packages(), "bookdown"), "packages.bib")
 In 1990, the United States Congress passed the Americans with Disabilities Act (ADA), 
 seeking to protect individuals with qualifying disabilities from discrimination
 while using public services including transportation systems (Title II), in
-public accommodations (Title III), and various other specific situation. For
+public accommodations (Title III), and various other specific situations. For
 transportation service providers, ensuring equal access for wheelchair users is
 a critical design constraint for vehicles as well as stations and the surrounding areas
 [@fhwaada].
