@@ -108,7 +108,7 @@ considering the distribution of this change in more detail. Table
 changed their plans. Individuals with no wheelchair users in their household are 
 not affected, other than through some random simulation error. For wheelchair users
 themselves however, the changes are relatively large. 
-For example, `r change1*100`% of the wheelchair users who were modeled as 
+For example, `r change1*100` percent of the wheelchair users who were modeled as 
 making mandatory tour patterns in the base scenario are now expected to make 
 non-mandatory or stay-at-home patterns. Similarly, wheelchair users who previously
 chose non-mandatory patttens are considerably more likely to stay at home.
@@ -116,7 +116,7 @@ chose non-mandatory patttens are considerably more likely to stay at home.
 The coordinated nature of the ActivitySim daily activity pattern model also allows
 household members of wheelchair users to be affected. For these people, 
 the changes are smaller in proportion but potentiall meaningful in aggregate: 
-`r change2 * 100` of the household members who stay at home in the new scenario
+`r change2 * 100` percent of the household members who stay at home in the new scenario
 incorporating wheelchair use previously made out-of-home tours in the base scenario.
 
 
