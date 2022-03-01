@@ -19,7 +19,7 @@ site: bookdown::bookdown_site
 documentclass: article
 journal: "the 12$^{th}$ International Scientific Conference on Mobility and Transport"
 bibliography: [book.bib]
-csl: elsevier-harvard-italics.csl
+csl: elsevier-harvard-with-titles-italics.csl
 always_allow_html: true
 link-citations: yes
 abstract: |
@@ -128,7 +128,7 @@ population-level effects of introducing wheelchair status in a regional travel
 demand model.
 
 The paper proceeds in a typical fashion. A [literature review](#literature)
-discusses prior attempts to evaluated and quantify the travel behavior of
+discusses prior attempts to evaluate and quantify the travel behavior of
 users with disabilities. A section [describing the methodology](#methodology)
 of the choice analysis and model application is followed by [a discussion of the results](#results)
 from both analyses. The paper concludes with [a discussion](#discussion)

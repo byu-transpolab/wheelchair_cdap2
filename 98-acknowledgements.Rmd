@@ -1,7 +1,7 @@
 # Acknowledgements {-#acks}
 
 Figures and tables in this paper were created with a variety of R
-packages [@ggplot22016; @R-modelsummary; @R-ggspatial]. The authors would like to thank 
+packages [@R-ggplot2; @R-modelsummary; @R-ggspatial]. The authors would like to thank 
 Chris Day and Christian Hunter for their help in preparing this analysis. 
 
 This work was supported by the Utah Department of Transportation and the 
