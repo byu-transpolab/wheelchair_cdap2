@@ -106,7 +106,7 @@ change2 <- (1235 + 759) / (1235 + 759 + 4511)
 Overall, `r n_changed` individuals of the `r n_total` 
 in the region changed their daily activity patterns changed from the base
 scenario after including wheelchair use as a utility variable.
-Though this is only `r n_changed / n_total * 100`% of individuals, it is worth
+Though this is only `r n_changed / n_total * 100` percent of individuals, it is worth
 considering the distribution of this change in more detail. Table
 \@ref(tab:dap-summary) presents an aggregate summary of individuals who kept and 
 changed their plans. Individuals with no wheelchair users in their household are 
@@ -149,7 +149,8 @@ is not distributed evenly through the region. Figure \@ref(fig:dap-map) shows th
 concentration of households where at least one member changed its chosen 
 daily activity pattern between the scenarios by traffic analysis zone. Though
 most areas of the region experience little if any alteration, some zones see as 
-many as 20% or 30% of their households change activity patterns. 
+many as 20 percent or 30 percent of their households change activity patterns. 
+
 
 
 
