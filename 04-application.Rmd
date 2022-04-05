@@ -89,7 +89,7 @@ is orthogonal to the other variables.
 ```{r dap-summary}
 tar_load(dap_table)
 kbl(dap_table, booktabs = TRUE, caption = "Daily Activity Pattern Change",
-    col.names = c("Group", "Base", "H", "M", "N")) %>%
+    col.names = c("Group", "Base", "Home", "Mandatory", "Non-Mandatory")) %>%
   add_header_above(c("", "", "Considering Wheelchair Use" = 3)) %>%
   collapse_rows(columns = 1, latex_hline = "major") %>% 
   kable_styling()
@@ -126,20 +126,35 @@ incorporating wheelchair use previously made out-of-home tours in the base scena
 
 ```{r dap-map, fig.cap="Percent of households with changed daily activity pattern between two scenarios.", fig.height = 8}
 tar_load(dap_map)
+dm <- dap_map %>% filter(pct > 0)
 
-ggplot(dap_map %>% filter(pct > 0), aes(fill = pct)) +
-  annotation_map_tile("cartolight", zoom = 10) +
-  geom_sf(alpha = 0.5, color = NA) +
-  scale_fill_viridis_c("Percent changed DAP", option = "inferno", direction = -1,
-                       labels = scales::percent_format(accuracy = 5L, suffix = "" )) +
-  theme(
-    axis.text.x=element_blank(),
-    axis.text.y=element_blank(),axis.ticks=element_blank(),
-    axis.title.x=element_blank(),
-    axis.title.y=element_blank(),
-    legend.text=element_text(size=8), #change font size of legend text
-    legend.title=element_text(size=8)
-  )
+if(!knitr::is_latex_output()){
+  ncolor <- 5
+  mfill <- colorNumeric(viridis(ncolor, direction = -1,  option = "inferno"), 
+                        domain = dm$pct, n = ncolor)
+  leaflet(dm) %>%
+    addProviderTiles(providers$CartoDB) %>%
+    addPolygons(fillColor = ~mfill(pct), stroke = 0, fillOpacity = 0.8) %>%
+    addLegend(pal = mfill, values = ~pct, title = "P changed DAP") 
+
+  
+} else {
+  ggplot(dm, aes(fill = pct)) +
+    annotation_map_tile("cartolight", zoom = 10) +
+    geom_sf(alpha = 0.5, color = NA) +
+    scale_fill_viridis_c("Percent changed DAP", option = "inferno", direction = -1,
+                         labels = scales::percent_format(accuracy = 5L, suffix = "" )) +
+    theme(
+      axis.text.x=element_blank(),
+      axis.text.y=element_blank(),axis.ticks=element_blank(),
+      axis.title.x=element_blank(),
+      axis.title.y=element_blank(),
+      legend.text=element_text(size=8), #change font size of legend text
+      legend.title=element_text(size=8)
+    )
+  
+}
+
 ```
 
 
