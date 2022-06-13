@@ -63,7 +63,7 @@ for themselves or other household members. Each respondent is asked "Do you
 have a condition or handicap that makes it difficult to travel outside of the
 home?" If the answer is yes, several follow-up questions are asked, including
 "Do you use any of the following medical devices? Select all that apply." The
-list of medical devices respondents can indicated includes canes, walkers,
+list of medical devices respondents can indicate includes canes, walkers,
 seeing-eye dogs, crutches, motorized scooters, manual wheelchairs, 
 motorized wheelchairs, or something else (other). 
 For this study, we identify wheelchair users as respondents who report using a
@@ -151,7 +151,7 @@ With the synthetic population described above, we modified the ActivitySim
 daily activity pattern model to consider wheelchair use. We then compared two 
 complete runs of ActivitySim on the same synthetic population of 2.47 million
 individuals, with and without the wheelchair use variable activated. As described
-earlier, the daily activity pattern model in ActivitySim is coordinated, meaining
+earlier, the daily activity pattern model in ActivitySim is coordinated, meaning
 that when an individual has an increased likelihood of choosing an at-home tour,
 other members of the household will have an increased likelihood as well [@Bradley2005].
 Thus it is important to evaluate not only the daily activity patterns of 

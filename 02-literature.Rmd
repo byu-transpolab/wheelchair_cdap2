@@ -1,10 +1,10 @@
 # Literature {#sec-literature}
 
 Recent analysis [@Brumbaugh2018] of the 2017 NHTS [@fhwa2017] suggests there are 13.4
-million individuals individuals in the US with travel-limiting disabilities --- as defined by a
+million individuals in the US with travel-limiting disabilities --- as defined by a
 specific question in the NHTS and encompassing sight, ambulatory, hearing, and
 other disabilities. Of these individuals, 20 percent (or 2.7
-million) self-report as using wheelchairs. With the relative aging of the U.S.
+million) self report as using wheelchairs. With the relative aging of the U.S.
 population, the share of Americans with all disabilities as well as those using
 wheelchairs is likely to rise substantially [@Sweeney2004; @Laplante2003].
 The question of how the travel behavior of individuals with travel-limiting
@@ -15,7 +15,7 @@ With regards to travel patterns, surveys of the general population and surveys
 specifically targeted at individuals with disabilities both reveal significant and
 meaningful differences compared to individuals without disabilities. Specific
 findings include that individuals with disabilities leave their homes on fewer
-days if if they leave at all [@Sweeney2004], make fewer daily trips [@Schmocker2005;
+days if they leave at all [@Sweeney2004], make fewer daily trips [@Schmocker2005;
 @Brumbaugh2018] make fewer work trips and more healthcare maintenance trips
 [@Ermagun2016], rely more on others for their travel [@Sweeney2004]
 and have considerably restricted mode choices [@Rosenbloom2007; @Ruvolo2020].
@@ -48,7 +48,7 @@ specific disability within the wide variety of relevant disabilities manifested
 in the NHTS results. But more importantly in the context of this research, the
 literature consists largely of ad-hoc studies conducted on specially
 collected datasets rather than holistically considering how disability manifests
-at within an established transportation decision-making process. Specifically,
+within an established transportation decision-making process. Specifically,
 there has not to our knowledge been a rigorous evaluation of the travel behavior
 of individuals with disabilities within the framework of a travel activity
 model.
