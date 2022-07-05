@@ -124,7 +124,7 @@ the changes are smaller in proportion but potentiall meaningful in aggregate:
 incorporating wheelchair use previously made out-of-home tours in the base scenario.
 
 
-```{r dap-map, fig.cap="Percent of households with changed daily activity pattern between two scenarios.", fig.height = 8}
+```{r dap-map, fig.cap="Percent of households with changed daily activity pattern between two scenarios.", fig.height = 8, cache=FALSE}
 tar_load(dap_map)
 dm <- dap_map %>% filter(pct > 0)
 
