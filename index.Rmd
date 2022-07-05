@@ -58,6 +58,7 @@ header-includes:
 library(tidyverse)
 library(knitr)
 library(kableExtra)
+library(viridisLite)
 library(modelsummary)
 library(targets)
 library(sf)
